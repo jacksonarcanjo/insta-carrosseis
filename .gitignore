@@ -1,0 +1,5 @@
+.venv/
+models/
+posts/*/work/
+posts/*/search/
+__pycache__/
