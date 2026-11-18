@@ -33,8 +33,49 @@ sonhos, disciplina, gratidão, coragem, ser gentil, aceitar ajuda, crescer, perd
   falando do personagem e conectando com quem lê. Nada de listas nem emojis no slide.
 - Último slide: chamada para comentar ("E você? … Me conta nos comentários.").
 - Total: 6 a 8 slides.
-- Legenda: título + 💭, 3–4 parágrafos curtos, pergunta final, depois 3–5 hashtags
-  (#anime #animes + temáticas). Português do Brasil correto, com acentos.
+- Legenda: siga a seção **"Como escrever a legenda"** abaixo. Português do Brasil correto, com acentos.
+
+### Como escrever a legenda (1.300 a 2.000 caracteres; limite do Instagram: 2.200)
+A legenda é onde o post ganha profundidade: o carrossel resume, a legenda aprofunda. Estrutura:
+
+1. **Gancho (1ª linha, até ~90 caracteres):** é o que aparece antes do "mais". Uma frase que dá vontade de abrir:
+   uma verdade incômoda, uma pergunta ou uma cena. Termine com um emoji discreto (💭 🌙 🤍 🍃 ✨).
+2. **Identificação (2–3 frases):** descreva o sentimento como a pessoa vive no dia a dia, em segunda pessoa,
+   com detalhes concretos ("aquela noite em que você ficou olhando o teto…"). Nada de frase genérica de coach.
+3. **Os personagens (um parágrafo curto para cada 2–3 personagens):** conte **o momento específico** da história
+   (cena, fala ou escolha) e o que ele revela sobre o tema. Mostre que você conhece o anime de verdade.
+   Sem spoiler pesado do final; se tocar em algo sensível, seja vago.
+4. **Virada / reflexão (2–4 frases):** o que essas histórias ensinam que serve para a vida real. Humana e honesta:
+   reconheça que é difícil, sem prometer solução mágica.
+5. **Frase de fechamento em destaque:** uma linha sozinha, curta e marcante, que dê vontade de printar.
+6. **Chamada para conversar:** uma pergunta específica ("Qual cena de anime te fez chorar sem esperar?"),
+   não um "comenta aí" genérico. Na linha seguinte: "Salva para reler num dia difícil e manda para quem precisa ouvir isso hoje."
+7. **Hashtags (8 a 12, numa linha separada no fim):** misture amplas (#anime #animes #otaku #animebrasil),
+   do tema (#motivação #ansiedade #amizade…) e dos animes citados (#naruto #onepiece…). Nunca repita a mesma
+   lista de um dia para o outro.
+
+Formato: parágrafos de 1 a 3 frases separados por linha em branco; 1 emoji no fim de no máximo 4 parágrafos;
+nada de listas com marcadores, nada de CAIXA ALTA, nada de travessão em excesso. Leia em voz alta antes de publicar.
+
+Exemplo (tema "amizade"):
+```
+Tem gente que entra na nossa vida só pra provar que a gente não precisava enfrentar tudo sozinho 🤍
+
+Talvez você conheça essa sensação: passar tanto tempo resolvendo tudo por conta própria que pedir ajuda parece fraqueza. Até que alguém aparece, senta do seu lado e fica, mesmo quando você não sabe explicar o que está sentindo.
+
+O Naruto passou anos correndo atrás do Sasuke quando todo mundo já tinha desistido dele. Não porque fosse fácil, mas porque entendia uma solidão que ninguém mais via. E o Gon e o Killua mostraram o outro lado: às vezes amizade é deixar o outro seguir o próprio caminho, mesmo doendo 💭
+
+Já o Luffy nunca pediu que o Zoro fosse menos do que era. Confiou nele inteiro, com as cicatrizes e os sonhos, e foi essa confiança que fez um caçador de piratas solitário virar família.
+
+Amizade de verdade não te salva de tudo. Mas te lembra, nos piores dias, que você não está carregando o peso sozinho ✨
+
+Quem chega fica. Quem fica cuida.
+
+Qual dupla de anime te fez acreditar em amizade de verdade? Marca aqui aquela pessoa que é o seu Killua.
+Salva para reler num dia difícil e manda para quem precisa ouvir isso hoje.
+
+#anime #animes #animebrasil #otaku #amizade #naruto #sasuke #hunterxhunter #gonandkillua #onepiece #luffy #zoro
+```
 
 ## 3. Achar as imagens (uma busca por slide)
 ```bash
