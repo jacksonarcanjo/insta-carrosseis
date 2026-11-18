@@ -1,3 +1,15 @@
 [
- {"data": "2026-11-18", "quando": "18/11/2026 00:42", "status": "ok", "mensagem": "Post de estreia (publicado manualmente na configuração): Por que anime te motiva tanto?", "link": "https://www.instagram.com/p/Df3kI8Doa1D/"}
+ {
+  "data": "2026-11-18",
+  "quando": "18/11/2026 00:42",
+  "status": "ok",
+  "mensagem": "Post de estreia (publicado manualmente na configuração): Por que anime te motiva tanto?",
+  "link": "https://www.instagram.com/p/Df3kI8Doa1D/"
+ },
+ {
+  "data": "2026-11-18",
+  "quando": "18/11/2026 18:41",
+  "status": "erro",
+  "mensagem": "Não publicado: a Meta bloqueou o acesso do app à API (erro 200 / 5258005 \"API access blocked\"). Sessão automática também não tinha permissão de push (corrigido)."
+ }
 ]

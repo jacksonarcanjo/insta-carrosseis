@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-18T12:36:45+00:00",
+ "gerado_em": "2026-11-18T23:02:16+00:00",
  "config": {
   "handle": "@darkgoodvibes",
   "post_time": "19:00",
@@ -21,6 +21,12 @@
  },
  "erro_api": null,
  "execucoes": [
+  {
+   "data": "2026-11-18",
+   "quando": "18/11/2026 18:41",
+   "status": "erro",
+   "mensagem": "Não publicado: a Meta bloqueou o acesso do app à API (erro 200 / 5258005 \"API access blocked\"). Sessão automática também não tinha permissão de push (corrigido)."
+  },
   {
    "data": "2026-11-18",
    "quando": "18/11/2026 00:42",
