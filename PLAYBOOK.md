@@ -70,7 +70,7 @@ python3 tools/publish.py posts/$DATE --dry-run && python3 tools/publish.py posts
 Depois atualize `history.json` com `{"date", "theme", "characters", "permalink"}`, commit e push.
 
 ## Se algo der errado
-- Erro 190 / token inválido ou expirado da API: não tente contornar. Termine relatando
+- Erro 190 / token inválido ou expirado da API (graph.facebook.com): não tente contornar. Termine relatando
   "TOKEN EXPIRADO — gere um novo token no painel da Meta e atualize o segredo do ambiente".
 - Pinterest fora do ar: tente de novo em 2 min; se continuar, relate e pare (não publique nada improvisado).
 - Nunca publique duas vezes no mesmo dia. Nunca publique conteúdo que você não conferiu no preview.

@@ -1,4 +1,4 @@
-"""Publica um carrossel no Instagram pela API oficial (Instagram API with Instagram Login).
+"""Publica um carrossel no Instagram pela API oficial (Graph API com login do Facebook).
 
 uso: python3 tools/publish.py posts/AAAA-MM-DD [--dry-run]
 
@@ -6,13 +6,13 @@ uso: python3 tools/publish.py posts/AAAA-MM-DD [--dry-run]
   posts/AAAA-MM-DD/slide_*.jpg ja tenham sido enviados (git push) para o repositorio
   publico configurado em config.json ("public_repo" e "public_branch").
 - O token NAO fica no codigo: o proxy da sessao injeta o header Authorization
-  nas chamadas para graph.instagram.com.
+  nas chamadas para graph.facebook.com.
 Grava posts/AAAA-MM-DD/published.json com o id e o link do post.
 """
 import glob, json, os, sys, time, urllib.parse, urllib.request, urllib.error
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-API = 'https://graph.instagram.com/v23.0'
+API = 'https://graph.facebook.com/v23.0'
 
 def call(method, path, params=None):
     url = f'{API}/{path}'
@@ -53,18 +53,19 @@ def main(d, dry):
     for u in urls:  # confere que o Instagram vai conseguir baixar
         with urllib.request.urlopen(urllib.request.Request(u, method='HEAD'), timeout=30) as r:
             assert r.status == 200, u
-    me = call('GET', 'me', {'fields': 'user_id,username'})
+    ig = cfg['ig_user_id']
+    me = call('GET', ig, {'fields': 'username'})
     print('conta:', me.get('username'))
     if dry:
         print('dry-run ok:', urls); return
     children = []
     for u in urls:
-        children.append(call('POST', 'me/media', {'image_url': u, 'is_carousel_item': 'true'})['id'])
+        children.append(call('POST', f'{ig}/media', {'image_url': u, 'is_carousel_item': 'true'})['id'])
     for c in children:
         wait_ready(c)
-    car = call('POST', 'me/media', {'media_type': 'CAROUSEL', 'children': ','.join(children), 'caption': caption})['id']
+    car = call('POST', f'{ig}/media', {'media_type': 'CAROUSEL', 'children': ','.join(children), 'caption': caption})['id']
     wait_ready(car)
-    pub = call('POST', 'me/media_publish', {'creation_id': car})
+    pub = call('POST', f'{ig}/media_publish', {'creation_id': car})
     info = call('GET', pub['id'], {'fields': 'permalink,timestamp'})
     json.dump({'id': pub['id'], **info, 'username': me.get('username')}, open(f'{d}/published.json', 'w'), indent=1)
     print('publicado:', info.get('permalink'))
