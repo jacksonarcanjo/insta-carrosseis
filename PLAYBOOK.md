@@ -13,7 +13,7 @@ DATE=$(TZ=America/Sao_Paulo date +%F); mkdir -p posts/$DATE
 Se `posts/$DATE/published.json` já existe, o post de hoje já saiu: pare.
 
 ## 1. Escolher o tema
-- **Primeiro olhe `planejamento.json`:** se a `fila` tiver itens, use o **primeiro** (tema + personagens sugeridos;
+- **Primeiro olhe `planejamento.json`:** se a `fila` tiver itens, use o **primeiro** (tema + personagens sugeridos + `nota`, se houver — a `nota` é instrução do dono e deve ser seguida;
   pode trocar um personagem se não achar imagem boa). Depois remova esse item da fila e acrescente temas novos
   no final até a fila ter 7 itens (cada item: `{"tema": ..., "personagens": [5 nomes]}`), respeitando as regras abaixo.
 - Leia `history.json` (temas e personagens já usados). Não repita um tema dos últimos 30 dias,
