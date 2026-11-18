@@ -11,6 +11,8 @@ bash setup.sh
 DATE=$(TZ=America/Sao_Paulo date +%F); mkdir -p posts/$DATE
 ```
 Se `posts/$DATE/published.json` já existe, o post de hoje já saiu: pare.
+Se `posts/$DATE/spec.json` existe com `"pronto": true` e os `slide_*.jpg` estão lá, o post já foi montado e aprovado pelo dono:
+pule direto para a etapa 5 (Publicar), sem refazer nada. Sem `"pronto": true`, ignore o rascunho e faça o post do zero.
 
 ## 1. Escolher o tema
 - **Primeiro olhe `planejamento.json`:** se a `fila` tiver itens, use o **primeiro** (tema + personagens sugeridos + `nota`, se houver — a `nota` é instrução do dono e deve ser seguida;
