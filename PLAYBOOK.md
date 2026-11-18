@@ -59,6 +59,18 @@ A legenda é onde o post ganha profundidade: o carrossel resume, a legenda aprof
    do tema (#motivação #ansiedade #amizade…) e dos animes citados (#naruto #onepiece…). Nunca repita a mesma
    lista de um dia para o outro.
 
+Recursos que funcionam nas referências do dono (@psico.tsu e @christversions) — use 2 ou 3 por legenda:
+- **Contradição na abertura:** "Você pode passar anos tentando X e, no processo, perder justamente Y."
+- **Frase isolada de impacto** entre parágrafos ("É uma contradição que passa despercebida.").
+- **Base de psicologia em linguagem simples:** "Na psicologia, a gente sabe que…" (sem jargão, sem inventar estudo).
+- **Nuance honesta:** "Isso não significa que… Significa reconhecer que…": evita soar como coach.
+- **Cadência com "Talvez…"** em duas frases seguidas perto do fim.
+- **Antítese no fechamento** (estilo @christversions): "Uma verdade que dói liberta, mas uma mentira aprisiona."
+- **Chamada para seguir com propósito** no final: "Siga @darkgoodvibes para continuar encontrando nos animes reflexões sobre a sua própria história."
+
+Nos posts cristãos de domingo, a legenda é mais curta (600 a 1.100 caracteres): título + 💭, 3 ou 4 parágrafos
+que terminam com 💭, ✝️ ou ❤️, o versículo citado com a referência, e a última frase em antítese.
+
 Formato: parágrafos de 1 a 3 frases separados por linha em branco; 1 emoji no fim de no máximo 4 parágrafos;
 nada de listas com marcadores, nada de CAIXA ALTA, nada de travessão em excesso. Leia em voz alta antes de publicar.
 
