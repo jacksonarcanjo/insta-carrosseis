@@ -16,6 +16,11 @@ Se `posts/$DATE/published.json` já existe, o post de hoje já saiu: pare.
 - **Primeiro olhe `planejamento.json`:** se a `fila` tiver itens, use o **primeiro** (tema + personagens sugeridos + `nota`, se houver — a `nota` é instrução do dono e deve ser seguida;
   pode trocar um personagem se não achar imagem boa). Depois remova esse item da fila e acrescente temas novos
   no final até a fila ter 7 itens (cada item: `{"tema": ..., "personagens": [5 nomes]}`), respeitando as regras abaixo.
+- **Domingo é dia de post cristão** (a partir de 29/11/2026): todo domingo o tema deve ser cristão, no estilo
+  @christversions (anime como ponte para falar do amor de Deus, fé, graça, perdão, esperança), com 1–2 versículos
+  citados com referência exata e texto fiel, tom acolhedor, sem polêmica doutrinária, hashtags #jesus #fé #deus #cristão
+  + anime. Nos outros dias, temas não religiosos. Ao completar a fila, posicione os itens cristãos (com `nota`
+  explicando isso) nas posições que caem em domingo — a fila corresponde a dias consecutivos a partir do próximo post.
 - Leia `history.json` (temas e personagens já usados). Não repita um tema dos últimos 30 dias,
   nem o mesmo personagem principal dos últimos 7 dias.
 - Escolha um tema da lista abaixo (ou um parecido) e 5–7 personagens de anime que ilustrem bem o tema.
