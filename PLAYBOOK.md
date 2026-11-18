@@ -13,6 +13,9 @@ DATE=$(TZ=America/Sao_Paulo date +%F); mkdir -p posts/$DATE
 Se `posts/$DATE/published.json` já existe, o post de hoje já saiu: pare.
 
 ## 1. Escolher o tema
+- **Primeiro olhe `planejamento.json`:** se a `fila` tiver itens, use o **primeiro** (tema + personagens sugeridos;
+  pode trocar um personagem se não achar imagem boa). Depois remova esse item da fila e acrescente temas novos
+  no final até a fila ter 7 itens (cada item: `{"tema": ..., "personagens": [5 nomes]}`), respeitando as regras abaixo.
 - Leia `history.json` (temas e personagens já usados). Não repita um tema dos últimos 30 dias,
   nem o mesmo personagem principal dos últimos 7 dias.
 - Escolha um tema da lista abaixo (ou um parecido) e 5–7 personagens de anime que ilustrem bem o tema.
@@ -67,9 +70,18 @@ git add posts/$DATE && git commit -m "post $DATE" && git push origin main
 sleep 20
 python3 tools/publish.py posts/$DATE --dry-run && python3 tools/publish.py posts/$DATE
 ```
-Depois atualize `history.json` com `{"date", "theme", "characters", "permalink"}`, commit e push.
+Depois:
+1. atualize `history.json` com `{"date", "theme", "characters", "permalink"}`;
+2. acrescente em `runs.json`: `{"data": "$DATE", "quando": "DD/MM/AAAA HH:MM", "status": "ok", "mensagem": "<tema>", "link": "<permalink>"}`;
+3. coloque `"theme": "<tema>"` no `spec.json` do post;
+4. rode `python3 tools/dashboard.py` (atualiza o painel em `docs/`);
+5. `git add -A && git commit -m "painel $DATE" && git push origin main`.
 
 ## Se algo der errado
+**Sempre** registre a execução, mesmo com erro: acrescente em `runs.json`
+`{"data": "$DATE", "quando": "...", "status": "erro" | "pulado", "mensagem": "<motivo curto>"}`,
+rode `python3 tools/dashboard.py`, faça commit e push. O dono acompanha tudo pelo painel.
+
 - Erro 190 / token inválido ou expirado da API (graph.facebook.com): não tente contornar. Termine relatando
   "TOKEN EXPIRADO — gere um novo token no painel da Meta e atualize o segredo do ambiente".
 - Pinterest fora do ar: tente de novo em 2 min; se continuar, relate e pare (não publique nada improvisado).

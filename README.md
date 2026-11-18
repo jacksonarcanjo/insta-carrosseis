@@ -5,6 +5,11 @@ escolhe um tema, escreve os slides e a legenda, busca imagens no Pinterest,
 faz upscale (Real-ESRGAN), monta o carrossel no estilo minimalista (V4) e publica
 no Instagram pela API oficial.
 
+## Painel
+https://jacksonarcanjo.github.io/insta-carrosseis/ — status, fila dos próximos posts, posts publicados com curtidas e histórico de execuções. Gerado por `tools/dashboard.py` a cada execução.
+
+Para mudar os próximos temas, edite `planejamento.json`.
+
 ## Estrutura
 - `tools/pinsearch.py`: busca imagens no Pinterest e gera folha de contato
 - `tools/build.py`: `spec.json` → slides 1080×1350 + preview

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel do robô</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f2ee;--surface:#ffffff;--surface-2:#f8f6f2;--text:#1c1b19;--muted:#6b6862;--line:#e6e2da;
+  --accent:#3d6f92;--accent-soft:#e3edf4;--ok:#2f7d4f;--ok-soft:#e2f2e8;--err:#b3412f;--err-soft:#f8e4e0;--warn:#9a6b12;--warn-soft:#f6ecd6;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121315;--surface:#1b1c1f;--surface-2:#222327;--text:#ecebe8;--muted:#9a9893;--line:#2d2e32;
+  --accent:#7fb2d6;--accent-soft:#1e2c37;--ok:#6fcf97;--ok-soft:#173225;--err:#f08a77;--err-soft:#3a1f1a;--warn:#e7b75b;--warn-soft:#352a14;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);}}
+:root[data-theme="dark"]{
+  --bg:#121315;--surface:#1b1c1f;--surface-2:#222327;--text:#ecebe8;--muted:#9a9893;--line:#2d2e32;
+  --accent:#7fb2d6;--accent-soft:#1e2c37;--ok:#6fcf97;--ok-soft:#173225;--err:#f08a77;--err-soft:#3a1f1a;--warn:#e7b75b;--warn-soft:#352a14;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15px/1.5 "Inter Tight",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 16px 64px}
+header{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.avatar{width:56px;height:56px;border-radius:50%;background:var(--accent-soft);object-fit:cover;flex:none}
+h1{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.sub{color:var(--muted);font-size:13px}
+.grid{display:grid;gap:16px}
+.stats{grid-template-columns:repeat(4,1fr);margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.stat .v{font-size:28px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.stat .l{color:var(--muted);font-size:13px}
+.two{grid-template-columns:1.1fr 1fr;margin-bottom:28px}
+h2{font-size:15px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+h2 small{color:var(--muted);font-weight:500}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px}
+.badge::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.b-ok{color:var(--ok);background:var(--ok-soft)}.b-err{color:var(--err);background:var(--err-soft)}.b-skip{color:var(--warn);background:var(--warn-soft)}
+.next{font-size:30px;font-weight:700;letter-spacing:-.03em;margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.msg{color:var(--muted);font-size:13px;margin-top:8px;word-break:break-word}
+.queue{list-style:none}
+.queue li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.queue li:first-child{border-top:0;padding-top:0}
+.qd{font-size:12px;color:var(--muted);line-height:1.3}.qd b{display:block;color:var(--text);font-size:15px}
+.qt{font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.chip{font-size:12px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
+.posts{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.post{padding:0;overflow:hidden;cursor:pointer;transition:transform .15s}
+.post:hover{transform:translateY(-2px)}
+.post img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--surface-2)}
+.post .pb{padding:12px 14px}
+.post .pt{font-weight:600;font-size:14px;line-height:1.3}
+.meta{display:flex;gap:12px;color:var(--muted);font-size:13px;margin-top:6px;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{text-align:left;padding:8px 6px;border-top:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;border-top:0}
+.section{margin-top:28px}
+a{color:var(--accent)}
+dialog{border:0;border-radius:16px;background:var(--surface);color:var(--text);max-width:min(960px,calc(100vw - 32px));width:100%;padding:0;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.x{background:none;border:0;color:var(--text);font-size:22px;cursor:pointer;line-height:1}
+.strip{display:flex;gap:10px;overflow-x:auto;padding:16px 18px;scroll-snap-type:x mandatory}
+.strip img{height:min(420px,60vh);aspect-ratio:4/5;border-radius:8px;scroll-snap-align:start;flex:none}
+.cap{white-space:pre-wrap;padding:0 18px 18px;font-size:14px;color:var(--muted);max-height:220px;overflow:auto}
+.empty{color:var(--muted);font-size:14px}
+.foot{margin-top:32px;color:var(--muted);font-size:12px;text-align:center}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.stat .v{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="avatar" id="avatar" alt="">
+    <div><h1 id="handle">Painel do robô</h1><div class="sub" id="gerado"></div></div>
+  </header>
+
+  <div class="grid stats">
+    <div class="card stat"><div class="v" id="s-seg">–</div><div class="l">seguidores</div></div>
+    <div class="card stat"><div class="v" id="s-robo">–</div><div class="l">posts feitos pelo robô</div></div>
+    <div class="card stat"><div class="v" id="s-likes">–</div><div class="l">curtidas nos posts do robô</div></div>
+    <div class="card stat"><div class="v" id="s-com">–</div><div class="l">comentários</div></div>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h2>Status</h2>
+      <div id="ultimo"></div>
+      <div style="margin-top:18px;color:var(--muted);font-size:13px">Próximo post</div>
+      <div class="next" id="prox">–</div>
+      <div class="sub" id="prox-sub"></div>
+    </div>
+    <div class="card">
+      <h2>Próximos posts <small>fila planejada</small></h2>
+      <ul class="queue" id="fila"></ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Já publicados <small id="n-pub"></small></h2>
+    <div class="grid posts" id="posts"></div>
+  </div>
+
+  <div class="section card">
+    <h2>Histórico de execuções</h2>
+    <table><thead><tr><th>Quando</th><th>Status</th><th>Detalhe</th></tr></thead><tbody id="runs"></tbody></table>
+  </div>
+
+  <div class="foot">Atualizado automaticamente a cada execução do robô · dados em <a href="data.json">data.json</a></div>
+</div>
+
+<dialog id="dlg">
+  <div class="dh"><b id="d-t"></b><button class="x" onclick="dlg.close()" aria-label="Fechar">×</button></div>
+  <div class="strip" id="d-s"></div>
+  <div class="cap" id="d-c"></div>
+  <div style="padding:0 18px 18px" id="d-l"></div>
+</dialog>
+
+<script>
+const DATA = /*__DATA__*/null;
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtN = n => (n ?? '–').toLocaleString?.('pt-BR') ?? n;
+const TZ = 'America/Sao_Paulo';
+const fmtDate = (d, o) => new Intl.DateTimeFormat('pt-BR', {timeZone: TZ, ...o}).format(d);
+
+function brNow() {
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-CA', {timeZone: TZ, year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hourCycle:'h23'}).formatToParts(new Date()).map(x => [x.type, x.value]));
+  return {date: `${p.year}-${p.month}-${p.day}`, h: +p.hour, m: +p.minute};
+}
+function nextPostDates(n) {
+  const [hh, mm] = (DATA.config.post_time || '19:00').split(':').map(Number);
+  const now = brNow();
+  const postedToday = DATA.posts.some(p => p.pasta === now.date && p.publicado);
+  let start = new Date(now.date + 'T12:00:00Z');
+  if (postedToday || now.h * 60 + now.m > hh * 60 + mm + 30) start.setUTCDate(start.getUTCDate() + 1);
+  return Array.from({length: n}, (_, i) => { const d = new Date(start); d.setUTCDate(d.getUTCDate() + i); return d; });
+}
+
+function render() {
+  const c = DATA.conta || {};
+  $('handle').textContent = '@' + (c.username || (DATA.config.handle || '').replace('@', '') || 'perfil');
+  if (c.profile_picture_url) $('avatar').src = c.profile_picture_url;
+  $('gerado').textContent = 'Atualizado em ' + fmtDate(new Date(DATA.gerado_em), {dateStyle: 'short', timeStyle: 'short'}) + (DATA.erro_api ? ' · números da conta podem estar desatualizados' : '');
+  const pub = DATA.posts.filter(p => p.publicado);
+  $('s-seg').textContent = fmtN(c.followers_count);
+  $('s-robo').textContent = pub.length;
+  $('s-likes').textContent = fmtN(pub.reduce((a, p) => a + (p.metricas?.curtidas || 0), 0));
+  $('s-com').textContent = fmtN(pub.reduce((a, p) => a + (p.metricas?.comentarios || 0), 0));
+
+  const last = DATA.execucoes[0];
+  const cls = {ok: 'b-ok', erro: 'b-err', pulado: 'b-skip'};
+  const lbl = {ok: 'Publicado', erro: 'Erro', pulado: 'Pulado'};
+  $('ultimo').innerHTML = last
+    ? `<span class="badge ${cls[last.status] || 'b-skip'}">${lbl[last.status] || esc(last.status)}</span>
+       <span class="sub" style="margin-left:6px">${esc(last.quando || last.data)}</span>
+       <div class="msg">${esc(last.mensagem || '')}${last.link ? ` · <a href="${esc(last.link)}" target="_blank" rel="noopener">ver post</a>` : ''}</div>`
+    : '<div class="empty">Nenhuma execução registrada ainda.</div>';
+
+  const dates = nextPostDates(7);
+  $('prox').textContent = fmtDate(dates[0], {weekday: 'long', day: '2-digit', month: '2-digit', timeZone: 'UTC'}) + ' · ' + (DATA.config.post_time || '19:00');
+  $('prox-sub').textContent = DATA.fila[0] ? 'Tema: ' + DATA.fila[0].tema : '';
+  $('fila').innerHTML = DATA.fila.length ? DATA.fila.map((f, i) => `
+    <li><div class="qd"><b>${fmtDate(dates[i], {day: '2-digit', month: '2-digit', timeZone: 'UTC'})}</b>${fmtDate(dates[i], {weekday: 'short', timeZone: 'UTC'})}</div>
+    <div><div class="qt">${esc(f.tema)}</div><div class="chips">${(f.personagens || []).map(p => `<span class="chip">${esc(p)}</span>`).join('')}</div></div></li>`).join('')
+    : '<li class="empty">Fila vazia: o robô escolhe o tema na hora.</li>';
+
+  $('n-pub').textContent = pub.length ? `${pub.length} post${pub.length > 1 ? 's' : ''}` : '';
+  $('posts').innerHTML = DATA.posts.length ? DATA.posts.map((p, i) => {
+    const when = p.publicado?.timestamp ? fmtDate(new Date(p.publicado.timestamp), {dateStyle: 'short', timeStyle: 'short'}) : p.pasta;
+    const title = p.tema || (p.legenda.split('\n')[0] || p.pasta);
+    return `<div class="card post" onclick="openPost(${i})">
+      <img loading="lazy" src="${esc(p.slides[0])}" alt="">
+      <div class="pb"><div class="pt">${esc(title)}</div>
+      <div class="meta"><span>${esc(when)}</span>${p.publicado ? `<span>♥ ${fmtN(p.metricas?.curtidas)}</span><span>💬 ${fmtN(p.metricas?.comentarios)}</span>` : '<span>não publicado</span>'}</div></div></div>`;
+  }).join('') : '<div class="empty">Nenhum post ainda.</div>';
+
+  $('runs').innerHTML = DATA.execucoes.length ? DATA.execucoes.map(r => `<tr>
+    <td>${esc(r.quando || r.data)}</td><td><span class="badge ${cls[r.status] || 'b-skip'}">${lbl[r.status] || esc(r.status)}</span></td>
+    <td>${esc(r.mensagem || '')}${r.link ? ` · <a href="${esc(r.link)}" target="_blank" rel="noopener">post</a>` : ''}</td></tr>`).join('')
+    : '<tr><td colspan="3" class="empty">Sem execuções.</td></tr>';
+}
+
+function openPost(i) {
+  const p = DATA.posts[i];
+  $('d-t').textContent = p.tema || p.pasta;
+  $('d-s').innerHTML = p.slides.map(s => `<img loading="lazy" src="${esc(s)}" alt="">`).join('');
+  $('d-c').textContent = p.legenda;
+  $('d-l').innerHTML = p.publicado?.permalink ? `<a href="${esc(p.publicado.permalink)}" target="_blank" rel="noopener">Abrir no Instagram →</a>` : '';
+  $('dlg').showModal();
+}
+const dlg = $('dlg');
+render();
+</script>
+</body>
+</html>
