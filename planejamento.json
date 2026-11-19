@@ -2,16 +2,6 @@
  "_como_usar": "Fila dos proximos posts. O robo usa o primeiro item a cada dia, remove-o da fila e completa a fila ate 7 itens. Voce pode editar pelo GitHub (trocar a ordem, temas ou personagens).",
  "fila": [
   {
-   "tema": "Amizade que salva",
-   "personagens": [
-    "Naruto e Sasuke",
-    "Gon e Killua",
-    "Luffy e Zoro",
-    "Ed e Al",
-    "Hinata e Kageyama"
-   ]
-  },
-  {
    "tema": "Quando a ansiedade aperta",
    "personagens": [
     "Shinji",
@@ -69,6 +59,27 @@
     "Yotsuba",
     "Kaguya",
     "Mitsuha"
+   ]
+  },
+  {
+   "tema": "Fé quando tudo parece silêncio",
+   "personagens": [
+    "Frieren",
+    "Tanjiro",
+    "Violet Evergarden",
+    "Naruto",
+    "Luffy"
+   ],
+   "nota": "Post cristão de domingo (29/11): anime como ponte para falar de fé e esperança em Deus nos dias de silêncio. 1–2 versículos com referência exata e texto fiel (ex.: Salmos 46:10, Isaías 40:31). Tom acolhedor, sem polêmica. Hashtags #jesus #fé #deus #cristão + anime."
+  },
+  {
+   "tema": "Medo de falhar",
+   "personagens": [
+    "Shoyo Hinata",
+    "Isagi",
+    "Deku",
+    "Usopp",
+    "Nobara"
    ]
   }
  ]
