@@ -11,5 +11,12 @@
   "quando": "18/11/2026 18:41",
   "status": "erro",
   "mensagem": "Não publicado: a Meta bloqueou o acesso do app à API (erro 200 / 5258005 \"API access blocked\"). Sessão automática também não tinha permissão de push (corrigido)."
+ },
+ {
+  "data": "2026-11-18",
+  "quando": "18/11/2026 21:24",
+  "status": "ok",
+  "mensagem": "Deus não desiste de você (publicado manualmente após a Meta liberar a API)",
+  "link": "https://www.instagram.com/p/Df5yXieIWHC/"
  }
 ]
