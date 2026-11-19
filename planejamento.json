@@ -62,6 +62,36 @@
    ]
   },
   {
+   "tema": "Medo de falhar",
+   "personagens": [
+    "Shoyo Hinata",
+    "Isagi",
+    "Deku",
+    "Usopp",
+    "Nobara"
+   ]
+  },
+  {
+   "tema": "Solidão no meio de todo mundo",
+   "personagens": [
+    "Shinji",
+    "Kaneki",
+    "Mikasa",
+    "Gojo",
+    "Hikigaya"
+   ]
+  },
+  {
+   "tema": "Gratidão pelas pequenas coisas",
+   "personagens": [
+    "Frieren",
+    "Yotsuba",
+    "Tanjiro",
+    "Anya",
+    "Totoro"
+   ]
+  },
+  {
    "tema": "Fé quando tudo parece silêncio",
    "personagens": [
     "Frieren",
@@ -71,16 +101,6 @@
     "Luffy"
    ],
    "nota": "Post cristão de domingo (29/11): anime como ponte para falar de fé e esperança em Deus nos dias de silêncio. 1–2 versículos com referência exata e texto fiel (ex.: Salmos 46:10, Isaías 40:31). Tom acolhedor, sem polêmica. Hashtags #jesus #fé #deus #cristão + anime."
-  },
-  {
-   "tema": "Medo de falhar",
-   "personagens": [
-    "Shoyo Hinata",
-    "Isagi",
-    "Deku",
-    "Usopp",
-    "Nobara"
-   ]
   }
  ]
 }
