@@ -13,7 +13,7 @@ spec.json:
   "caption": "legenda completa"
 }
 estilo (spec ou config.json, padrao "tarja"): "tarja" = imagem SEMPRE inteira (4:5, sem preenchimento),
-  texto em tarjas escuras por linha; cada slide aceita "pos": "top"|"bottom" (onde o texto fica, para nao cobrir
+  texto branco solto com sombra (sem tarja); cada slide aceita "pos": "top"|"bottom" (onde o texto fica, para nao cobrir
   o rosto) e **palavra** para destacar em amarelo (no title, destaque em laranja). "classico" = layout antigo (mode full/low).
 mode "full": imagem 4:5 em tela cheia (use quando o topo da imagem e ceu/fundo limpo).
 mode "low":  personagem ancorado embaixo, topo preenchido com a cor do ceu (use quando
@@ -102,17 +102,16 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 .h{font:italic 500 26px C;opacity:.9;margin-bottom:14px}
 .p{font-weight:700;font-size:56px;line-height:1.04;letter-spacing:-.02em;word-spacing:.02em;text-align:justify;text-align-last:left;hyphens:none}
 .cover .p{text-align:center;text-align-last:center}
-/* estilo "tarja": imagem inteira + texto em tarjas escuras por linha */
-.tj{position:absolute;left:60px;right:60px;z-index:5}
-.tj-top{top:92px}.tj-bottom{bottom:92px}
-.tj .hd{display:inline-block;font:italic 500 26px C;color:#fff;background:rgba(12,12,14,.82);padding:4px 14px 6px;border-radius:6px;margin-bottom:14px}
-.tj .ln{margin:0}
-.tj .ln span{background:rgba(12,12,14,.84);color:#fff;font:700 48px/1.36 T;letter-spacing:-.015em;padding:3px 16px 5px;
- -webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:6px}
-.tj .ln b{color:#ffd166;font-weight:700}
-.tj .tt span{background:#fff;color:#111;font:700 92px/1.12 T;letter-spacing:-.035em;padding:0 18px 6px}
-.tj .tt b{color:#c2410c}
-.tj .st{margin-top:14px}.tj .st span{font-size:42px}
+/* estilo "tarja" (nome mantido): imagem inteira, texto branco solto com sombra forte, sem tarja */
+.tj{position:absolute;left:72px;right:72px;z-index:5;color:#fff}
+.tj-top{top:96px}.tj-bottom{bottom:96px}
+.tj .hd{font:italic 500 28px C;margin-bottom:12px;text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 14px rgba(0,0,0,.6)}
+.tj .ln{margin:0;font:700 52px/1.18 T;letter-spacing:-.02em;
+ text-shadow:0 2px 2px rgba(0,0,0,.55),0 0 6px rgba(0,0,0,.55),0 0 22px rgba(0,0,0,.45);-webkit-text-stroke:.6px rgba(0,0,0,.25)}
+.tj .ln b{color:#ffd23f}
+.tj .tt{font-size:100px;line-height:1.02;letter-spacing:-.04em}
+.tj .tt b{color:#ffd23f}
+.tj .st{margin-top:14px;font-size:44px;font-weight:600}
 """
 
 def main(d):
@@ -133,10 +132,10 @@ def main(d):
             mode, img, fill = prepare(s, i, d)
             pos = 'tj-bottom' if s.get('pos') == 'bottom' else 'tj-top'
             if i == 1 and s.get('title'):
-                inner = (f'<p class="ln tt"><span>{rich(s["title"])}</span></p>'
-                         f'<p class="ln st"><span>{rich(s.get("subtitle", ""))}</span></p>')
+                inner = (f'<p class="ln tt">{rich(s["title"])}</p>'
+                         f'<p class="ln st">{rich(s.get("subtitle", ""))}</p>')
             else:
-                inner = f'<p class="ln"><span>{rich(s["text"])}</span></p>'
+                inner = f'<p class="ln">{rich(s["text"])}</p>'
             parts.append(f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}">'
                          f'<div class="tj {pos}"><div class="hd">{handle}</div>{inner}</div><div class="grain"></div></section>')
             continue

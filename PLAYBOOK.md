@@ -40,7 +40,7 @@ sonhos, disciplina, gratidão, coragem, ser gentil, aceitar ajuda, crescer, perd
   falando do personagem e conectando com quem lê. Nada de listas nem emojis no slide.
 - Último slide: chamada para comentar ("E você? … Me conta nos comentários.").
 - Total: 6 a 8 slides.
-- Em cada texto de slide, marque 2 a 5 palavras-chave com `**assim**` (vira destaque amarelo; no título, laranja).
+- Em cada texto de slide, marque 2 a 5 palavras-chave com `**assim**` (vira destaque amarelo).
 - Legenda: siga a seção **"Como escrever a legenda"** abaixo. Português do Brasil correto, com acentos.
 
 ### Como escrever a legenda (1.300 a 2.000 caracteres; limite do Instagram: 2.200)
@@ -112,8 +112,8 @@ Abra `posts/$DATE/search/sN/sheet.jpg` com a ferramenta Read e escolha a melhor 
 Use a URL `orig` do item escolhido em `items.json` como `src`.
 Se nada servir, refaça a busca com outras palavras ("<personagem> <anime> scene", "<personagem> icon sky").
 
-Estilo atual: **"tarja"** — a imagem aparece SEMPRE inteira (sem borrão/preenchimento) e o texto vai em tarjas
-escuras por linha. Para cada slide escolha `pos`:
+Estilo atual: **"tarja"** — a imagem aparece SEMPRE inteira (sem borrão/preenchimento) e o texto vai solto, branco
+com sombra (sem tarja, sem borrão). Para cada slide escolha `pos`:
 - `"top"` quando os rostos estão na metade de baixo; `"bottom"` quando os rostos estão em cima.
 `fx` (0–1) desloca o recorte horizontal para centralizar o personagem. Faixas pretas de print são cortadas sozinhas.
 
@@ -125,7 +125,7 @@ Escreva `posts/$DATE/spec.json` (formato no topo de `tools/build.py`) e rode:
 Abra `posts/$DATE/preview.jpg` com Read e confira **todos** os slides:
 - texto não pode ficar em cima do rosto do personagem → troque `pos` (top/bottom) ou ajuste `fx`;
 - nada de imagem borrada, cortada de forma estranha, com marca d'água ou texto da imagem;
-- as tarjas devem ter no máximo 5 linhas; se passar, encurte o texto.
+- o texto deve ter no máximo 5 linhas e ficar legível; se o fundo atrás for muito claro e confuso, troque `pos` ou a imagem.
 Corrija e rode de novo até ficar bom (no máximo 4 tentativas; se uma imagem não presta, troque-a).
 
 ## 5. Publicar
