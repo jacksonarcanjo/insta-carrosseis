@@ -73,14 +73,11 @@ def cutout(src_jpg, dst_png):
     small = im.resize((im.width // 2, im.height // 2), Image.LANCZOS)
     mask = remove(small, session=_SEG, only_mask=True).convert('L').resize(im.size, Image.LANCZOS)
     out = im.convert('RGBA'); out.putalpha(mask); out.save(dst_png)
-    # topo do personagem (em px do slide 1080x1350) dentro da faixa onde fica o texto
-    a = np.asarray(mask.resize((1080, 1350))) > 128
-    cols = a[:, 80:1000]
-    has = cols.any(axis=0)
-    if not has.any():
+    m = np.asarray(mask.resize((1080, 1350))) > 128
+    tops = np.where(m.any(axis=0), np.argmax(m, axis=0), 1350)[::4]
+    if (tops < 1350).sum() < 5:
         return None
-    tops = np.argmax(cols, axis=0)[has]
-    return int(np.percentile(tops, 3))
+    return ','.join(str(int(x)) for x in tops)
 
 def prepare(slide, i, d):
     raw = f'{d}/work/src{i}'
@@ -186,7 +183,7 @@ def main(d):
             if s.get('camadas', spec.get('camadas', True)):
                 top = cutout(f'{d}/{img}', f'{d}/work/fg{i}.png')
                 if top is not None:
-                    fg = f'<img class="bg fg" src="work/fg{i}.png" data-top="{top}">'
+                    fg = f'<img class="bg fg" src="work/fg{i}.png" data-tops="{top}">'
             pos = {'top': 'sr-top', 'mid': 'sr-mid', 'bottom': 'sr-bottom'}.get(s.get('pos', 'top'), 'sr-top')
             k = s.get('kicker', spec.get('kicker', ''))
             inner = (f'<div class="lg">{handle}</div>' if i == 1 else '')
@@ -225,12 +222,22 @@ def main(d):
 document.fonts.ready.then(()=>{document.querySelectorAll('section').forEach(sec=>{
  const fg=sec.querySelector('.fg'), tx=sec.querySelector('.sr'); if(!fg||!tx) return;
  if(tx.dataset.pos!=='top'){fg.remove();return;}
- const top=+fg.dataset.top, h=tx.offsetHeight, hl=tx.querySelector('.hl');
- const lineH=hl?parseFloat(getComputedStyle(hl).fontSize)*0.86:60;
- const want=top+lineH*0.55-h;          // so a parte de baixo da ultima linha fica atras
- if(want<70){fg.remove();return;}      // personagem alto demais: sem camadas, texto na frente
- tx.style.top=Math.min(want,780)+'px';
- if(want>780){fg.remove();}            // personagem baixo demais: nao encosta, nao precisa
+ const tops=fg.dataset.tops.split(',').map(Number);
+ const cover=(el,dy)=>{const r=el.getBoundingClientRect(), s=sec.getBoundingClientRect();
+   const x0=r.left-s.left, x1=r.right-s.left, y0=r.top-s.top+dy, y1=r.bottom-s.top+dy; let c=0,n=0;
+   for(let x=Math.max(0,x0);x<Math.min(1080,x1);x+=4){const t=tops[Math.floor(x/4)]; n++; c+=Math.max(0,Math.min(y1,1350)-Math.max(y0,t))/(y1-y0);}
+   return n?c/n:0;};
+ const hl=tx.querySelector('.hl'), k=tx.querySelector('.k'), base=tx.offsetTop;
+ // linhas da frase grande: mede a ultima linha separadamente
+ const lh=parseFloat(getComputedStyle(hl).fontSize)*0.86, hr=hl.getBoundingClientRect();
+ const last={getBoundingClientRect:()=>({left:hr.left,right:hr.right,top:hr.bottom-lh,bottom:hr.bottom})};
+ const upper={getBoundingClientRect:()=>({left:hr.left,right:hr.right,top:hr.top,bottom:hr.bottom-lh})};
+ let best=null;
+ for(let top=110; top<=300; top+=10){const dy=top-base;
+   const cl=cover(last,dy), cu=hr.height>lh*1.3?cover(upper,dy):0, ck=k?cover(k,dy):0;
+   if(ck<0.01 && cu<0.03 && cl>=0.03 && cl<=0.12){best=top;break;}}
+ if(best!==null){tx.style.top=best+'px';}
+ else{tx.style.top='190px'; fg.remove();}   // sem sobreposicao boa: texto no alto, na frente
 });document.body.dataset.ready=1;});
 </script>"""
     page = (f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS.replace("FONTS", fonts)}</style>'

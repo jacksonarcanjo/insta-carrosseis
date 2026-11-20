@@ -41,8 +41,12 @@ sonhos, disciplina, gratidão, coragem, ser gentil, aceitar ajuda, crescer, perd
 - Cada slide tem uma `"head"`: frase curta (3 a 7 palavras), minúscula, que completa o gancho e termina com ponto.
 - Último slide: `"no_kicker": true`, `head` de virada ("mas você ainda não perdeu", "e se você tem alguém assim,")
   e `"body"` com 1–2 parágrafos curtos (use `**negrito**` em trechos) + "**Siga @darkgoodvibes** ...". Separe parágrafos com linha em branco (\n\n).
+- **Referência aprovada pelo dono:** slide do Zoro amarrado no poste com o Luffy — texto LÁ EM CIMA, muito céu livre,
+  e só um pedacinho do objeto/personagem passando na frente da última linha. **Reprovado:** texto descido para o meio
+  da imagem, com céu vazio em cima; ou cabeça cobrindo metade de uma palavra.
 - Todos os slides com `"pos": "top"`. O texto vai **atrás do personagem**: o build recorta o personagem e posiciona
-  o texto sozinho para a cabeça cobrir só a parte de baixo da última linha.
+  o texto sozinho no alto (entre 110 e 300 px do topo) e só ativa a camada se o personagem cobrir de 3% a 12% da
+  última linha e nada das outras; senão o texto fica na frente.
 - **Escolha de imagem é o mais importante:** personagem na METADE DE BAIXO, céu/fundo limpo em cima (cabeça mais ou menos
   no meio da imagem). Personagem que ocupa a imagem inteira até o topo não serve (o build desliga as camadas).
 - Revise no preview: o efeito de camadas deve aparecer (cabeça/cabelo na frente de parte da última linha) e o texto
