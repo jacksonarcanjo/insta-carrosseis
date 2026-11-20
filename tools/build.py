@@ -12,6 +12,9 @@ spec.json:
   ],
   "caption": "legenda completa"
 }
+estilo (spec ou config.json, padrao "tarja"): "tarja" = imagem SEMPRE inteira (4:5, sem preenchimento),
+  texto em tarjas escuras por linha; cada slide aceita "pos": "top"|"bottom" (onde o texto fica, para nao cobrir
+  o rosto) e **palavra** para destacar em amarelo (no title, destaque em laranja). "classico" = layout antigo (mode full/low).
 mode "full": imagem 4:5 em tela cheia (use quando o topo da imagem e ceu/fundo limpo).
 mode "low":  personagem ancorado embaixo, topo preenchido com a cor do ceu (use quando
              o rosto/personagem ficaria atras do texto).
@@ -35,6 +38,14 @@ def fetch(src, dst):
         Image.open(src).save(dst)
     Image.open(dst).verify()
 
+def trim_bars(im, thr=18):
+    """Remove faixas pretas (letterbox) em cima/embaixo/laterais de prints de anime."""
+    a = np.asarray(im.convert('L')).astype(float)
+    rows = np.where(a.mean(axis=1) > thr)[0]; cols = np.where(a.mean(axis=0) > thr)[0]
+    if len(rows) < a.shape[0] * .5 or len(cols) < a.shape[1] * .5:
+        return im
+    return im.crop((cols[0], rows[0], cols[-1] + 1, rows[-1] + 1))
+
 def crop(im, ar, fx, fy):
     w, h = im.size
     if w / h > ar:
@@ -54,7 +65,7 @@ def upscale_to(path_in, path_out, target_h):
 def prepare(slide, i, d):
     raw = f'{d}/work/src{i}'
     fetch(slide['src'], raw)
-    im = Image.open(raw).convert('RGB')
+    im = trim_bars(Image.open(raw).convert('RGB'))
     mode = slide.get('mode', 'full'); fx = slide.get('fx', .5); fy = slide.get('fy', .5)
     if mode == 'low':
         c = crop(im, 1080 / 900, fx, fy); size = (2160, 1800)
@@ -91,6 +102,17 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 .h{font:italic 500 26px C;opacity:.9;margin-bottom:14px}
 .p{font-weight:700;font-size:56px;line-height:1.04;letter-spacing:-.02em;word-spacing:.02em;text-align:justify;text-align-last:left;hyphens:none}
 .cover .p{text-align:center;text-align-last:center}
+/* estilo "tarja": imagem inteira + texto em tarjas escuras por linha */
+.tj{position:absolute;left:60px;right:60px;z-index:5}
+.tj-top{top:92px}.tj-bottom{bottom:92px}
+.tj .hd{display:inline-block;font:italic 500 26px C;color:#fff;background:rgba(12,12,14,.82);padding:4px 14px 6px;border-radius:6px;margin-bottom:14px}
+.tj .ln{margin:0}
+.tj .ln span{background:rgba(12,12,14,.84);color:#fff;font:700 48px/1.36 T;letter-spacing:-.015em;padding:3px 16px 5px;
+ -webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:6px}
+.tj .ln b{color:#ffd166;font-weight:700}
+.tj .tt span{background:#fff;color:#111;font:700 92px/1.12 T;letter-spacing:-.035em;padding:0 18px 6px}
+.tj .tt b{color:#c2410c}
+.tj .st{margin-top:14px}.tj .st span{font-size:42px}
 """
 
 def main(d):
@@ -101,7 +123,23 @@ def main(d):
     os.makedirs(f'{d}/work', exist_ok=True)
     fonts = os.path.relpath(os.path.join(ROOT, 'assets/fonts'), d)
     parts = []
+    estilo = spec.get('estilo', cfg.get('estilo', 'tarja'))
+    def rich(txt):  # **palavra** vira destaque
+        out = html.escape(txt).split('**')
+        return ''.join(f'<b>{x}</b>' if k % 2 else x for k, x in enumerate(out))
     for i, s in enumerate(spec['slides'], 1):
+        if estilo == 'tarja':
+            s = dict(s, mode='full')
+            mode, img, fill = prepare(s, i, d)
+            pos = 'tj-bottom' if s.get('pos') == 'bottom' else 'tj-top'
+            if i == 1 and s.get('title'):
+                inner = (f'<p class="ln tt"><span>{rich(s["title"])}</span></p>'
+                         f'<p class="ln st"><span>{rich(s.get("subtitle", ""))}</span></p>')
+            else:
+                inner = f'<p class="ln"><span>{rich(s["text"])}</span></p>'
+            parts.append(f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}">'
+                         f'<div class="tj {pos}"><div class="hd">{handle}</div>{inner}</div><div class="grain"></div></section>')
+            continue
         mode, img, fill = prepare(s, i, d)
         bg = (f'<img class="bg" src="{fill}"><img class="low" src="{img}">' if mode == 'low'
               else f'<img class="bg photo" src="{img}">')

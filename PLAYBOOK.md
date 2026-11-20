@@ -40,18 +40,23 @@ sonhos, disciplina, gratidão, coragem, ser gentil, aceitar ajuda, crescer, perd
   falando do personagem e conectando com quem lê. Nada de listas nem emojis no slide.
 - Último slide: chamada para comentar ("E você? … Me conta nos comentários.").
 - Total: 6 a 8 slides.
+- Em cada texto de slide, marque 2 a 5 palavras-chave com `**assim**` (vira destaque amarelo; no título, laranja).
 - Legenda: siga a seção **"Como escrever a legenda"** abaixo. Português do Brasil correto, com acentos.
 
 ### Como escrever a legenda (1.300 a 2.000 caracteres; limite do Instagram: 2.200)
-A legenda é onde o post ganha profundidade: o carrossel resume, a legenda aprofunda. Estrutura:
+A legenda é onde o post ganha profundidade. **REGRA DO DONO: a legenda NÃO pode repetir o carrossel.**
+Os slides contam os personagens; a legenda fala da **vida de quem lê**. Na legenda:
+- não reconte as cenas dos slides nem copie frases deles; cite no máximo 1 personagem, de passagem, ou nenhum;
+- traga um ângulo novo: uma situação do dia a dia, uma pergunta, um "por quê" psicológico, um conselho prático;
+- antes de publicar, compare legenda e slides: se alguma frase da legenda parecer com algum slide, reescreva.
+Estrutura:
 
 1. **Gancho (1ª linha, até ~90 caracteres):** é o que aparece antes do "mais". Uma frase que dá vontade de abrir:
    uma verdade incômoda, uma pergunta ou uma cena. Termine com um emoji discreto (💭 🌙 🤍 🍃 ✨).
 2. **Identificação (2–3 frases):** descreva o sentimento como a pessoa vive no dia a dia, em segunda pessoa,
    com detalhes concretos ("aquela noite em que você ficou olhando o teto…"). Nada de frase genérica de coach.
-3. **Os personagens (um parágrafo curto para cada 2–3 personagens):** conte **o momento específico** da história
-   (cena, fala ou escolha) e o que ele revela sobre o tema. Mostre que você conhece o anime de verdade.
-   Sem spoiler pesado do final; se tocar em algo sensível, seja vago.
+3. **Aprofundamento (2–3 parágrafos curtos):** por que esse sentimento acontece, como ele aparece na rotina,
+   o que dá pra fazer com ele na prática. Linguagem simples, sem jargão, sem inventar estudo.
 4. **Virada / reflexão (2–4 frases):** o que essas histórias ensinam que serve para a vida real. Humana e honesta:
    reconheça que é difícil, sem prometer solução mágica.
 5. **Frase de fechamento em destaque:** uma linha sozinha, curta e marcante, que dê vontade de printar.
@@ -107,10 +112,10 @@ Abra `posts/$DATE/search/sN/sheet.jpg` com a ferramenta Read e escolha a melhor 
 Use a URL `orig` do item escolhido em `items.json` como `src`.
 Se nada servir, refaça a busca com outras palavras ("<personagem> <anime> scene", "<personagem> icon sky").
 
-Escolha o `mode`:
-- `full` quando a metade de cima da imagem é céu/fundo limpo (o texto vai em cima);
-- `low` quando o rosto/personagem ocupa a parte de cima — ele desce e o topo vira a cor do céu.
-`fx` (0–1) desloca o recorte para o personagem em imagens horizontais.
+Estilo atual: **"tarja"** — a imagem aparece SEMPRE inteira (sem borrão/preenchimento) e o texto vai em tarjas
+escuras por linha. Para cada slide escolha `pos`:
+- `"top"` quando os rostos estão na metade de baixo; `"bottom"` quando os rostos estão em cima.
+`fx` (0–1) desloca o recorte horizontal para centralizar o personagem. Faixas pretas de print são cortadas sozinhas.
 
 ## 4. Montar
 Escreva `posts/$DATE/spec.json` (formato no topo de `tools/build.py`) e rode:
@@ -118,9 +123,9 @@ Escreva `posts/$DATE/spec.json` (formato no topo de `tools/build.py`) e rode:
 .venv/bin/python tools/build.py posts/$DATE
 ```
 Abra `posts/$DATE/preview.jpg` com Read e confira **todos** os slides:
-- texto não pode ficar em cima do rosto do personagem → troque para `mode: "low"` ou ajuste `fx`;
+- texto não pode ficar em cima do rosto do personagem → troque `pos` (top/bottom) ou ajuste `fx`;
 - nada de imagem borrada, cortada de forma estranha, com marca d'água ou texto da imagem;
-- texto justificado sem buracos enormes (se tiver, reescreva a frase um pouco mais longa ou curta).
+- as tarjas devem ter no máximo 5 linhas; se passar, encurte o texto.
 Corrija e rode de novo até ficar bom (no máximo 4 tentativas; se uma imagem não presta, troque-a).
 
 ## 5. Publicar
