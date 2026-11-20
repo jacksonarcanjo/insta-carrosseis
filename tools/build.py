@@ -112,6 +112,22 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 .tj .tt{font-size:100px;line-height:1.02;letter-spacing:-.04em}
 .tj .tt b{color:#ffd23f}
 .tj .st{margin-top:14px;font-size:44px;font-weight:600}
+@font-face{font-family:A;src:url(FONTS/anton-latin-400-normal.woff2)}
+@font-face{font-family:PF;font-weight:500;src:url(FONTS/playfair-display-latin-500-normal.woff2)}
+@font-face{font-family:PF;font-weight:500;font-style:italic;src:url(FONTS/playfair-display-latin-500-italic.woff2)}
+/* variante christversions: bloco justificado, sem cor */
+.v-cv .ln{font-size:56px;line-height:1.06;text-align:justify;text-align-last:left;letter-spacing:-.025em}
+.v-cv .ln b{color:#fff}
+.v-cv .tt{font-size:92px;text-align:center;text-align-last:center}.v-cv .st{text-align:center;text-align-last:center}
+/* variante poetica (ocnathalie): serifada, palavra-chave em italico */
+.v-po .ln{font:500 54px/1.2 PF;letter-spacing:-.01em}
+.v-po .ln b{font-style:italic;color:#fff;font-weight:500}
+.v-po .tt{font-size:96px;line-height:1.05}.v-po .st{font:italic 500 42px PF}
+/* variante poster (frieren): condensada gigante caixa alta, creme + destaque */
+.v-ps{color:#f6ecd9}
+.v-ps .ln{font:400 64px/1.08 A;text-transform:uppercase;letter-spacing:.005em}
+.v-ps .ln b{color:#ff5fa2;font-weight:400}
+.v-ps .tt{font-size:150px;line-height:.96}.v-ps .st{font:600 40px/1.2 T;text-transform:none}
 """
 
 def main(d):
@@ -137,7 +153,7 @@ def main(d):
             else:
                 inner = f'<p class="ln">{rich(s["text"])}</p>'
             parts.append(f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}">'
-                         f'<div class="tj {pos}"><div class="hd">{handle}</div>{inner}</div><div class="grain"></div></section>')
+                         f'<div class="tj {pos} v-{spec.get("variante", cfg.get("variante", "cv"))}"><div class="hd">{handle}</div>{inner}</div><div class="grain"></div></section>')
             continue
         mode, img, fill = prepare(s, i, d)
         bg = (f'<img class="bg" src="{fill}"><img class="low" src="{img}">' if mode == 'low'
