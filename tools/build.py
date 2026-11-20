@@ -115,6 +115,22 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 @font-face{font-family:A;src:url(FONTS/anton-latin-400-normal.woff2)}
 @font-face{font-family:PF;font-weight:500;src:url(FONTS/playfair-display-latin-500-normal.woff2)}
 @font-face{font-family:PF;font-weight:500;font-style:italic;src:url(FONTS/playfair-display-latin-500-italic.woff2)}
+@font-face{font-family:Pp;font-weight:300;src:url(FONTS/poppins-latin-300-normal.woff2),url(FONTS/poppins-latin-ext-300-normal.woff2)}
+@font-face{font-family:Pp;font-weight:400;src:url(FONTS/poppins-latin-400-normal.woff2),url(FONTS/poppins-latin-ext-400-normal.woff2)}
+@font-face{font-family:Pp;font-weight:600;src:url(FONTS/poppins-latin-600-normal.woff2),url(FONTS/poppins-latin-ext-600-normal.woff2)}
+@font-face{font-family:Pp;font-weight:800;src:url(FONTS/poppins-latin-800-normal.woff2),url(FONTS/poppins-latin-ext-800-normal.woff2)}
+/* estilo "serie" (psico.tsu): gancho com pesos misturados + frase gigante minuscula apertada, centralizado */
+.sr{position:absolute;left:56px;right:56px;z-index:5;color:#fff;text-align:center;
+ text-shadow:0 2px 3px rgba(0,0,0,.35),0 0 26px rgba(0,0,0,.35)}
+.sr-top{top:215px}.sr-mid{top:50%;transform:translateY(-50%)}.sr-bottom{bottom:130px}
+.sr .lg{font:300 32px Pp;letter-spacing:-.02em;margin-bottom:26px;opacity:.95}
+.sr .lg b{font-weight:600}
+.sr .k{font:300 50px/1.05 Pp;letter-spacing:-.045em}
+.sr .k b{font-weight:600}
+.sr .hl{font:800 118px/.86 Pp;letter-spacing:-.065em;margin-top:6px;text-transform:lowercase}
+.sr .bd{font:300 34px/1.02 Pp;letter-spacing:-.05em;margin-top:26px;padding:0 30px}
+.sr .bd b{font-weight:600}
+.sr .bd p+p{margin-top:24px}
 /* variante christversions: bloco justificado, sem cor */
 .v-cv .ln{font-size:56px;line-height:1.06;text-align:justify;text-align-last:left;letter-spacing:-.025em}
 .v-cv .ln b{color:#fff}
@@ -143,6 +159,18 @@ def main(d):
         out = html.escape(txt).split('**')
         return ''.join(f'<b>{x}</b>' if k % 2 else x for k, x in enumerate(out))
     for i, s in enumerate(spec['slides'], 1):
+        if estilo == 'serie':
+            mode, img, fill = prepare(dict(s, mode='full'), i, d)
+            pos = {'top': 'sr-top', 'mid': 'sr-mid', 'bottom': 'sr-bottom'}.get(s.get('pos', 'top'), 'sr-top')
+            k = s.get('kicker', spec.get('kicker', ''))
+            inner = (f'<div class="lg">{handle}</div>' if i == 1 else '')
+            inner += (f'<div class="k">{rich(k)}</div>' if k and not s.get('no_kicker') else '')
+            inner += f'<div class="hl">{rich(s.get("head", ""))}</div>'
+            if s.get('body'):
+                inner += '<div class="bd">' + ''.join(f'<p>{rich(x)}</p>' for x in s['body'].split('\n\n')) + '</div>'
+            parts.append(f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}">'
+                         f'<div class="sr {pos}">{inner}</div><div class="grain"></div></section>')
+            continue
         if estilo == 'tarja':
             s = dict(s, mode='full')
             mode, img, fill = prepare(s, i, d)
