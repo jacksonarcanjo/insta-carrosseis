@@ -1,0 +1,28 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+@font-face{font-family:T;font-weight:600;src:url(../../assets/fonts/inter-tight-latin-600-normal.woff2)}
+@font-face{font-family:T;font-weight:700;src:url(../../assets/fonts/inter-tight-latin-700-normal.woff2)}
+@font-face{font-family:C;font-style:italic;font-weight:500;src:url(../../assets/fonts/cormorant-garamond-latin-500-italic.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;align-items:center}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:#3d6f92;font-family:T;color:#fff}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo{filter:saturate(.92) contrast(.96) brightness(1.02)}
+.low{position:absolute;left:0;bottom:0;width:1080px;height:900px;object-fit:cover;filter:saturate(.92) contrast(.96);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%)}
+.wash{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,.08) 45%,rgba(0,0,0,0) 60%)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.32;mix-blend-mode:overlay;z-index:8;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1.5 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>")}
+.txt{position:absolute;top:270px;left:92px;right:92px;z-index:5;text-shadow:0 2px 14px rgba(0,0,0,.28)}
+.h{font:italic 500 26px C;opacity:.9;margin-bottom:14px}
+.p{font-weight:700;font-size:56px;line-height:1.04;letter-spacing:-.02em;word-spacing:.02em;text-align:justify;text-align-last:left;hyphens:none}
+.cover .p{text-align:center;text-align-last:center}
+/* estilo "tarja" (nome mantido): imagem inteira, texto branco solto com sombra forte, sem tarja */
+.tj{position:absolute;left:72px;right:72px;z-index:5;color:#fff}
+.tj-top{top:96px}.tj-bottom{bottom:96px}
+.tj .hd{font:italic 500 28px C;margin-bottom:12px;text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 14px rgba(0,0,0,.6)}
+.tj .ln{margin:0;font:700 52px/1.18 T;letter-spacing:-.02em;
+ text-shadow:0 2px 2px rgba(0,0,0,.55),0 0 6px rgba(0,0,0,.55),0 0 22px rgba(0,0,0,.45);-webkit-text-stroke:.6px rgba(0,0,0,.25)}
+.tj .ln b{color:#ffd23f}
+.tj .tt{font-size:100px;line-height:1.02;letter-spacing:-.04em}
+.tj .tt b{color:#ffd23f}
+.tj .st{margin-top:14px;font-size:44px;font-weight:600}
+</style></head><body><section class="slide" id="s1"><img class="bg photo" src="work/img1.jpg"><div class="tj tj-top"><div class="hd">@darkgoodvibes</div><p class="ln tt">Quando a <b>ansiedade</b> aperta</p><p class="ln st">você não está quebrado, está sobrecarregado</p></div><div class="grain"></div></section><section class="slide" id="s2"><img class="bg photo" src="work/img2.jpg"><div class="tj tj-bottom"><div class="hd">@darkgoodvibes</div><p class="ln">O Shinji repetia <b>“eu não posso fugir”</b> enquanto o corpo inteiro tremia. Ter medo não te faz fraco. Só mostra o quanto você está carregando.</p></div><div class="grain"></div></section><section class="slide" id="s3"><img class="bg photo" src="work/img3.jpg"><div class="tj tj-top"><div class="hd">@darkgoodvibes</div><p class="ln">A Bocchi ensaiava cada conversa mil vezes antes de abrir a boca. E mesmo assim subiu no palco. <b>Coragem não espera a ansiedade ir embora.</b></p></div><div class="grain"></div></section><section class="slide" id="s4"><img class="bg photo" src="work/img4.jpg"><div class="tj tj-bottom"><div class="hd">@darkgoodvibes</div><p class="ln">A Anya ouve o que todos pensam e vive com <b>medo de ser deixada pra trás</b>. Até quem parece leve carrega um peso que ninguém vê.</p></div><div class="grain"></div></section><section class="slide" id="s5"><img class="bg photo" src="work/img5.jpg"><div class="tj tj-top"><div class="hd">@darkgoodvibes</div><p class="ln">O Nagi achava tudo cansativo e preferia não tentar. Às vezes o desânimo é só a ansiedade <b>disfarçada de preguiça</b>.</p></div><div class="grain"></div></section><section class="slide" id="s6"><img class="bg photo" src="work/img6.jpg"><div class="tj tj-top"><div class="hd">@darkgoodvibes</div><p class="ln">Respira. Um passo de cada vez. Você não precisa resolver a vida inteira hoje, <b>só o próximo minuto</b>.</p></div><div class="grain"></div></section><section class="slide" id="s7"><img class="bg photo" src="work/img7.jpg"><div class="tj tj-top"><div class="hd">@darkgoodvibes</div><p class="ln">E você? O que te ajuda quando a ansiedade aperta? <b>Deixa aqui nos comentários</b>, pode ajudar alguém que está lendo agora.</p></div><div class="grain"></div></section></body></html>
