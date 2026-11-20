@@ -5,7 +5,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 if [ ! -x .venv/bin/python ]; then
   python3 -m venv .venv
-  .venv/bin/pip -q install ncnn pillow numpy
+  .venv/bin/pip -q install ncnn pillow numpy "rembg[cpu]"
 fi
 if [ ! -f models/realesr-animevideov3-x4.param ]; then
   mkdir -p models

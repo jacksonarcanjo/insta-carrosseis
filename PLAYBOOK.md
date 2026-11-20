@@ -34,8 +34,21 @@ Temas: motivação, superação, amizade, ansiedade, autoestima, solidão, recom
 persistência, medo de falhar, comparação com os outros, família, luto, paciência consigo mesmo,
 sonhos, disciplina, gratidão, coragem, ser gentil, aceitar ajuda, crescer, perdoar, propósito.
 
-## 2. Escrever o texto (tom: @christversions — segunda pessoa, acolhedor, sem clichê barato)
-- Slide 1 (capa): `title` com até ~32 caracteres (pergunta ou afirmação forte) + `subtitle` curto.
+## 2. Formato dos slides (estilo atual: "serie", inspirado em @psico.tsu)
+- O post é uma **série com gancho fixo** (`"kicker"` no spec, repetido em todos os slides), ex.:
+  "Você **sabe que perdeu** quando...", "Você **sabe que está crescendo** quando...", "Sinais de que **você está se curando**...".
+  Use `**negrito**` em 2–4 palavras do meio do gancho (o resto sai em letra fina).
+- Cada slide tem uma `"head"`: frase curta (3 a 7 palavras), minúscula, que completa o gancho e termina com ponto.
+- Último slide: `"no_kicker": true`, `head` de virada ("mas você ainda não perdeu", "e se você tem alguém assim,")
+  e `"body"` com 1–2 parágrafos curtos (use `**negrito**` em trechos) + "**Siga @darkgoodvibes** ...". Separe parágrafos com linha em branco (\n\n).
+- Todos os slides com `"pos": "top"`. O texto vai **atrás do personagem**: o build recorta o personagem e posiciona
+  o texto sozinho para a cabeça cobrir só a parte de baixo da última linha.
+- **Escolha de imagem é o mais importante:** personagem na METADE DE BAIXO, céu/fundo limpo em cima (cabeça mais ou menos
+  no meio da imagem). Personagem que ocupa a imagem inteira até o topo não serve (o build desliga as camadas).
+- Revise no preview: o efeito de camadas deve aparecer (cabeça/cabelo na frente de parte da última linha) e o texto
+  continuar legível; se a cabeça cobrir mais de ~1/4 da frase, troque a imagem.
+
+## 2b. Escrever o texto (tom: @christversions — segunda pessoa, acolhedor, sem clichê barato)
 - Slides 2..N-1: um personagem por slide (ou uma ideia por slide), **um parágrafo de 18 a 28 palavras**,
   falando do personagem e conectando com quem lê. Nada de listas nem emojis no slide.
 - Último slide: chamada para comentar ("E você? … Me conta nos comentários.").

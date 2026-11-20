@@ -62,6 +62,26 @@ def upscale_to(path_in, path_out, target_h):
     subprocess.run([PY, '-I', os.path.join(ROOT, 'tools/upscale.py'), path_in, path_out, model, str(scale)],
                    check=True, stdout=subprocess.DEVNULL)
 
+_SEG = None
+def cutout(src_jpg, dst_png):
+    """Recorta o personagem/objeto principal (isnet-anime) para a camada da frente."""
+    global _SEG
+    from rembg import new_session, remove
+    if _SEG is None:
+        _SEG = new_session('isnet-anime')
+    im = Image.open(src_jpg).convert('RGB')
+    small = im.resize((im.width // 2, im.height // 2), Image.LANCZOS)
+    mask = remove(small, session=_SEG, only_mask=True).convert('L').resize(im.size, Image.LANCZOS)
+    out = im.convert('RGBA'); out.putalpha(mask); out.save(dst_png)
+    # topo do personagem (em px do slide 1080x1350) dentro da faixa onde fica o texto
+    a = np.asarray(mask.resize((1080, 1350))) > 128
+    cols = a[:, 80:1000]
+    has = cols.any(axis=0)
+    if not has.any():
+        return None
+    tops = np.argmax(cols, axis=0)[has]
+    return int(np.percentile(tops, 3))
+
 def prepare(slide, i, d):
     raw = f'{d}/work/src{i}'
     fetch(slide['src'], raw)
@@ -131,6 +151,7 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 .sr .bd{font:300 34px/1.02 Pp;letter-spacing:-.05em;margin-top:26px;padding:0 30px}
 .sr .bd b{font-weight:600}
 .sr .bd p+p{margin-top:24px}
+.fg{z-index:6;filter:saturate(.92) contrast(.96) brightness(1.02)}
 /* variante christversions: bloco justificado, sem cor */
 .v-cv .ln{font-size:56px;line-height:1.06;text-align:justify;text-align-last:left;letter-spacing:-.025em}
 .v-cv .ln b{color:#fff}
@@ -161,6 +182,11 @@ def main(d):
     for i, s in enumerate(spec['slides'], 1):
         if estilo == 'serie':
             mode, img, fill = prepare(dict(s, mode='full'), i, d)
+            fg = ''
+            if s.get('camadas', spec.get('camadas', True)):
+                top = cutout(f'{d}/{img}', f'{d}/work/fg{i}.png')
+                if top is not None:
+                    fg = f'<img class="bg fg" src="work/fg{i}.png" data-top="{top}">'
             pos = {'top': 'sr-top', 'mid': 'sr-mid', 'bottom': 'sr-bottom'}.get(s.get('pos', 'top'), 'sr-top')
             k = s.get('kicker', spec.get('kicker', ''))
             inner = (f'<div class="lg">{handle}</div>' if i == 1 else '')
@@ -169,7 +195,7 @@ def main(d):
             if s.get('body'):
                 inner += '<div class="bd">' + ''.join(f'<p>{rich(x)}</p>' for x in s['body'].split('\n\n')) + '</div>'
             parts.append(f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}">'
-                         f'<div class="sr {pos}">{inner}</div><div class="grain"></div></section>')
+                         f'<div class="sr {pos}" data-pos="{s.get("pos", "top")}">{inner}</div>{fg}<div class="grain"></div></section>')
             continue
         if estilo == 'tarja':
             s = dict(s, mode='full')
@@ -195,8 +221,20 @@ def main(d):
             body = (f'<div class="txt"><div class="h">{handle}</div>'
                     f'<div class="p">{html.escape(s["text"])}</div></div>')
         parts.append(f'<section class="slide" id="s{i}">{bg}<div class="wash"></div>{body}<div class="grain"></div></section>')
+    script = """<script>
+document.fonts.ready.then(()=>{document.querySelectorAll('section').forEach(sec=>{
+ const fg=sec.querySelector('.fg'), tx=sec.querySelector('.sr'); if(!fg||!tx) return;
+ if(tx.dataset.pos!=='top'){fg.remove();return;}
+ const top=+fg.dataset.top, h=tx.offsetHeight, hl=tx.querySelector('.hl');
+ const lineH=hl?parseFloat(getComputedStyle(hl).fontSize)*0.86:60;
+ const want=top+lineH*0.55-h;          // so a parte de baixo da ultima linha fica atras
+ if(want<70){fg.remove();return;}      // personagem alto demais: sem camadas, texto na frente
+ tx.style.top=Math.min(want,780)+'px';
+ if(want>780){fg.remove();}            // personagem baixo demais: nao encosta, nao precisa
+});document.body.dataset.ready=1;});
+</script>"""
     page = (f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS.replace("FONTS", fonts)}</style>'
-            f'</head><body>{"".join(parts)}</body></html>')
+            f'</head><body>{"".join(parts)}{script}</body></html>')
     open(f'{d}/carrossel.html', 'w').write(page)
     n = len(spec['slides'])
     subprocess.run(['node', os.path.join(ROOT, 'tools/render.js'), f'{d}/carrossel.html', f'{d}/work', str(n)], check=True)
