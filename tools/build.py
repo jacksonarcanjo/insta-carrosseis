@@ -224,20 +224,21 @@ document.fonts.ready.then(()=>{document.querySelectorAll('section').forEach(sec=
  if(tx.dataset.pos!=='top'){fg.remove();return;}
  const tops=fg.dataset.tops.split(',').map(Number);
  const cover=(el,dy)=>{const r=el.getBoundingClientRect(), s=sec.getBoundingClientRect();
-   const x0=r.left-s.left, x1=r.right-s.left, y0=r.top-s.top+dy, y1=r.bottom-s.top+dy; let c=0,n=0;
-   for(let x=Math.max(0,x0);x<Math.min(1080,x1);x+=4){const t=tops[Math.floor(x/4)]; n++; c+=Math.max(0,Math.min(y1,1350)-Math.max(y0,t))/(y1-y0);}
-   return n?c/n:0;};
- const hl=tx.querySelector('.hl'), k=tx.querySelector('.k'), base=tx.offsetTop;
- // linhas da frase grande: mede a ultima linha separadamente
+   const x0=r.left-s.left, x1=r.right-s.left, y0=r.top-s.top+dy, y1=r.bottom-s.top+dy; let c=0,n=0,mx=0;
+   for(let x=Math.max(0,x0);x<Math.min(1080,x1);x+=4){const t=tops[Math.floor(x/4)]; n++;
+     const f=Math.max(0,Math.min(y1,1350)-Math.max(y0,t))/(y1-y0); c+=f; mx=Math.max(mx,f);}
+   return {avg:n?c/n:0,max:mx};};
+ const hl=tx.querySelector('.hl'), k=tx.querySelector('.k'), bd=tx.querySelector('.bd'), base=tx.offsetTop;
  const lh=parseFloat(getComputedStyle(hl).fontSize)*0.86, hr=hl.getBoundingClientRect();
  const last={getBoundingClientRect:()=>({left:hr.left,right:hr.right,top:hr.bottom-lh,bottom:hr.bottom})};
  const upper={getBoundingClientRect:()=>({left:hr.left,right:hr.right,top:hr.top,bottom:hr.bottom-lh})};
+ const clear=(el,dy)=>!el||cover(el,dy).max<0.02;
  let best=null;
  for(let top=110; top<=300; top+=10){const dy=top-base;
-   const cl=cover(last,dy), cu=hr.height>lh*1.3?cover(upper,dy):0, ck=k?cover(k,dy):0;
-   if(ck<0.01 && cu<0.03 && cl>=0.03 && cl<=0.12){best=top;break;}}
+   const cl=cover(last,dy);
+   if(clear(k,dy) && clear(bd,dy) && (hr.height<lh*1.3 || clear(upper,dy)) && cl.avg>=0.02 && cl.avg<=0.12 && cl.max<=0.35){best=top;break;}}
  if(best!==null){tx.style.top=best+'px';}
- else{tx.style.top='190px'; fg.remove();}   // sem sobreposicao boa: texto no alto, na frente
+ else{tx.style.top='150px'; fg.remove();}   // sem sobreposicao boa: texto no alto, na frente
 });document.body.dataset.ready=1;});
 </script>"""
     page = (f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS.replace("FONTS", fonts)}</style>'

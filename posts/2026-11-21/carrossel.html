@@ -1,0 +1,83 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+@font-face{font-family:T;font-weight:600;src:url(../../assets/fonts/inter-tight-latin-600-normal.woff2)}
+@font-face{font-family:T;font-weight:700;src:url(../../assets/fonts/inter-tight-latin-700-normal.woff2)}
+@font-face{font-family:C;font-style:italic;font-weight:500;src:url(../../assets/fonts/cormorant-garamond-latin-500-italic.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;align-items:center}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:#3d6f92;font-family:T;color:#fff}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo{filter:saturate(.92) contrast(.96) brightness(1.02)}
+.low{position:absolute;left:0;bottom:0;width:1080px;height:900px;object-fit:cover;filter:saturate(.92) contrast(.96);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%)}
+.wash{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,.08) 45%,rgba(0,0,0,0) 60%)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.32;mix-blend-mode:overlay;z-index:8;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1.5 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>")}
+.txt{position:absolute;top:270px;left:92px;right:92px;z-index:5;text-shadow:0 2px 14px rgba(0,0,0,.28)}
+.h{font:italic 500 26px C;opacity:.9;margin-bottom:14px}
+.p{font-weight:700;font-size:56px;line-height:1.04;letter-spacing:-.02em;word-spacing:.02em;text-align:justify;text-align-last:left;hyphens:none}
+.cover .p{text-align:center;text-align-last:center}
+/* estilo "tarja" (nome mantido): imagem inteira, texto branco solto com sombra forte, sem tarja */
+.tj{position:absolute;left:72px;right:72px;z-index:5;color:#fff}
+.tj-top{top:96px}.tj-bottom{bottom:96px}
+.tj .hd{font:italic 500 28px C;margin-bottom:12px;text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 14px rgba(0,0,0,.6)}
+.tj .ln{margin:0;font:700 52px/1.18 T;letter-spacing:-.02em;
+ text-shadow:0 2px 2px rgba(0,0,0,.55),0 0 6px rgba(0,0,0,.55),0 0 22px rgba(0,0,0,.45);-webkit-text-stroke:.6px rgba(0,0,0,.25)}
+.tj .ln b{color:#ffd23f}
+.tj .tt{font-size:100px;line-height:1.02;letter-spacing:-.04em}
+.tj .tt b{color:#ffd23f}
+.tj .st{margin-top:14px;font-size:44px;font-weight:600}
+@font-face{font-family:A;src:url(../../assets/fonts/anton-latin-400-normal.woff2)}
+@font-face{font-family:PF;font-weight:500;src:url(../../assets/fonts/playfair-display-latin-500-normal.woff2)}
+@font-face{font-family:PF;font-weight:500;font-style:italic;src:url(../../assets/fonts/playfair-display-latin-500-italic.woff2)}
+@font-face{font-family:Pp;font-weight:300;src:url(../../assets/fonts/poppins-latin-300-normal.woff2),url(../../assets/fonts/poppins-latin-ext-300-normal.woff2)}
+@font-face{font-family:Pp;font-weight:400;src:url(../../assets/fonts/poppins-latin-400-normal.woff2),url(../../assets/fonts/poppins-latin-ext-400-normal.woff2)}
+@font-face{font-family:Pp;font-weight:600;src:url(../../assets/fonts/poppins-latin-600-normal.woff2),url(../../assets/fonts/poppins-latin-ext-600-normal.woff2)}
+@font-face{font-family:Pp;font-weight:800;src:url(../../assets/fonts/poppins-latin-800-normal.woff2),url(../../assets/fonts/poppins-latin-ext-800-normal.woff2)}
+/* estilo "serie" (psico.tsu): gancho com pesos misturados + frase gigante minuscula apertada, centralizado */
+.sr{position:absolute;left:56px;right:56px;z-index:5;color:#fff;text-align:center;
+ text-shadow:0 2px 3px rgba(0,0,0,.35),0 0 26px rgba(0,0,0,.35)}
+.sr-top{top:215px}.sr-mid{top:50%;transform:translateY(-50%)}.sr-bottom{bottom:130px}
+.sr .lg{font:300 32px Pp;letter-spacing:-.02em;margin-bottom:26px;opacity:.95}
+.sr .lg b{font-weight:600}
+.sr .k{font:300 50px/1.05 Pp;letter-spacing:-.045em}
+.sr .k b{font-weight:600}
+.sr .hl{font:800 118px/.86 Pp;letter-spacing:-.065em;margin-top:6px;text-transform:lowercase}
+.sr .bd{font:300 34px/1.02 Pp;letter-spacing:-.05em;margin-top:26px;padding:0 30px}
+.sr .bd b{font-weight:600}
+.sr .bd p+p{margin-top:24px}
+.fg{z-index:6;filter:saturate(.92) contrast(.96) brightness(1.02)}
+/* variante christversions: bloco justificado, sem cor */
+.v-cv .ln{font-size:56px;line-height:1.06;text-align:justify;text-align-last:left;letter-spacing:-.025em}
+.v-cv .ln b{color:#fff}
+.v-cv .tt{font-size:92px;text-align:center;text-align-last:center}.v-cv .st{text-align:center;text-align-last:center}
+/* variante poetica (ocnathalie): serifada, palavra-chave em italico */
+.v-po .ln{font:500 54px/1.2 PF;letter-spacing:-.01em}
+.v-po .ln b{font-style:italic;color:#fff;font-weight:500}
+.v-po .tt{font-size:96px;line-height:1.05}.v-po .st{font:italic 500 42px PF}
+/* variante poster (frieren): condensada gigante caixa alta, creme + destaque */
+.v-ps{color:#f6ecd9}
+.v-ps .ln{font:400 64px/1.08 A;text-transform:uppercase;letter-spacing:.005em}
+.v-ps .ln b{color:#ff5fa2;font-weight:400}
+.v-ps .tt{font-size:150px;line-height:.96}.v-ps .st{font:600 40px/1.2 T;text-transform:none}
+</style></head><body><section class="slide" id="s1"><img class="bg photo" src="work/img1.jpg"><div class="sr sr-top" data-pos="top"><div class="lg">@darkgoodvibes</div><div class="k">Você <b>está recomeçando</b> quando...</div><div class="hl">para de pedir desculpas por mudar.</div></div><img class="bg fg" src="work/fg1.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1293,1280,1268,1256,1247,1238,1227,1215,1201,1188,1175,1163,1152,1140,1129,943,941,939,937,935,686,625,620,615,610,606,602,599,593,589,587,584,578,575,574,573,572,567,565,564,561,560,559,558,558,557,557,557,558,557,555,553,551,548,547,546,562,561,560,559,559,559,559,560,562,565,568,574,584,584,584,585,587,590,594,602,612,617,624,631,643,673,688,698,804,805,806,808,843,844,846,848,851,853,856,858,860,864,956,964,975,990,1006,1024,1041,1052,1064,1075,1085,1096,1108,1116,1125,1134,1141,1154,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><section class="slide" id="s2"><img class="bg photo" src="work/img2.jpg"><div class="sr sr-top" data-pos="top"><div class="k">Você <b>está recomeçando</b> quando...</div><div class="hl">o passado não te define mais.</div></div><img class="bg fg" src="work/fg2.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,714,703,697,700,710,713,712,711,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><section class="slide" id="s3"><img class="bg photo" src="work/img3.jpg"><div class="sr sr-top" data-pos="top"><div class="k">Você <b>está recomeçando</b> quando...</div><div class="hl">aprende a sentir de novo.</div></div><img class="bg fg" src="work/fg3.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,834,827,820,815,810,807,793,768,753,742,732,726,723,721,719,718,717,716,716,716,716,716,717,717,718,719,720,722,723,725,727,728,730,732,734,735,737,739,741,742,743,743,743,742,742,742,742,741,741,741,741,742,742,742,742,743,743,743,744,744,473,469,411,404,397,392,387,384,381,377,374,371,369,366,364,362,360,359,358,357,356,356,358,360,362,365,366,367,368,370,372,374,377,380,386,397,415,441,439,437,436,436,435,439,575,574,713,710,708,706,704,702,700,698,697,695,694,693,691,690,689,689,688,688,687,688,744,742,739,735,732,729,726,724,721,720,721,728,737,781,814,814,814,816,817,817,817,828,829,831,833,834,836,837,839,840,842,845,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><section class="slide" id="s4"><img class="bg photo" src="work/img4.jpg"><div class="sr sr-top" data-pos="top"><div class="k">Você <b>está recomeçando</b> quando...</div><div class="hl">deixa de se comparar.</div></div><img class="bg fg" src="work/fg4.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1182,981,965,957,951,946,941,935,911,911,911,912,913,914,914,915,916,917,919,920,922,924,925,927,928,929,930,932,933,935,936,938,940,943,944,942,940,939,937,934,933,931,929,959,962,962,963,964,967,1350,1350,1350,1350,1350,909,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><section class="slide" id="s5"><img class="bg photo" src="work/img5.jpg"><div class="sr sr-top" data-pos="top"><div class="k">Você <b>está recomeçando</b> quando...</div><div class="hl">volta a fazer o que amava.</div></div><img class="bg fg" src="work/fg5.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,754,745,737,731,725,720,715,710,704,689,669,659,651,644,638,632,626,620,615,610,605,563,551,544,538,533,528,524,520,515,511,506,500,494,488,480,469,443,417,393,376,363,353,346,340,334,329,324,320,316,312,308,305,301,298,296,293,291,289,288,287,287,287,288,289,289,290,290,291,291,291,292,292,292,293,293,294,295,297,299,302,305,308,312,316,321,326,331,336,342,347,353,359,366,373,381,391,403,617,622,627,983,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><section class="slide" id="s6"><img class="bg photo" src="work/img6.jpg"><div class="sr sr-top" data-pos="top"><div class="hl">começar de novo não é voltar ao zero,</div><div class="bd"><p>é voltar com <b>tudo o que você aprendeu</b> no caminho.</p><p><b>Siga @darkgoodvibes</b> e me conta: o que você está recomeçando agora?</p></div></div><img class="bg fg" src="work/fg6.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,815,807,747,735,722,708,696,683,668,654,641,633,624,616,610,605,601,598,596,594,591,582,575,571,560,555,552,550,548,489,480,475,469,465,462,459,456,454,453,454,455,451,450,449,449,450,452,453,456,458,461,464,469,474,479,489,501,569,580,585,597,600,602,604,607,610,615,624,634,645,663,682,704,724,746,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><script>
+document.fonts.ready.then(()=>{document.querySelectorAll('section').forEach(sec=>{
+ const fg=sec.querySelector('.fg'), tx=sec.querySelector('.sr'); if(!fg||!tx) return;
+ if(tx.dataset.pos!=='top'){fg.remove();return;}
+ const tops=fg.dataset.tops.split(',').map(Number);
+ const cover=(el,dy)=>{const r=el.getBoundingClientRect(), s=sec.getBoundingClientRect();
+   const x0=r.left-s.left, x1=r.right-s.left, y0=r.top-s.top+dy, y1=r.bottom-s.top+dy; let c=0,n=0,mx=0;
+   for(let x=Math.max(0,x0);x<Math.min(1080,x1);x+=4){const t=tops[Math.floor(x/4)]; n++;
+     const f=Math.max(0,Math.min(y1,1350)-Math.max(y0,t))/(y1-y0); c+=f; mx=Math.max(mx,f);}
+   return {avg:n?c/n:0,max:mx};};
+ const hl=tx.querySelector('.hl'), k=tx.querySelector('.k'), bd=tx.querySelector('.bd'), base=tx.offsetTop;
+ const lh=parseFloat(getComputedStyle(hl).fontSize)*0.86, hr=hl.getBoundingClientRect();
+ const last={getBoundingClientRect:()=>({left:hr.left,right:hr.right,top:hr.bottom-lh,bottom:hr.bottom})};
+ const upper={getBoundingClientRect:()=>({left:hr.left,right:hr.right,top:hr.top,bottom:hr.bottom-lh})};
+ const clear=(el,dy)=>!el||cover(el,dy).max<0.02;
+ let best=null;
+ for(let top=110; top<=300; top+=10){const dy=top-base;
+   const cl=cover(last,dy);
+   if(clear(k,dy) && clear(bd,dy) && (hr.height<lh*1.3 || clear(upper,dy)) && cl.avg>=0.02 && cl.avg<=0.12 && cl.max<=0.35){best=top;break;}}
+ if(best!==null){tx.style.top=best+'px';}
+ else{tx.style.top='150px'; fg.remove();}   // sem sobreposicao boa: texto no alto, na frente
+});document.body.dataset.ready=1;});
+</script></body></html>
