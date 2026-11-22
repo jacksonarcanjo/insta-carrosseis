@@ -1,0 +1,83 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+@font-face{font-family:T;font-weight:600;src:url(../../assets/fonts/inter-tight-latin-600-normal.woff2)}
+@font-face{font-family:T;font-weight:700;src:url(../../assets/fonts/inter-tight-latin-700-normal.woff2)}
+@font-face{font-family:C;font-style:italic;font-weight:500;src:url(../../assets/fonts/cormorant-garamond-latin-500-italic.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;align-items:center}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:#3d6f92;font-family:T;color:#fff}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo{filter:saturate(.92) contrast(.96) brightness(1.02)}
+.low{position:absolute;left:0;bottom:0;width:1080px;height:900px;object-fit:cover;filter:saturate(.92) contrast(.96);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%)}
+.wash{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,.08) 45%,rgba(0,0,0,0) 60%)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.32;mix-blend-mode:overlay;z-index:8;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1.5 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>")}
+.txt{position:absolute;top:270px;left:92px;right:92px;z-index:5;text-shadow:0 2px 14px rgba(0,0,0,.28)}
+.h{font:italic 500 26px C;opacity:.9;margin-bottom:14px}
+.p{font-weight:700;font-size:56px;line-height:1.04;letter-spacing:-.02em;word-spacing:.02em;text-align:justify;text-align-last:left;hyphens:none}
+.cover .p{text-align:center;text-align-last:center}
+/* estilo "tarja" (nome mantido): imagem inteira, texto branco solto com sombra forte, sem tarja */
+.tj{position:absolute;left:72px;right:72px;z-index:5;color:#fff}
+.tj-top{top:96px}.tj-bottom{bottom:96px}
+.tj .hd{font:italic 500 28px C;margin-bottom:12px;text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 14px rgba(0,0,0,.6)}
+.tj .ln{margin:0;font:700 52px/1.18 T;letter-spacing:-.02em;
+ text-shadow:0 2px 2px rgba(0,0,0,.55),0 0 6px rgba(0,0,0,.55),0 0 22px rgba(0,0,0,.45);-webkit-text-stroke:.6px rgba(0,0,0,.25)}
+.tj .ln b{color:#ffd23f}
+.tj .tt{font-size:100px;line-height:1.02;letter-spacing:-.04em}
+.tj .tt b{color:#ffd23f}
+.tj .st{margin-top:14px;font-size:44px;font-weight:600}
+@font-face{font-family:A;src:url(../../assets/fonts/anton-latin-400-normal.woff2)}
+@font-face{font-family:PF;font-weight:500;src:url(../../assets/fonts/playfair-display-latin-500-normal.woff2)}
+@font-face{font-family:PF;font-weight:500;font-style:italic;src:url(../../assets/fonts/playfair-display-latin-500-italic.woff2)}
+@font-face{font-family:Pp;font-weight:300;src:url(../../assets/fonts/poppins-latin-300-normal.woff2),url(../../assets/fonts/poppins-latin-ext-300-normal.woff2)}
+@font-face{font-family:Pp;font-weight:400;src:url(../../assets/fonts/poppins-latin-400-normal.woff2),url(../../assets/fonts/poppins-latin-ext-400-normal.woff2)}
+@font-face{font-family:Pp;font-weight:600;src:url(../../assets/fonts/poppins-latin-600-normal.woff2),url(../../assets/fonts/poppins-latin-ext-600-normal.woff2)}
+@font-face{font-family:Pp;font-weight:800;src:url(../../assets/fonts/poppins-latin-800-normal.woff2),url(../../assets/fonts/poppins-latin-ext-800-normal.woff2)}
+/* estilo "serie" (psico.tsu): gancho com pesos misturados + frase gigante minuscula apertada, centralizado */
+.sr{position:absolute;left:56px;right:56px;z-index:5;color:#fff;text-align:center;
+ text-shadow:0 2px 3px rgba(0,0,0,.35),0 0 26px rgba(0,0,0,.35)}
+.sr-top{top:215px}.sr-mid{top:50%;transform:translateY(-50%)}.sr-bottom{bottom:130px}
+.sr .lg{font:300 32px Pp;letter-spacing:-.02em;margin-bottom:26px;opacity:.95}
+.sr .lg b{font-weight:600}
+.sr .k{font:300 50px/1.05 Pp;letter-spacing:-.045em}
+.sr .k b{font-weight:600}
+.sr .hl{font:800 118px/.86 Pp;letter-spacing:-.065em;margin-top:6px;text-transform:lowercase}
+.sr .bd{font:300 34px/1.02 Pp;letter-spacing:-.05em;margin-top:26px;padding:0 30px}
+.sr .bd b{font-weight:600}
+.sr .bd p+p{margin-top:24px}
+.fg{z-index:6;filter:saturate(.92) contrast(.96) brightness(1.02)}
+/* variante christversions: bloco justificado, sem cor */
+.v-cv .ln{font-size:56px;line-height:1.06;text-align:justify;text-align-last:left;letter-spacing:-.025em}
+.v-cv .ln b{color:#fff}
+.v-cv .tt{font-size:92px;text-align:center;text-align-last:center}.v-cv .st{text-align:center;text-align-last:center}
+/* variante poetica (ocnathalie): serifada, palavra-chave em italico */
+.v-po .ln{font:500 54px/1.2 PF;letter-spacing:-.01em}
+.v-po .ln b{font-style:italic;color:#fff;font-weight:500}
+.v-po .tt{font-size:96px;line-height:1.05}.v-po .st{font:italic 500 42px PF}
+/* variante poster (frieren): condensada gigante caixa alta, creme + destaque */
+.v-ps{color:#f6ecd9}
+.v-ps .ln{font:400 64px/1.08 A;text-transform:uppercase;letter-spacing:.005em}
+.v-ps .ln b{color:#ff5fa2;font-weight:400}
+.v-ps .tt{font-size:150px;line-height:.96}.v-ps .st{font:600 40px/1.2 T;text-transform:none}
+</style></head><body><section class="slide" id="s1"><img class="bg photo" src="work/img1.jpg"><div class="sr sr-top" data-pos="top"><div class="lg">@darkgoodvibes</div><div class="k">Você <b>se compara demais</b> quando...</div><div class="hl">o sucesso dos outros te dói.</div></div><div class="grain"></div></section><section class="slide" id="s2"><img class="bg photo" src="work/img2.jpg"><div class="sr sr-top" data-pos="top"><div class="k">Você <b>se compara demais</b> quando...</div><div class="hl">vive tentando alcançar alguém.</div></div><img class="bg fg" src="work/fg2.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1215,1172,1158,1149,1143,1137,1132,1129,1126,1123,1119,1115,1113,1110,1107,1103,1100,1099,1093,1092,1092,1092,1093,1095,1096,1097,1094,1087,1081,1075,1071,1067,1065,1062,1060,1057,1056,1054,1053,1053,1053,1052,972,943,898,875,861,850,841,833,827,821,814,809,804,828,821,816,811,807,804,800,796,794,791,788,786,783,781,779,777,774,772,801,798,796,793,791,788,785,783,780,777,774,770,766,762,757,752,746,739,734,742,753,765,777,791,809,868,862,855,849,845,840,927,1141,1148,1237,1244,1251,1259,1269,1274,1279,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><section class="slide" id="s3"><img class="bg photo" src="work/img3.jpg"><div class="sr sr-top" data-pos="top"><div class="k">Você <b>se compara demais</b> quando...</div><div class="hl">esquece o quanto já mudou.</div></div><img class="bg fg" src="work/fg3.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1093,1076,1067,1064,1062,1062,1062,1061,1061,1059,965,948,944,942,941,940,938,937,935,933,932,930,929,927,925,924,921,920,918,874,871,869,829,814,807,802,799,795,792,791,790,789,788,787,787,789,790,792,794,797,800,804,811,821,835,865,867,878,881,917,918,920,921,923,925,926,927,929,931,932,934,936,937,939,941,943,946,1048,1049,1051,1051,1051,1053,1060,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><section class="slide" id="s4"><img class="bg photo" src="work/img4.jpg"><div class="sr sr-top" data-pos="top"><div class="k">Você <b>se compara demais</b> quando...</div><div class="hl">acha que está atrasado.</div></div><img class="bg fg" src="work/fg4.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,859,845,831,816,801,787,777,674,659,644,565,548,537,528,521,514,507,395,390,387,337,331,326,321,318,315,312,311,310,311,311,312,313,314,315,317,319,322,324,326,327,327,327,328,330,333,336,339,343,347,352,357,361,366,372,380,388,398,409,439,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><section class="slide" id="s5"><img class="bg photo" src="work/img5.jpg"><div class="sr sr-top" data-pos="top"><div class="k">Você <b>se compara demais</b> quando...</div><div class="hl">não vê o próprio valor.</div></div><img class="bg fg" src="work/fg5.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1160,1154,1150,1147,1145,1142,1140,1136,1134,1132,1131,1132,1132,1132,1132,1132,1132,1133,1133,1134,1136,1138,1141,1145,1150,1155,1160,1165,1171,1178,1184,1190,1067,1071,1074,1077,1029,1009,1000,992,986,982,977,973,970,967,964,859,856,861,867,872,876,879,882,885,888,890,873,869,866,862,859,856,853,851,848,846,845,757,759,763,767,770,773,776,778,780,781,783,784,785,786,786,786,787,787,788,788,789,789,789,790,790,791,792,793,794,795,727,733,742,750,755,738,741,746,751,755,758,762,764,766,769,771,773,776,778,780,783,786,767,770,774,777,781,786,791,728,730,732,735,737,739,741,744,746,748,751,753,755,758,761,763,766,769,772,776,780,785,790,797,806,821,845,848,837,806,807,813,820,828,845,881,894,930,923,914,902,886,899,940,936,933,929,925,920,913,907,1015,1018,1021,1024,1029,1082,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><section class="slide" id="s6"><img class="bg photo" src="work/img6.jpg"><div class="sr sr-top" data-pos="top"><div class="hl">o seu tempo é só seu,</div><div class="bd"><p>e ninguém mais está correndo <b>a sua corrida.</b></p><p><b>Siga @darkgoodvibes</b> e marca alguém que precisa ouvir isso.</p></div></div><img class="bg fg" src="work/fg6.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,961,964,921,925,925,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><script>
+document.fonts.ready.then(()=>{document.querySelectorAll('section').forEach(sec=>{
+ const fg=sec.querySelector('.fg'), tx=sec.querySelector('.sr'); if(!fg||!tx) return;
+ if(tx.dataset.pos!=='top'){fg.remove();return;}
+ const tops=fg.dataset.tops.split(',').map(Number);
+ const cover=(el,dy)=>{const r=el.getBoundingClientRect(), s=sec.getBoundingClientRect();
+   const x0=r.left-s.left, x1=r.right-s.left, y0=r.top-s.top+dy, y1=r.bottom-s.top+dy; let c=0,n=0,mx=0;
+   for(let x=Math.max(0,x0);x<Math.min(1080,x1);x+=4){const t=tops[Math.floor(x/4)]; n++;
+     const f=Math.max(0,Math.min(y1,1350)-Math.max(y0,t))/(y1-y0); c+=f; mx=Math.max(mx,f);}
+   return {avg:n?c/n:0,max:mx};};
+ const hl=tx.querySelector('.hl'), k=tx.querySelector('.k'), bd=tx.querySelector('.bd'), base=tx.offsetTop;
+ const lh=parseFloat(getComputedStyle(hl).fontSize)*0.86, hr=hl.getBoundingClientRect();
+ const last={getBoundingClientRect:()=>({left:hr.left,right:hr.right,top:hr.bottom-lh,bottom:hr.bottom})};
+ const upper={getBoundingClientRect:()=>({left:hr.left,right:hr.right,top:hr.top,bottom:hr.bottom-lh})};
+ const clear=(el,dy)=>!el||cover(el,dy).max<0.02;
+ let best=null;
+ for(let top=110; top<=300; top+=10){const dy=top-base;
+   const cl=cover(last,dy);
+   if(clear(k,dy) && clear(bd,dy) && (hr.height<lh*1.3 || clear(upper,dy)) && cl.avg>=0.02 && cl.avg<=0.12 && cl.max<=0.35){best=top;break;}}
+ if(best!==null){tx.style.top=best+'px';}
+ else{tx.style.top='150px'; fg.remove();}   // sem sobreposicao boa: texto no alto, na frente
+});document.body.dataset.ready=1;});
+</script></body></html>
