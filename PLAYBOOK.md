@@ -48,6 +48,22 @@ dois posts seguidos com a mesma palavra no gancho. Formatos (todos usam o mesmo 
 Em cada formato o último slide fecha com virada + "Siga @darkgoodvibes". Registre o formato usado em `history.json` (`"formato"`).
 Mude também o comprimento: posts de 5, 6, 7 ou 8 slides.
 
+## 2-ter. LAYOUTS VARIADOS (pedido do dono: nada de moldura/enfeite igual em todos os slides)
+Cada slide escolhe um `"layout"` no spec. **Misture pelo menos 3 layouts diferentes por post** e nunca use o mesmo
+layout em mais de 2 slides seguidos. A moldura de cantos (`"moldura": true`) só pode aparecer em NO MÁXIMO 1 slide por post.
+- `"fantasma"`: imagem inteira + **palavra gigante atrás do personagem** (`"word": "saudade"`, `"outline": true` deixa só
+  o contorno, `"wcolor"` muda a cor). O personagem recortado passa NA FRENTE das letras. Legenda embaixo
+  (`tag`, `head`, `body`; `"pos": "top"` leva para cima). Use em capas e em imagens com personagem grande no centro.
+- `"painel"`: página de **revista/papel** (fundo creme): título condensado em caixa alta (`head`, palavra em `**negrito**`
+  fica vermelha), **imagem pequena emoldurada** inclinada (`src`; `fy`/`fx` ajustam o recorte), opcionalmente uma
+  **segunda imagem menor** sobreposta (`src2`) e parágrafo serifado justificado (`body`, ~30 a 40 palavras).
+- `"quadro"`: imagem inteira + **foto emoldurada (polaroid) sobreposta** num canto (`"side": "left"|"right"`). Sem `src2`, a
+  polaroid é um zoom no próprio frame (`zoom`, `zx`, `zy` escolhem o detalhe: olhos, mãos, objeto). Legenda embaixo.
+- `"frase"`: imagem escurecida + **aspas gigantes** e frase em serifa itálica (`text`, `autor`). Use no fechamento.
+- sem `layout` (ou `"serie"`): o estilo atual com gancho (`kicker`) + frase gigante + `body`. Texto sempre legível (já tem degradê).
+Enfeites tipográficos usam fontes diferentes de propósito: Anton (condensada), Playfair (serifa itálica) e Poppins.
+Ao escolher imagens para `fantasma`, prefira personagem grande e nítido (o recorte automático precisa separá-lo do fundo).
+
 ## 2-bis. Regras de riqueza visual (pedido do dono: menos genérico, mais texto, mais "enfeite")
 - **Imagem ESPECÍFICA, nunca genérica:** cada slide mostra o personagem/cena citada (ex.: Frieren diante da estátua do
   Himmel, Luffy segurando o Ace). Busque "<personagem> <anime> <cena> screenshot". Proibido usar wallpaper genérico
@@ -56,8 +72,8 @@ Mude também o comprimento: posts de 5, 6, 7 ou 8 slides.
   - `tag`: etiqueta curta em caixa alta com anime e personagem ("Naruto · Jiraiya"); na capa, "5 histórias sobre ...".
   - `head`: 4 a 7 palavras, com 1 trecho em `**negrito**`.
   - `body`: 2 frases (20 a 35 palavras) com 1 ou 2 trechos em `**negrito**` (viram amarelo).
-- **Enfeites automáticos** (config `decor`): moldura dupla, cantos amarelos, @ no topo, contador 01/07, bolinhas de
-  progresso, setinha →, divisor amarelo e degradê escuro atrás do texto. Não desligue.
+- **Enfeite opcional** (`"moldura": true`, máx. 1 slide por post): moldura dupla, cantos amarelos, @ no topo, contador 01/07, bolinhas de
+  progresso, setinha →, divisor amarelo e degradê escuro atrás do texto. Não use em todos os slides.
 - **Posição do texto:** `"pos": "top"` quando o rosto está embaixo; **`"pos": "bottom"` quando o rosto/personagem
   está na parte de cima da imagem** (o degradê escuro acompanha). Nunca deixe o texto cobrir o rosto.
 - Com `body`, o efeito de camadas (texto atrás do personagem) é desligado sozinho; sem `body` ele continua valendo.

@@ -4,57 +4,63 @@
  "estilo": "serie",
  "slides": [
   {
+   "layout": "fantasma",
    "src": "https://i.pinimg.com/originals/12/ec/e0/12ece090ee5846e89838b5c1c7d6645d.jpg",
-   "pos": "top",
-   "tag": "5 histórias sobre saudade",
+   "word": "saudade",
+   "pos": "bottom",
+   "tag": "5 histórias",
    "head": "quem se foi **ainda ensina**"
   },
   {
+   "layout": "painel",
    "src": "https://i.pinimg.com/originals/aa/d2/4d/aad24de8b04380ae9c5dca9da65c7f24.jpg",
-   "pos": "top",
-   "fx": 0.45,
+   "src2": "https://i.pinimg.com/originals/12/ec/e0/12ece090ee5846e89838b5c1c7d6645d.jpg",
    "tag": "Frieren · Himmel",
    "head": "só entendeu **depois que ele partiu**",
    "body": "Frieren viveu mil anos sem reparar em Himmel. **Quando ele se foi,** percebeu que aquela aventura curta foi a mais importante da vida dela."
   },
   {
    "src": "https://i.pinimg.com/originals/5e/01/86/5e01866e1b03c7d26a2ef84bec08755d.jpg",
-   "pos": "top",
    "fx": 0.5,
    "tag": "One Piece · Ace",
    "head": "a despedida **mais dolorosa**",
-   "body": "Luffy perdeu o irmão nos próprios braços. Mesmo assim, **seguiu em frente** carregando a certeza de que foi amado."
+   "body": "Luffy perdeu o irmão nos próprios braços. Mesmo assim, **seguiu em frente** carregando a certeza de que foi amado.",
+   "pos": "top"
   },
   {
+   "layout": "fantasma",
    "src": "https://i.pinimg.com/originals/ae/89/71/ae8971bd1e1a806afca092af9f3dde63.jpg",
+   "word": "jiraiya",
+   "outline": true,
    "pos": "bottom",
-   "fx": 0.5,
-   "tag": "Naruto · Jiraiya",
+   "tag": "Naruto",
    "head": "o mestre que **acreditou primeiro**",
    "body": "Jiraiya foi o primeiro a ver força em Naruto. Cada vez que o garoto **não desiste,** é a voz do mestre que continua falando."
   },
   {
+   "layout": "quadro",
    "src": "https://i.pinimg.com/originals/b1/2e/f3/b12ef3f1f68c3a1255f52b6a091ef19a.jpg",
-   "pos": "top",
+   "side": "left",
+   "zoom": 2.2,
+   "zx": 0.55,
+   "zy": 0.6,
    "tag": "Shigatsu · Kaori",
    "head": "ela **mudou tudo** em poucos meses",
-   "body": "Kaori passou rápido, mas deixou o Kousei **tocando de novo.** Algumas pessoas ficam pouco tempo e marcam a vida inteira.",
-   "fx": 0.75
+   "body": "Kaori passou rápido, mas deixou o Kousei **tocando de novo.** Algumas pessoas ficam pouco tempo e marcam a vida inteira."
   },
   {
+   "layout": "painel",
    "src": "https://i.pinimg.com/originals/38/43/b1/3843b19c9fb509266c2f50845813778d.png",
-   "pos": "bottom",
+   "fy": 0.1,
    "tag": "Fullmetal · Hughes",
    "head": "o carinho que **ficou na memória**",
-   "body": "Hughes mostrava as fotos da filha pra todo mundo. A gente lembra dele pelo **amor que sobrou,** não pela despedida."
+   "body": "Hughes mostrava as fotos da filha pra todo mundo. A gente lembra dele pelo **amor que sobrou,** não pela despedida. Alguns gestos pequenos viram eternos."
   },
   {
+   "layout": "frase",
    "src": "https://i.pinimg.com/originals/62/16/bd/6216bd470a1d6246b27de46cf21471cb.jpg",
-   "pos": "top",
-   "fx": 0.5,
-   "tag": "Para finalizar",
-   "head": "quem partiu **continua em você**",
-   "body": "A saudade é o amor que **não tem pra onde ir.** Cuide de quem ficou e diga hoje o que sente.\n\n**Siga @darkgoodvibes** e marque quem você sente falta."
+   "text": "A saudade é o amor que **não tem pra onde ir.**",
+   "autor": "Siga @darkgoodvibes"
   }
  ],
  "caption": "Ninguém te prepara para o dia em que uma música, um cheiro ou uma data qualquer faz a saudade chegar sem aviso 🌙\n\nEla aparece no meio do trabalho, numa mensagem antiga que você nunca apagou, no caminho que sempre fazia com aquela pessoa. E o mais difícil é que o resto do mundo segue andando como se nada tivesse acontecido.\n\nNa psicologia, o luto não é um problema para resolver. É a forma que o amor encontra de continuar existindo quando a pessoa já não está por perto 💭\n\nPor isso não existe prazo certo. Tem gente que sente com força nos primeiros meses, outros só anos depois, num dia aparentemente comum. Não significa que você está atrasado para superar. Significa que o vínculo era real.\n\nO que costuma ajudar: contar histórias sobre quem se foi, guardar um objeto que tenha significado, manter um pequeno ritual (acender uma vela, ouvir a música preferida). E, se a dor pesar demais, procurar um psicólogo é cuidado, não fraqueza ✨\n\nTalvez a saudade nunca vá embora por completo. Talvez ela só mude de lugar, e deixe de doer e passe a aquecer.\n\nSaudade é o jeito do coração dizer: valeu a pena.\n\nDe quem você sente saudade hoje? Se quiser, conta aqui. Pode ser só o nome.\nSalva para reler num dia difícil e manda para quem precisa ouvir isso hoje.\n\nSiga @darkgoodvibes para continuar encontrando nos animes reflexões sobre a sua própria história.\n\n#anime #animes #animebrasil #otaku #saudade #luto #saudemental #frieren #onepiece #naruto #fullmetalalchemist #shigatsuwakiminouso"

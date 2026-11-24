@@ -167,6 +167,32 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 .sr.rich .hl{font-size:98px}
 .sr.rich .bd{font:600 39px/1.2 Pp;letter-spacing:-.025em;margin-top:26px;padding:0 24px;text-shadow:0 2px 3px rgba(0,0,0,.6),0 0 16px rgba(0,0,0,.5)}
 .sr.rich .bd b{font-weight:800;color:#ffd23f}
+/* colagem: layouts variados (fantasma, painel, quadro, frase) */
+.gw{position:absolute;left:50%;transform:translateX(-50%);z-index:3;font:400 420px/.82 A;text-transform:uppercase;white-space:nowrap;color:#fff;letter-spacing:.01em;text-shadow:0 6px 40px rgba(0,0,0,.25)}
+.gw.ol{color:transparent;-webkit-text-stroke:5px #fff;text-shadow:none}
+.cshade{position:absolute;inset:0;z-index:2;background:linear-gradient(0deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.46) 30%,rgba(0,0,0,0) 56%)}
+.cshade.t{background:linear-gradient(180deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.46) 30%,rgba(0,0,0,0) 56%)}
+.ccap{position:absolute;left:72px;right:72px;bottom:92px;z-index:9;color:#fff}
+.ccap.t{bottom:auto;top:92px}
+.ctag{display:inline-block;background:#ffd23f;color:#111;font:800 22px Pp;letter-spacing:.16em;text-transform:uppercase;padding:8px 20px 7px;margin-bottom:20px}
+.ccap .hd{font:italic 500 72px/1.03 PF;letter-spacing:-.012em;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.ccap .bd{font:500 35px/1.26 Pp;letter-spacing:-.015em;margin-top:20px;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.ccap b{color:#ffd23f;font-weight:700}
+.cpan{background:#f1ece2;color:#151515}
+.cpan .pt{position:absolute;top:60px;left:84px;right:84px;display:flex;justify-content:space-between;font:italic 500 25px PF;letter-spacing:.04em;color:#555}
+.cpan .col{position:absolute;left:84px;right:84px;top:112px;bottom:70px;display:flex;flex-direction:column;gap:34px}
+.cpan .tt{font:400 124px/.92 A;text-transform:uppercase;letter-spacing:.005em}
+.cpan .tt b{color:#b3261e;font-weight:400}
+.fbox{position:relative;flex:none}
+.cfr{position:absolute;background:#fff;padding:14px;box-shadow:0 14px 34px rgba(0,0,0,.3);z-index:4}
+.cfr img{display:block;width:100%;height:100%;object-fit:cover}
+.cpan .tx{font:500 40px/1.27 PF;text-align:justify;hyphens:none;color:#1b1b1b}
+.cpan .tx b{font-weight:600;background:linear-gradient(transparent 56%,#ffd23f 56%)}
+.gm{mix-blend-mode:multiply!important;opacity:.35!important}
+.qm{position:absolute;top:40px;left:50px;font:400 640px/1 PF;color:rgba(255,255,255,.22);z-index:3}
+.qt{position:absolute;left:92px;right:92px;top:50%;transform:translateY(-50%);font:italic 500 76px/1.14 PF;text-align:center;color:#fff;z-index:5;text-shadow:0 3px 18px rgba(0,0,0,.6)}
+.qt b{color:#ffd23f;font-weight:500}
+.qa{position:absolute;left:0;right:0;bottom:150px;text-align:center;font:600 27px Pp;letter-spacing:.3em;text-transform:uppercase;color:#ffd23f;z-index:5}
 /* variante christversions: bloco justificado, sem cor */
 .v-cv .ln{font-size:56px;line-height:1.06;text-align:justify;text-align-last:left;letter-spacing:-.025em}
 .v-cv .ln b{color:#fff}
@@ -182,6 +208,68 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 .v-ps .tt{font-size:150px;line-height:.96}.v-ps .st{font:600 40px/1.2 T;text-transform:none}
 """
 
+def prep_ar(src, key, d, W, H, fx=.5, fy=.5, zoom=1.0, zx=.5, zy=.35):
+    """Recorta/amplia uma imagem para um quadro WxH (usado nos layouts de colagem)."""
+    raw = f'{d}/work/{key}_raw'
+    fetch(src, raw)
+    im = trim_bars(Image.open(raw).convert('RGB'))
+    c = crop(im, W / H, fx, fy)
+    if zoom > 1:
+        cw, ch = c.size; w2, h2 = cw / zoom, ch / zoom
+        l, tp = (cw - w2) * zx, (ch - h2) * zy
+        c = c.crop((round(l), round(tp), round(l + w2), round(tp + h2)))
+    c.save(f'{d}/work/{key}_c.png')
+    upscale_to(f'{d}/work/{key}_c.png', f'{d}/work/{key}_u.png', H)
+    Image.open(f'{d}/work/{key}_u.png').convert('RGB').resize((W, H), Image.LANCZOS).save(f'{d}/work/{key}.jpg', quality=92)
+    return f'work/{key}.jpg'
+
+
+def render_collage(lay, s, i, d, handle, rich, n):
+    def caption():
+        if not (s.get('head') or s.get('body') or s.get('tag')):
+            return ''
+        pos = ' t' if s.get('pos') == 'top' else ''
+        return (f'<div class="ccap{pos}">' + (f'<div class="ctag">{html.escape(s["tag"])}</div>' if s.get('tag') else '')
+                + (f'<div class="hd">{rich(s["head"])}</div>' if s.get('head') else '')
+                + (f'<div class="bd">{rich(s["body"])}</div>' if s.get('body') else '') + '</div>')
+    shade = '<div class="cshade t"></div>' if s.get('pos') == 'top' else '<div class="cshade"></div>'
+    if lay == 'fantasma':
+        mode, img, fill = prepare(dict(s, mode='full'), i, d)
+        tops = cutout(f'{d}/{img}', f'{d}/work/fg{i}.png')
+        fg = f'<img class="bg fg" src="work/fg{i}.png" data-tops="{tops}">' if tops else ''
+        cls = 'gw ol' if s.get('outline') else 'gw'
+        col = f' style="color:{s["wcolor"]}"' if s.get('wcolor') and not s.get('outline') else ''
+        return (f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}">{shade}'
+                f'<div class="{cls}"{col}>{html.escape(s.get("word", ""))}</div>{fg}{caption()}<div class="grain"></div></section>')
+    if lay == 'painel':
+        two = bool(s.get('src2'))
+        w1, h1 = (800, 470) if two else (900, 600)
+        a = prep_ar(s['src'], f'p{i}a', d, int(w1 * 1.5), int(h1 * 1.5), s.get('fx', .5), s.get('fy', .5))
+        fr = (f'<div class="fbox" style="height:{h1 + (90 if two else 40)}px"><div class="cfr" style="left:{20 if two else 40}px;top:6px;'
+              f'width:{w1}px;height:{h1}px;transform:rotate(-1.3deg)"><img src="{a}"></div>')
+        if two:
+            b = prep_ar(s['src2'], f'p{i}b', d, 420, 510, s.get('fx2', .5), s.get('fy2', .5))
+            fr += (f'<div class="cfr" style="right:6px;top:{h1 - 250}px;width:280px;height:340px;transform:rotate(3.5deg)"><img src="{b}"></div>')
+        fr += '</div>'
+        return (f'<section class="slide cpan" id="s{i}"><div class="pt"><span>{handle}</span><span>{html.escape(s.get("tag", ""))}</span></div>'
+                f'<div class="col"><div class="tt">{rich(s.get("head", ""))}</div>{fr}<div class="tx">{rich(s.get("body", ""))}</div></div>'
+                f'<div class="grain gm"></div></section>')
+    if lay == 'quadro':
+        mode, img, fill = prepare(dict(s, mode='full'), i, d)
+        side = s.get('side', 'right')
+        src2 = s.get('src2') or s['src']
+        ins = prep_ar(src2, f'q{i}', d, 600, 750, s.get('fx2', .5), s.get('fy2', .35), zoom=(1.0 if s.get('src2') else s.get('zoom', 2.0)),
+                      zx=s.get('zx', .5), zy=s.get('zy', .35))
+        rot = 4 if side == 'right' else -4
+        return (f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}">{shade}'
+                f'<div class="cfr" style="top:120px;{side}:64px;width:360px;height:450px;transform:rotate({rot}deg);z-index:6"><img src="{ins}"></div>'
+                f'{caption()}<div class="grain"></div></section>')
+    # frase
+    mode, img, fill = prepare(dict(s, mode='full'), i, d)
+    return (f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}" style="filter:brightness(.52) saturate(.9)">'
+            f'<div class="qm">&ldquo;</div><div class="qt">{rich(s["text"])}</div><div class="qa">{html.escape(s.get("autor", ""))}</div><div class="grain"></div></section>')
+
+
 def main(d):
     d = os.path.abspath(d)
     spec = json.load(open(f'{d}/spec.json'))
@@ -195,6 +283,9 @@ def main(d):
         out = html.escape(txt).split('**')
         return ''.join(f'<b>{x}</b>' if k % 2 else x for k, x in enumerate(out))
     for i, s in enumerate(spec['slides'], 1):
+        if s.get('layout') in ('fantasma', 'painel', 'quadro', 'frase'):
+            parts.append(render_collage(s['layout'], s, i, d, handle, rich, len(spec['slides'])))
+            continue
         if estilo == 'serie':
             mode, img, fill = prepare(dict(s, mode='full'), i, d)
             fg = ''
@@ -204,7 +295,7 @@ def main(d):
                     fg = f'<img class="bg fg" src="work/fg{i}.png" data-tops="{top}">'
             pos = {'top': 'sr-top', 'mid': 'sr-mid', 'bottom': 'sr-bottom'}.get(s.get('pos', 'top'), 'sr-top')
             k = s.get('kicker', spec.get('kicker', ''))
-            decor = spec.get('decor', cfg.get('decor', True))
+            decor = s.get('moldura', spec.get('decor', cfg.get('decor', False)))
             nslides = len(spec['slides'])
             inner = (f'<div class="lg">{handle}</div>' if (i == 1 and not decor) else '')
             inner += (f'<div class="tag">{html.escape(s["tag"])}</div>' if s.get('tag') else '')
@@ -221,7 +312,7 @@ def main(d):
                        f'<div class="dots">{dots}</div>' + ('<div class="nx">→</div>' if i < nslides else '') + '</div>')
             rich_cls = ' rich' if s.get('body') else ''
             parts.append(f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}">'
-                         + (f'<div class="scrim{" sb" if s.get("pos") == "bottom" else ""}"></div>' if decor else '') +
+                         + (f'<div class="scrim{" sb" if s.get("pos") == "bottom" else ""}"></div>' if (decor or s.get('body')) else '') +
                          f'<div class="sr {pos}{rich_cls}" data-pos="{s.get("pos", "top")}">{inner}</div>{fg}{dec}<div class="grain"></div></section>')
             continue
         if estilo == 'tarja':
@@ -249,7 +340,13 @@ def main(d):
                     f'<div class="p">{html.escape(s["text"])}</div></div>')
         parts.append(f'<section class="slide" id="s{i}">{bg}<div class="wash"></div>{body}<div class="grain"></div></section>')
     script = """<script>
-document.fonts.ready.then(()=>{document.querySelectorAll('section').forEach(sec=>{
+document.fonts.ready.then(()=>{document.querySelectorAll('.gw').forEach(g=>{
+ const sec=g.closest('section'), fg=sec.querySelector('.fg'); let fs=420; g.style.fontSize=fs+'px';
+ fs=Math.max(170,Math.min(600,fs*980/g.offsetWidth)); g.style.fontSize=fs+'px';
+ const h=g.offsetHeight; let top=200;
+ if(fg){const tp=fg.dataset.tops.split(',').map(Number).slice(38,232); const ct=Math.min(...tp); top=Math.max(80,Math.min(620,ct-h*0.5));}
+ g.style.top=top+'px';});
+ document.querySelectorAll('section').forEach(sec=>{
  const fg=sec.querySelector('.fg'), tx=sec.querySelector('.sr'); if(!fg||!tx) return;
  if(tx.dataset.pos!=='top'){fg.remove();return;}
  const tops=fg.dataset.tops.split(',').map(Number);
