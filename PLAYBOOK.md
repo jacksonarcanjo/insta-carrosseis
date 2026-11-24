@@ -48,6 +48,21 @@ dois posts seguidos com a mesma palavra no gancho. Formatos (todos usam o mesmo 
 Em cada formato o último slide fecha com virada + "Siga @darkgoodvibes". Registre o formato usado em `history.json` (`"formato"`).
 Mude também o comprimento: posts de 5, 6, 7 ou 8 slides.
 
+## 2-bis. Regras de riqueza visual (pedido do dono: menos genérico, mais texto, mais "enfeite")
+- **Imagem ESPECÍFICA, nunca genérica:** cada slide mostra o personagem/cena citada (ex.: Frieren diante da estátua do
+  Himmel, Luffy segurando o Ace). Busque "<personagem> <anime> <cena> screenshot". Proibido usar wallpaper genérico
+  de "garoto olhando o pôr do sol" ou arte de IA sem personagem reconhecível. Só use cena genérica na capa/fechamento.
+- **Mais texto:** todo slide (menos a capa) tem `tag` + `head` + `body`.
+  - `tag`: etiqueta curta em caixa alta com anime e personagem ("Naruto · Jiraiya"); na capa, "5 histórias sobre ...".
+  - `head`: 4 a 7 palavras, com 1 trecho em `**negrito**`.
+  - `body`: 2 frases (20 a 35 palavras) com 1 ou 2 trechos em `**negrito**` (viram amarelo).
+- **Enfeites automáticos** (config `decor`): moldura dupla, cantos amarelos, @ no topo, contador 01/07, bolinhas de
+  progresso, setinha →, divisor amarelo e degradê escuro atrás do texto. Não desligue.
+- **Posição do texto:** `"pos": "top"` quando o rosto está embaixo; **`"pos": "bottom"` quando o rosto/personagem
+  está na parte de cima da imagem** (o degradê escuro acompanha). Nunca deixe o texto cobrir o rosto.
+- Com `body`, o efeito de camadas (texto atrás do personagem) é desligado sozinho; sem `body` ele continua valendo.
+- Confira no preview: texto legível sobre qualquer fundo (se o fundo for claro e confuso, troque a imagem ou `pos`).
+
 ## 2a. Formato dos slides (estilo atual: "serie", inspirado em @psico.tsu)
 - Layout "serie" (kicker + head gigante). No formato 6 o `"kicker"` fica no spec e se repete em todos os slides; nos outros
   formatos defina `kicker` slide a slide (ou nenhum). Exemplo do formato 6:

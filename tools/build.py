@@ -139,7 +139,7 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 /* estilo "serie" (psico.tsu): gancho com pesos misturados + frase gigante minuscula apertada, centralizado */
 .sr{position:absolute;left:56px;right:56px;z-index:5;color:#fff;text-align:center;
  text-shadow:0 2px 3px rgba(0,0,0,.35),0 0 26px rgba(0,0,0,.35)}
-.sr-top{top:215px}.sr-mid{top:50%;transform:translateY(-50%)}.sr-bottom{bottom:130px}
+.sr-top{top:215px}.sr-mid{top:50%;transform:translateY(-50%)}.sr-bottom{bottom:120px}
 .sr .lg{font:300 32px Pp;letter-spacing:-.02em;margin-bottom:26px;opacity:.95}
 .sr .lg b{font-weight:600}
 .sr .k{font:300 50px/1.05 Pp;letter-spacing:-.045em}
@@ -149,6 +149,24 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 .sr .bd b{font-weight:600}
 .sr .bd p+p{margin-top:24px}
 .fg{z-index:6;filter:saturate(.92) contrast(.96) brightness(1.02)}
+/* decoracao: moldura, cantos, contador, etiqueta, divisor */
+.dec{position:absolute;inset:0;z-index:7;pointer-events:none;color:#fff}
+.dec .fr{position:absolute;inset:24px;border:2px solid rgba(255,255,255,.8);border-radius:4px;box-shadow:0 0 18px rgba(0,0,0,.25),inset 0 0 18px rgba(0,0,0,.18)}
+.dec .fr2{position:absolute;inset:36px;border:1px solid rgba(255,255,255,.4)}
+.dec .cn{position:absolute;width:54px;height:54px;border:0 solid #ffd23f}
+.dec .tl{top:16px;left:16px;border-top-width:6px;border-left-width:6px}.dec .tr{top:16px;right:16px;border-top-width:6px;border-right-width:6px}
+.dec .bl{bottom:16px;left:16px;border-bottom-width:6px;border-left-width:6px}.dec .br{bottom:16px;right:16px;border-bottom-width:6px;border-right-width:6px}
+.dec .tp{position:absolute;top:52px;left:70px;right:70px;display:flex;justify-content:space-between;font:600 24px Pp;letter-spacing:.12em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.dec .tp .n b{color:#ffd23f;font-weight:800}
+.dec .nx{position:absolute;bottom:52px;right:72px;font:600 26px Pp;letter-spacing:.12em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.dec .dots{position:absolute;bottom:56px;left:72px;display:flex;gap:10px}.dec .dots i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.45)}.dec .dots i.on{background:#ffd23f}
+.scrim{position:absolute;left:0;right:0;top:0;height:900px;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.66),rgba(0,0,0,.34) 58%,rgba(0,0,0,0))}
+.scrim.sb{top:auto;bottom:0;background:linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,.4) 58%,rgba(0,0,0,0))}
+.sr .tag{display:inline-block;background:#fff;color:#111;font:800 23px Pp;letter-spacing:.16em;text-transform:uppercase;padding:9px 22px 8px;border-radius:999px;margin-bottom:22px;text-shadow:none;box-shadow:0 3px 12px rgba(0,0,0,.35)}
+.sr .dv{width:96px;height:6px;border-radius:3px;background:#ffd23f;margin:26px auto 0}
+.sr.rich .hl{font-size:98px}
+.sr.rich .bd{font:600 39px/1.2 Pp;letter-spacing:-.025em;margin-top:26px;padding:0 24px;text-shadow:0 2px 3px rgba(0,0,0,.6),0 0 16px rgba(0,0,0,.5)}
+.sr.rich .bd b{font-weight:800;color:#ffd23f}
 /* variante christversions: bloco justificado, sem cor */
 .v-cv .ln{font-size:56px;line-height:1.06;text-align:justify;text-align-last:left;letter-spacing:-.025em}
 .v-cv .ln b{color:#fff}
@@ -186,13 +204,25 @@ def main(d):
                     fg = f'<img class="bg fg" src="work/fg{i}.png" data-tops="{top}">'
             pos = {'top': 'sr-top', 'mid': 'sr-mid', 'bottom': 'sr-bottom'}.get(s.get('pos', 'top'), 'sr-top')
             k = s.get('kicker', spec.get('kicker', ''))
-            inner = (f'<div class="lg">{handle}</div>' if i == 1 else '')
+            decor = spec.get('decor', cfg.get('decor', True))
+            nslides = len(spec['slides'])
+            inner = (f'<div class="lg">{handle}</div>' if (i == 1 and not decor) else '')
+            inner += (f'<div class="tag">{html.escape(s["tag"])}</div>' if s.get('tag') else '')
             inner += (f'<div class="k">{rich(k)}</div>' if k and not s.get('no_kicker') else '')
             inner += f'<div class="hl">{rich(s.get("head", ""))}</div>'
             if s.get('body'):
-                inner += '<div class="bd">' + ''.join(f'<p>{rich(x)}</p>' for x in s['body'].split('\n\n')) + '</div>'
+                inner += '<div class="dv"></div><div class="bd">' + ''.join(f'<p>{rich(x)}</p>' for x in s['body'].split('\n\n')) + '</div>'
+            dec = ''
+            if decor:
+                dots = ''.join(f'<i class="on"></i>' if j == i else '<i></i>' for j in range(1, nslides + 1))
+                dec = (f'<div class="dec"><div class="fr"></div><div class="fr2"></div>'
+                       f'<div class="cn tl"></div><div class="cn tr"></div><div class="cn bl"></div><div class="cn br"></div>'
+                       f'<div class="tp"><span>{handle}</span><span class="n"><b>{i:02d}</b> / {nslides:02d}</span></div>'
+                       f'<div class="dots">{dots}</div>' + ('<div class="nx">→</div>' if i < nslides else '') + '</div>')
+            rich_cls = ' rich' if s.get('body') else ''
             parts.append(f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}">'
-                         f'<div class="sr {pos}" data-pos="{s.get("pos", "top")}">{inner}</div>{fg}<div class="grain"></div></section>')
+                         + (f'<div class="scrim{" sb" if s.get("pos") == "bottom" else ""}"></div>' if decor else '') +
+                         f'<div class="sr {pos}{rich_cls}" data-pos="{s.get("pos", "top")}">{inner}</div>{fg}{dec}<div class="grain"></div></section>')
             continue
         if estilo == 'tarja':
             s = dict(s, mode='full')
