@@ -10,9 +10,14 @@ git pull --ff-only
 bash setup.sh
 DATE=$(TZ=America/Sao_Paulo date +%F); mkdir -p posts/$DATE
 ```
-Se `posts/$DATE/published.json` já existe, o post de hoje já saiu: pare.
-Se `posts/$DATE/spec.json` existe com `"pronto": true` e os `slide_*.jpg` estão lá, o post já foi montado e aprovado pelo dono:
-pule direto para a etapa 5 (Publicar), sem refazer nada. Sem `"pronto": true`, ignore o rascunho e faça o post do zero.
+**FLUXO "UM DIA ANTES" (regra do dono):** o post de cada dia é preparado no dia anterior, mostrado ao dono na conversa
+e só publicado no dia seguinte, para ele pedir alterações antes.
+- Se `posts/$DATE/published.json` já existe, o post de hoje já saiu: pule para a etapa 6.
+- Se `posts/$DATE/spec.json` existe e os `slide_*.jpg` estão lá (rascunho feito ontem), **publique esse post sem refazer nada**
+  (etapa 5), a menos que o spec tenha `"segurar": true` (então NÃO publique: avise o dono e pule para a etapa 6).
+  O dono pode ter mandado alterações: elas já foram aplicadas no rascunho antes deste horário.
+- Se não existe rascunho, crie o post do zero (etapas 1 a 4) e publique.
+- Depois de publicar, faça a **etapa 6: preparar o post de AMANHÃ**.
 
 ## 1. Escolher o tema
 - **Primeiro olhe `planejamento.json`:** se a `fila` tiver itens, use o **primeiro** (tema + personagens sugeridos + `nota`, se houver — a `nota` é instrução do dono e deve ser seguida;
@@ -204,6 +209,21 @@ Depois:
 3. coloque `"theme": "<tema>"` no `spec.json` do post;
 4. rode `python3 tools/dashboard.py` (atualiza o painel em `docs/`);
 5. `git add -A && git commit -m "painel $DATE" && git push origin main`.
+
+## 6. Preparar o post de AMANHÃ (1 dia antes) e mostrar ao dono
+Depois de publicar o de hoje (ou de decidir segurar), prepare o de amanhã:
+```bash
+TOM=$(TZ=America/Sao_Paulo date -d "+1 day" +%F); mkdir -p posts/$TOM
+```
+1. Repita as etapas 1 a 4 para a data `$TOM` (tema = primeiro item da `fila`; **domingo é cristão** — confira o dia da semana
+   de `$TOM`; formato e layouts diferentes dos posts recentes). Remova o item usado da `fila` e reponha a fila.
+2. Salve `"pronto": true` e `"theme"`/`"formato"` no `spec.json`, apague `work/` e `search/`, faça commit e push
+   (`git add -A && git commit -m "rascunho $TOM" && git push origin main`). NÃO publique no Instagram.
+3. **Envie ao dono, na conversa** (ferramenta SendUserFile): todos os `slide_*.jpg` de `$TOM` + `caption.txt`, com uma mensagem curta:
+   tema, formato, e "sai amanhã às 19h; se quiser mudar algo, me avise antes".
+4. Registre em `runs.json` uma linha de status `"rascunho"` para `$TOM`, rode `python3 tools/dashboard.py`, commit e push.
+Se o dono pedir alterações (na conversa), aplique no `spec.json` de `$TOM`, rode `tools/build.py` de novo, mostre de novo e faça commit/push.
+Se ele pedir para segurar, ponha `"segurar": true` no spec.
 
 ## Se algo der errado
 **Sempre** registre a execução, mesmo com erro: acrescente em `runs.json`
