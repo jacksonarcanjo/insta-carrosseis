@@ -46,5 +46,11 @@
   "status": "ok",
   "mensagem": "Pare de se comparar",
   "link": "https://www.instagram.com/p/DgDzdJaIET4/"
+ },
+ {
+  "data": "2026-11-23",
+  "quando": "23/11/2026 18:40",
+  "status": "pulado",
+  "mensagem": "Execução não rodou: a sessão que dispara a tarefa estava parada e o aviso só chegou depois das 00h. Nenhum post foi feito."
  }
 ]

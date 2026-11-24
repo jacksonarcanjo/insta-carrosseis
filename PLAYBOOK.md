@@ -34,8 +34,23 @@ Temas: motivação, superação, amizade, ansiedade, autoestima, solidão, recom
 persistência, medo de falhar, comparação com os outros, família, luto, paciência consigo mesmo,
 sonhos, disciplina, gratidão, coragem, ser gentil, aceitar ajuda, crescer, perdoar, propósito.
 
-## 2. Formato dos slides (estilo atual: "serie", inspirado em @psico.tsu)
-- O post é uma **série com gancho fixo** (`"kicker"` no spec, repetido em todos os slides), ex.:
+## 2. VARIE O FORMATO (regra do dono: não repetir "Você ... quando..." todo dia)
+O gancho "Você **sabe que...** quando..." é só UM dos formatos. Antes de escrever, olhe `history.json` (campo `formato`)
+e escolha um formato DIFERENTE dos 2 últimos posts. "Você ... quando" no máximo 1 vez por semana. Nunca comece
+dois posts seguidos com a mesma palavra no gancho. Formatos (todos usam o mesmo layout/estilo do build; muda o texto):
+1. **lista** — capa: `kicker` curto + `head` tipo "5 animes para ver quando precisar **chorar**". Slides: `kicker` = "1. Nome do anime"
+   (em cada slide, diferente), `head` = 1 frase sobre por que vale. Último: pergunta "qual faltou?".
+2. **personagem** — cada slide é um personagem: `kicker` = "o que o **Nome** ensinou sobre ..." e `head` = a lição, curta.
+3. **pergunta** — `head` são perguntas que o leitor se faz ("e se você já for **suficiente**?"), sem kicker; o fecho responde.
+4. **carta** — "Carta para quem está ...": slides são frases diretas, em sequência, como uma carta (kicker só no primeiro).
+5. **frase** — uma frase marcante de personagem (parafraseada, nunca copiada literal) por slide, `kicker` = nome do personagem.
+6. **serie** — "Você ... quando..." (limitado a 1 por semana).
+Em cada formato o último slide fecha com virada + "Siga @darkgoodvibes". Registre o formato usado em `history.json` (`"formato"`).
+Mude também o comprimento: posts de 5, 6, 7 ou 8 slides.
+
+## 2a. Formato dos slides (estilo atual: "serie", inspirado em @psico.tsu)
+- Layout "serie" (kicker + head gigante). No formato 6 o `"kicker"` fica no spec e se repete em todos os slides; nos outros
+  formatos defina `kicker` slide a slide (ou nenhum). Exemplo do formato 6:
   "Você **sabe que perdeu** quando...", "Você **sabe que está crescendo** quando...", "Sinais de que **você está se curando**...".
   Use `**negrito**` em 2–4 palavras do meio do gancho (o resto sai em letra fina).
 - Cada slide tem uma `"head"`: frase curta (3 a 7 palavras), minúscula, que completa o gancho e termina com ponto.
