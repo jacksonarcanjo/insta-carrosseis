@@ -54,9 +54,16 @@
   "mensagem": "Execução não rodou: a sessão que dispara a tarefa estava parada e o aviso só chegou depois das 00h. Nenhum post foi feito."
  },
  {
+  "data": "2026-11-24",
+  "quando": "24/11/2026 18:42",
+  "status": "ok",
+  "mensagem": "Saudade de quem se foi",
+  "link": "https://www.instagram.com/p/DgI8ifdl2Dq/"
+ },
+ {
   "data": "2026-11-25",
   "quando": "24/11/2026 (rascunho)",
   "status": "rascunho",
-  "mensagem": "Rascunho de 25/11 pronto para aprovação: Disciplina vence talento (lista, 7 slides)"
+  "mensagem": "Rascunho de 25/11 pronto e já mostrado ao dono: Disciplina vence talento"
  }
 ]

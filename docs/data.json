@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-24T14:42:00+00:00",
+ "gerado_em": "2026-11-24T21:42:34+00:00",
  "config": {
   "handle": "@darkgoodvibes",
   "post_time": "19:00",
@@ -8,9 +8,9 @@
  },
  "conta": {
   "id": "17841467782877912",
-  "followers_count": 27,
-  "media_count": 26,
-  "profile_picture_url": "https://scontent-ord5-1.xx.fbcdn.net/v/t51.82787-15/625763579_17916410853259430_5585289471691086198_n.jpg?_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=7d201b&_nc_ohc=4K0xZ_pXZaMQ7kNvwGmqqnC&_nc_oc=AdqV1_vQbBVbo0RhBavx0a9ui9-OyQM7Gv2SY-csPQ3G8LHa4m-I0p2MCYqP1lLZQDk&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AJ-jyNUEAAAA&_nc_gid=a5Wut62VauhS982nRaJoxw&oh=00_AQT-7HMa36mb7WmuHFxCkoC9A-p0rFGUNLRDLp5XmalK9Q&oe=6B09501E",
+  "followers_count": 26,
+  "media_count": 27,
+  "profile_picture_url": "https://scontent-ord5-1.xx.fbcdn.net/v/t51.82787-15/625763579_17916410853259430_5585289471691086198_n.jpg?_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=7d201b&_nc_ohc=BN8qUpZ6FikQ7kNvwFDfriS&_nc_oc=AdqL1Meks6Fvk0c-shzVnWK7wDEApWsmx1DdRY8dJuKBeQpk8qjn1VljRxw5_Abx8NA&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AJ-jyNUEAAAA&_nc_gid=-BeYW9M7mm6u5nP85G_i0Q&oh=00_AQRZb1q7zN23CBF2JC6fHR4cp4TDAMpY1ytp5t-weG7R5Q&oe=6B0BF31E",
   "username": "darkgoodvibes"
  },
  "metricas": {
@@ -31,10 +31,14 @@
    "comentarios": 0
   },
   "17914680696576403": {
-   "curtidas": 0,
+   "curtidas": 1,
    "comentarios": 0
   },
   "18115162238168324": {
+   "curtidas": 0,
+   "comentarios": 0
+  },
+  "17905233867655979": {
    "curtidas": 0,
    "comentarios": 0
   }
@@ -45,7 +49,14 @@
    "data": "2026-11-25",
    "quando": "24/11/2026 (rascunho)",
    "status": "rascunho",
-   "mensagem": "Rascunho de 25/11 pronto para aprovação: Disciplina vence talento (lista, 7 slides)"
+   "mensagem": "Rascunho de 25/11 pronto e já mostrado ao dono: Disciplina vence talento"
+  },
+  {
+   "data": "2026-11-24",
+   "quando": "24/11/2026 18:42",
+   "status": "ok",
+   "mensagem": "Saudade de quem se foi",
+   "link": "https://www.instagram.com/p/DgI8ifdl2Dq/"
   },
   {
    "data": "2026-11-23",
@@ -204,7 +215,25 @@
    ],
    "legenda": "Ninguém te prepara para o dia em que uma música, um cheiro ou uma data qualquer faz a saudade chegar sem aviso 🌙\n\nEla aparece no meio do trabalho, numa mensagem antiga que você nunca apagou, no caminho que sempre fazia com aquela pessoa. E o mais difícil é que o resto do mundo segue andando como se nada tivesse acontecido.\n\nNa psicologia, o luto não é um problema para resolver. É a forma que o amor encontra de continuar existindo quando a pessoa já não está por perto 💭\n\nPor isso não existe prazo certo. Tem gente que sente com força nos primeiros meses, outros só anos depois, num dia aparentemente comum. Não significa que você está atrasado para superar. Significa que o vínculo era real.\n\nO que costuma ajudar: contar histórias sobre quem se foi, guardar um objeto que tenha significado, manter um pequeno ritual (acender uma vela, ouvir a música preferida). E, se a dor pesar demais, procurar um psicólogo é cuidado, não fraqueza ✨\n\nTalvez a saudade nunca vá embora por completo. Talvez ela só mude de lugar, e deixe de doer e passe a aquecer.\n\nSaudade é o jeito do coração dizer: valeu a pena.\n\nDe quem você sente saudade hoje? Se quiser, conta aqui. Pode ser só o nome.\nSalva para reler num dia difícil e manda para quem precisa ouvir isso hoje.\n\nSiga @darkgoodvibes para continuar encontrando nos animes reflexões sobre a sua própria história.\n\n#anime #animes #animebrasil #otaku #saudade #luto #saudemental #frieren #onepiece #naruto #fullmetalalchemist #shigatsuwakiminouso",
    "tema": "Saudade de quem se foi",
-   "publicado": null
+   "publicado": {
+    "id": "17905233867655979",
+    "permalink": "https://www.instagram.com/p/DgI8ifdl2Dq/",
+    "timestamp": "2026-11-24T21:42:22+0000",
+    "username": "darkgoodvibes"
+   },
+   "personagens": [
+    "Frieren",
+    "Himmel",
+    "Ace",
+    "Luffy",
+    "Jiraiya",
+    "Kaori",
+    "Hughes"
+   ],
+   "metricas": {
+    "curtidas": 0,
+    "comentarios": 0
+   }
   },
   {
    "pasta": "2026-11-22",
@@ -260,7 +289,7 @@
     "Kaori"
    ],
    "metricas": {
-    "curtidas": 0,
+    "curtidas": 1,
     "comentarios": 0
    }
   },
