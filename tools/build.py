@@ -170,8 +170,8 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 /* colagem: layouts variados (fantasma, painel, quadro, frase) */
 .gw{position:absolute;left:50%;transform:translateX(-50%);z-index:3;font:400 420px/.82 A;text-transform:uppercase;white-space:nowrap;color:#fff;letter-spacing:.01em;text-shadow:0 6px 40px rgba(0,0,0,.25)}
 .gw.ol{color:transparent;-webkit-text-stroke:5px #fff;text-shadow:none}
-.cshade{position:absolute;inset:0;z-index:2;background:linear-gradient(0deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.46) 30%,rgba(0,0,0,0) 56%)}
-.cshade.t{background:linear-gradient(180deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.46) 30%,rgba(0,0,0,0) 56%)}
+.cshade{position:absolute;inset:0;z-index:2;background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.66) 26%,rgba(0,0,0,.25) 46%,rgba(0,0,0,0) 62%)}
+.cshade.t{background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.66) 26%,rgba(0,0,0,.25) 46%,rgba(0,0,0,0) 62%)}
 .ccap{position:absolute;left:72px;right:72px;bottom:92px;z-index:9;color:#fff}
 .ccap.t{bottom:auto;top:92px}
 .ctag{display:inline-block;background:#ffd23f;color:#111;font:800 22px Pp;letter-spacing:.16em;text-transform:uppercase;padding:8px 20px 7px;margin-bottom:20px}
@@ -190,7 +190,7 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 .cpan .tx b{font-weight:600;background:linear-gradient(transparent 56%,#ffd23f 56%)}
 .gm{mix-blend-mode:multiply!important;opacity:.35!important}
 .qm{position:absolute;top:40px;left:50px;font:400 640px/1 PF;color:rgba(255,255,255,.22);z-index:3}
-.qt{position:absolute;left:92px;right:92px;top:50%;transform:translateY(-50%);font:italic 500 76px/1.14 PF;text-align:center;color:#fff;z-index:5;text-shadow:0 3px 18px rgba(0,0,0,.6)}
+.qt{position:absolute;left:92px;right:92px;top:38%;transform:translateY(-50%);font:italic 500 76px/1.14 PF;text-align:center;color:#fff;z-index:5;text-shadow:0 3px 18px rgba(0,0,0,.6)}
 .qt b{color:#ffd23f;font-weight:500}
 .qa{position:absolute;left:0;right:0;bottom:150px;text-align:center;font:600 27px Pp;letter-spacing:.3em;text-transform:uppercase;color:#ffd23f;z-index:5}
 /* variante christversions: bloco justificado, sem cor */
@@ -236,11 +236,20 @@ def render_collage(lay, s, i, d, handle, rich, n):
     if lay == 'fantasma':
         mode, img, fill = prepare(dict(s, mode='full'), i, d)
         tops = cutout(f'{d}/{img}', f'{d}/work/fg{i}.png')
-        fg = f'<img class="bg fg" src="work/fg{i}.png" data-tops="{tops}">' if tops else ''
+        off = int(s.get('headroom', 0))
+        bgcol, bgmask = '#000', ''
+        if off:
+            imq = Image.open(f'{d}/{img}').convert('RGB')
+            a = np.asarray(imq.crop((0, 0, imq.width, max(2, int(imq.height * .03))))).reshape(-1, 3)
+            c = np.median(a, axis=0).astype(int); bgcol = '#%02x%02x%02x' % tuple(int(v) for v in c)
+            bgmask = ';-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 150px)'
+        fg = (f'<img class="bg fg" src="work/fg{i}.png" data-tops="{tops}" style="top:{off}px">' if tops else '')
         cls = 'gw ol' if s.get('outline') else 'gw'
         col = f' style="color:{s["wcolor"]}"' if s.get('wcolor') and not s.get('outline') else ''
-        return (f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}">{shade}'
-                f'<div class="{cls}"{col}>{html.escape(s.get("word", ""))}</div>{fg}{caption()}<div class="grain"></div></section>')
+        dim = s.get('dim', 0.62)
+        return (f'<section class="slide" id="s{i}" style="background:{bgcol}"><img class="bg photo" src="{img}" '
+                f'style="top:{off}px;filter:brightness({dim}) saturate(1.1){bgmask}">{shade}'
+                f'<div class="{cls}"{col} data-off="{off}" data-wk="{s.get("wk", 0.72)}">{html.escape(s.get("word", ""))}</div>{fg}{caption()}<div class="grain"></div></section>')
     if lay == 'painel':
         two = bool(s.get('src2'))
         w1, h1 = (800, 470) if two else (900, 600)
@@ -344,7 +353,7 @@ document.fonts.ready.then(()=>{document.querySelectorAll('.gw').forEach(g=>{
  const sec=g.closest('section'), fg=sec.querySelector('.fg'); let fs=420; g.style.fontSize=fs+'px';
  fs=Math.max(170,Math.min(600,fs*980/g.offsetWidth)); g.style.fontSize=fs+'px';
  const h=g.offsetHeight; let top=200;
- if(fg){const tp=fg.dataset.tops.split(',').map(Number).slice(38,232); const ct=Math.min(...tp); top=Math.max(80,Math.min(620,ct-h*0.5));}
+ if(fg){const tp=fg.dataset.tops.split(',').map(Number).slice(38,232); const ct=Math.min(...tp)+parseFloat(g.dataset.off||0); top=Math.max(70,Math.min(700,ct-h*parseFloat(g.dataset.wk||0.72)));}
  g.style.top=top+'px';});
  document.querySelectorAll('section').forEach(sec=>{
  const fg=sec.querySelector('.fg'), tx=sec.querySelector('.sr'); if(!fg||!tx) return;

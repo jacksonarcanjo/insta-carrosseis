@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-22T21:46:59+00:00",
+ "gerado_em": "2026-11-24T14:42:00+00:00",
  "config": {
   "handle": "@darkgoodvibes",
   "post_time": "19:00",
@@ -41,6 +41,18 @@
  },
  "erro_api": null,
  "execucoes": [
+  {
+   "data": "2026-11-25",
+   "quando": "24/11/2026 (rascunho)",
+   "status": "rascunho",
+   "mensagem": "Rascunho de 25/11 pronto para aprovação: Disciplina vence talento (lista, 7 slides)"
+  },
+  {
+   "data": "2026-11-23",
+   "quando": "23/11/2026 18:40",
+   "status": "pulado",
+   "mensagem": "Execução não rodou: a sessão que dispara a tarefa estava parada e o aviso só chegou depois das 00h. Nenhum post foi feito."
+  },
   {
    "data": "2026-11-22",
    "quando": "22/11/2026 18:46",
@@ -92,16 +104,6 @@
  ],
  "fila": [
   {
-   "tema": "Saudade de quem se foi",
-   "personagens": [
-    "Frieren e Himmel",
-    "Ace",
-    "Jiraiya",
-    "Kaori",
-    "Maes Hughes"
-   ]
-  },
-  {
    "tema": "Disciplina vence talento",
    "personagens": [
     "Rock Lee",
@@ -142,6 +144,17 @@
    ]
   },
   {
+   "tema": "Fé quando tudo parece silêncio",
+   "personagens": [
+    "Frieren",
+    "Tanjiro",
+    "Violet Evergarden",
+    "Naruto",
+    "Luffy"
+   ],
+   "nota": "Post cristão de domingo (29/11): anime como ponte para falar de fé e esperança em Deus nos dias de silêncio. 1–2 versículos com referência exata e texto fiel (ex.: Salmos 46:10, Isaías 40:31). Tom acolhedor, sem polêmica. Hashtags #jesus #fé #deus #cristão + anime."
+  },
+  {
    "tema": "Gratidão pelas pequenas coisas",
    "personagens": [
     "Frieren",
@@ -152,18 +165,47 @@
    ]
   },
   {
-   "tema": "Fé quando tudo parece silêncio",
+   "tema": "Coragem de pedir ajuda",
    "personagens": [
-    "Frieren",
+    "Shinji",
     "Tanjiro",
-    "Violet Evergarden",
-    "Naruto",
-    "Luffy"
-   ],
-   "nota": "Post cristão de domingo (29/11): anime como ponte para falar de fé e esperança em Deus nos dias de silêncio. 1–2 versículos com referência exata e texto fiel (ex.: Salmos 46:10, Isaías 40:31). Tom acolhedor, sem polêmica. Hashtags #jesus #fé #deus #cristão + anime."
+    "Gon",
+    "Mikasa",
+    "Shoyo"
+   ]
   }
  ],
  "posts": [
+  {
+   "pasta": "2026-11-25",
+   "slides": [
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_01.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_02.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_03.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_04.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_05.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_06.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_07.jpg"
+   ],
+   "legenda": "Tem dias em que a vontade simplesmente não aparece, e a gente descobre que esperar por ela pode custar anos 🌙\n\nVocê promete que começa na segunda, depois no mês que vem, depois quando as coisas se acalmarem. E o curioso é que quem consegue o que quer raramente é quem sentiu mais vontade, é quem fez mesmo sem sentir.\n\nA motivação funciona como o clima: vem e vai, e você não escolhe. Já a disciplina é mais parecida com um hábito de escovar os dentes. Na psicologia, a gente sabe que comportamentos repetidos no mesmo contexto vão ficando automáticos, e o cérebro gasta cada vez menos energia para fazê-los 💭\n\nPor isso a pergunta mais útil não é \"como me sentir motivado?\", e sim \"qual é a menor versão disso que eu consigo fazer hoje?\". Dez minutos de estudo. Cinco de caminhada. Uma página escrita. Parece pouco, e é justamente o pouco que sobrevive aos dias ruins.\n\nTambém ajuda tirar a decisão do caminho: escolher o horário na véspera, deixar o tênis ou o caderno à vista, avisar alguém. Quanto menos você negocia consigo mesmo, menos o cansaço ganha.\n\nIsso não significa que você precisa render o tempo todo, nem que descansar seja fracasso. Descanso planejado faz parte do processo. Significa reconhecer que a constância vale mais do que a empolgação ✨\n\nTalvez o seu objetivo não precise de mais inspiração. Talvez só precise de mais um dia em que você apareceu.\n\nO talento chama atenção. A constância constrói o resultado.\n\nQual hábito você quer começar a construir essa semana? Conta aqui, pode ajudar alguém a decidir também.\nSalva para reler num dia sem vontade e manda para quem precisa ouvir isso hoje.\n\nSiga @darkgoodvibes para continuar encontrando nos animes reflexões sobre a sua própria história.\n\n#anime #animes #animebrasil #otaku #disciplina #constancia #habitos #rocklee #onepunchman #blackclover #demonslayer #sololeveling",
+   "tema": "Disciplina vence talento",
+   "publicado": null
+  },
+  {
+   "pasta": "2026-11-24",
+   "slides": [
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-24/slide_01.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-24/slide_02.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-24/slide_03.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-24/slide_04.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-24/slide_05.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-24/slide_06.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-24/slide_07.jpg"
+   ],
+   "legenda": "Ninguém te prepara para o dia em que uma música, um cheiro ou uma data qualquer faz a saudade chegar sem aviso 🌙\n\nEla aparece no meio do trabalho, numa mensagem antiga que você nunca apagou, no caminho que sempre fazia com aquela pessoa. E o mais difícil é que o resto do mundo segue andando como se nada tivesse acontecido.\n\nNa psicologia, o luto não é um problema para resolver. É a forma que o amor encontra de continuar existindo quando a pessoa já não está por perto 💭\n\nPor isso não existe prazo certo. Tem gente que sente com força nos primeiros meses, outros só anos depois, num dia aparentemente comum. Não significa que você está atrasado para superar. Significa que o vínculo era real.\n\nO que costuma ajudar: contar histórias sobre quem se foi, guardar um objeto que tenha significado, manter um pequeno ritual (acender uma vela, ouvir a música preferida). E, se a dor pesar demais, procurar um psicólogo é cuidado, não fraqueza ✨\n\nTalvez a saudade nunca vá embora por completo. Talvez ela só mude de lugar, e deixe de doer e passe a aquecer.\n\nSaudade é o jeito do coração dizer: valeu a pena.\n\nDe quem você sente saudade hoje? Se quiser, conta aqui. Pode ser só o nome.\nSalva para reler num dia difícil e manda para quem precisa ouvir isso hoje.\n\nSiga @darkgoodvibes para continuar encontrando nos animes reflexões sobre a sua própria história.\n\n#anime #animes #animebrasil #otaku #saudade #luto #saudemental #frieren #onepiece #naruto #fullmetalalchemist #shigatsuwakiminouso",
+   "tema": "Saudade de quem se foi",
+   "publicado": null
+  },
   {
    "pasta": "2026-11-22",
    "slides": [

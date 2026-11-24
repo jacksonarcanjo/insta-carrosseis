@@ -1,0 +1,71 @@
+{
+ "theme": "Disciplina vence talento",
+ "formato": "lista",
+ "estilo": "serie",
+ "slides": [
+  {
+   "layout": "fantasma",
+   "src": "https://i.pinimg.com/originals/e8/49/6c/e8496c6cd0b2fc68d0c51752868230b2.jpg",
+   "word": "disciplina",
+   "pos": "bottom",
+   "tag": "5 personagens",
+   "head": "que provaram que **talento não é tudo**",
+   "dim": 0.75,
+   "wk": 0.78,
+   "headroom": 250
+  },
+  {
+   "layout": "painel",
+   "src": "https://i.pinimg.com/originals/c4/d3/3c/c4d33c316555e4d5ab040a9ce549707f.jpg",
+   "src2": "https://i.pinimg.com/originals/2f/3c/be/2f3cbe6ddde72b5a3b4c8793a1bc3ce8.webp",
+   "tag": "Naruto · Rock Lee",
+   "head": "1. rock lee **não tinha talento**",
+   "body": "Lee não conseguia usar ninjutsu nem genjutsu. Em vez de desistir, treinou com pesos nas pernas até o corpo aprender o que a natureza não deu. **Esforço também é um tipo de dom.**"
+  },
+  {
+   "layout": "quadro",
+   "src": "https://i.pinimg.com/originals/21/00/d9/2100d9b1c6ba01e4c2a117ceb61460dc.jpg",
+   "src2": "https://i.pinimg.com/originals/12/49/cf/1249cfce4d226e93106a54957e89e518.jpg",
+   "side": "left",
+   "tag": "One Punch Man · Saitama",
+   "head": "2. saitama e a **rotina chata**",
+   "body": "100 flexões, 100 abdominais, 100 agachamentos e 10 km de corrida. **Todo dia,** sem exceção. Ele não ficou forte num dia, ficou forte repetindo."
+  },
+  {
+   "layout": "fantasma",
+   "src": "https://i.pinimg.com/originals/f0/24/27/f02427896f592b04bba2ee9ef80ed9b3.jpg",
+   "word": "asta",
+   "outline": true,
+   "pos": "bottom",
+   "tag": "Black Clover · Asta",
+   "head": "3. nasceu **sem magia nenhuma**",
+   "body": "Num mundo onde todos tinham magia, Asta treinou o corpo até ficar do tamanho do sonho dele. **Não escolheu o ponto de partida, escolheu o esforço.**",
+   "wk": 0.78,
+   "headroom": 230,
+   "dim": 0.85
+  },
+  {
+   "src": "https://i.pinimg.com/originals/85/20/9b/85209ba794c0ee511da5c2053fe9a145.jpg",
+   "pos": "top",
+   "kicker": "4. Tanjiro Kamado",
+   "head": "treinou até a **pedra ceder**",
+   "body": "Para cortar uma pedra gigante, Tanjiro repetiu o mesmo golpe por meses, errou muitas vezes e **continuou até o corpo entender.**"
+  },
+  {
+   "layout": "painel",
+   "src": "https://i.pinimg.com/originals/17/07/be/1707be682b05cd38dd1c6bafa9bc9ed5.jpg",
+   "src2": "https://i.pinimg.com/originals/6f/e4/4a/6fe44ae47c5023c183831ea4c3469be0.jpg",
+   "tag": "Solo Leveling · Sung Jin-Woo",
+   "head": "5. o **mais fraco** que ficou mais forte",
+   "body": "Sung Jin-Woo começou como o caçador mais fraco de todos e evoluiu um treino de cada vez. Ninguém acreditava, mas **ele aparecia todo dia.**"
+  },
+  {
+   "layout": "frase",
+   "src": "https://i.pinimg.com/originals/cd/46/f6/cd46f6a8ba913b1386bcfffd8e4e2346.jpg",
+   "text": "Talento abre a porta. **Disciplina é quem entra** e fica.",
+   "autor": "Siga @darkgoodvibes"
+  }
+ ],
+ "caption": "Tem dias em que a vontade simplesmente não aparece, e a gente descobre que esperar por ela pode custar anos 🌙\n\nVocê promete que começa na segunda, depois no mês que vem, depois quando as coisas se acalmarem. E o curioso é que quem consegue o que quer raramente é quem sentiu mais vontade, é quem fez mesmo sem sentir.\n\nA motivação funciona como o clima: vem e vai, e você não escolhe. Já a disciplina é mais parecida com um hábito de escovar os dentes. Na psicologia, a gente sabe que comportamentos repetidos no mesmo contexto vão ficando automáticos, e o cérebro gasta cada vez menos energia para fazê-los 💭\n\nPor isso a pergunta mais útil não é \"como me sentir motivado?\", e sim \"qual é a menor versão disso que eu consigo fazer hoje?\". Dez minutos de estudo. Cinco de caminhada. Uma página escrita. Parece pouco, e é justamente o pouco que sobrevive aos dias ruins.\n\nTambém ajuda tirar a decisão do caminho: escolher o horário na véspera, deixar o tênis ou o caderno à vista, avisar alguém. Quanto menos você negocia consigo mesmo, menos o cansaço ganha.\n\nIsso não significa que você precisa render o tempo todo, nem que descansar seja fracasso. Descanso planejado faz parte do processo. Significa reconhecer que a constância vale mais do que a empolgação ✨\n\nTalvez o seu objetivo não precise de mais inspiração. Talvez só precise de mais um dia em que você apareceu.\n\nO talento chama atenção. A constância constrói o resultado.\n\nQual hábito você quer começar a construir essa semana? Conta aqui, pode ajudar alguém a decidir também.\nSalva para reler num dia sem vontade e manda para quem precisa ouvir isso hoje.\n\nSiga @darkgoodvibes para continuar encontrando nos animes reflexões sobre a sua própria história.\n\n#anime #animes #animebrasil #otaku #disciplina #constancia #habitos #rocklee #onepunchman #blackclover #demonslayer #sololeveling",
+ "pronto": true
+}

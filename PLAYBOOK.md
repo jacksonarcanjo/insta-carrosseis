@@ -57,7 +57,7 @@ Mude também o comprimento: posts de 5, 6, 7 ou 8 slides.
 Cada slide escolhe um `"layout"` no spec. **Misture pelo menos 3 layouts diferentes por post** e nunca use o mesmo
 layout em mais de 2 slides seguidos. A moldura de cantos (`"moldura": true`) só pode aparecer em NO MÁXIMO 1 slide por post.
 - `"fantasma"`: imagem inteira + **palavra gigante atrás do personagem** (`"word": "saudade"`, `"outline": true` deixa só
-  o contorno, `"wcolor"` muda a cor). O personagem recortado passa NA FRENTE das letras. Legenda embaixo
+  o contorno, `"wcolor"` muda a cor, `"wk"` 0.6–0.9 = quanto da palavra fica ACIMA da cabeça: maior = mais legível; `"dim"` escurece o fundo, `"headroom": 230` abre espaço de cor em cima da imagem para a palavra ficar acima da cabeça — USE SEMPRE no layout fantasma). A palavra precisa ficar LEGÍVEL: se a cabeça esconder mais de 1 letra, aumente `wk` ou troque a imagem (prefira personagem que não ocupa a imagem toda). O personagem recortado passa NA FRENTE das letras. Legenda embaixo
   (`tag`, `head`, `body`; `"pos": "top"` leva para cima). Use em capas e em imagens com personagem grande no centro.
 - `"painel"`: página de **revista/papel** (fundo creme): título condensado em caixa alta (`head`, palavra em `**negrito**`
   fica vermelha), **imagem pequena emoldurada** inclinada (`src`; `fy`/`fx` ajustam o recorte), opcionalmente uma

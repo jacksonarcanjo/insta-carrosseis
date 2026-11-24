@@ -1,0 +1,133 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+@font-face{font-family:T;font-weight:600;src:url(../../assets/fonts/inter-tight-latin-600-normal.woff2)}
+@font-face{font-family:T;font-weight:700;src:url(../../assets/fonts/inter-tight-latin-700-normal.woff2)}
+@font-face{font-family:C;font-style:italic;font-weight:500;src:url(../../assets/fonts/cormorant-garamond-latin-500-italic.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;align-items:center}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:#3d6f92;font-family:T;color:#fff}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo{filter:saturate(.92) contrast(.96) brightness(1.02)}
+.low{position:absolute;left:0;bottom:0;width:1080px;height:900px;object-fit:cover;filter:saturate(.92) contrast(.96);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%)}
+.wash{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,.08) 45%,rgba(0,0,0,0) 60%)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.32;mix-blend-mode:overlay;z-index:8;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1.5 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>")}
+.txt{position:absolute;top:270px;left:92px;right:92px;z-index:5;text-shadow:0 2px 14px rgba(0,0,0,.28)}
+.h{font:italic 500 26px C;opacity:.9;margin-bottom:14px}
+.p{font-weight:700;font-size:56px;line-height:1.04;letter-spacing:-.02em;word-spacing:.02em;text-align:justify;text-align-last:left;hyphens:none}
+.cover .p{text-align:center;text-align-last:center}
+/* estilo "tarja" (nome mantido): imagem inteira, texto branco solto com sombra forte, sem tarja */
+.tj{position:absolute;left:72px;right:72px;z-index:5;color:#fff}
+.tj-top{top:96px}.tj-bottom{bottom:96px}
+.tj .hd{font:italic 500 28px C;margin-bottom:12px;text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 14px rgba(0,0,0,.6)}
+.tj .ln{margin:0;font:700 52px/1.18 T;letter-spacing:-.02em;
+ text-shadow:0 2px 2px rgba(0,0,0,.55),0 0 6px rgba(0,0,0,.55),0 0 22px rgba(0,0,0,.45);-webkit-text-stroke:.6px rgba(0,0,0,.25)}
+.tj .ln b{color:#ffd23f}
+.tj .tt{font-size:100px;line-height:1.02;letter-spacing:-.04em}
+.tj .tt b{color:#ffd23f}
+.tj .st{margin-top:14px;font-size:44px;font-weight:600}
+@font-face{font-family:A;src:url(../../assets/fonts/anton-latin-400-normal.woff2)}
+@font-face{font-family:PF;font-weight:500;src:url(../../assets/fonts/playfair-display-latin-500-normal.woff2)}
+@font-face{font-family:PF;font-weight:500;font-style:italic;src:url(../../assets/fonts/playfair-display-latin-500-italic.woff2)}
+@font-face{font-family:Pp;font-weight:300;src:url(../../assets/fonts/poppins-latin-300-normal.woff2),url(../../assets/fonts/poppins-latin-ext-300-normal.woff2)}
+@font-face{font-family:Pp;font-weight:400;src:url(../../assets/fonts/poppins-latin-400-normal.woff2),url(../../assets/fonts/poppins-latin-ext-400-normal.woff2)}
+@font-face{font-family:Pp;font-weight:600;src:url(../../assets/fonts/poppins-latin-600-normal.woff2),url(../../assets/fonts/poppins-latin-ext-600-normal.woff2)}
+@font-face{font-family:Pp;font-weight:800;src:url(../../assets/fonts/poppins-latin-800-normal.woff2),url(../../assets/fonts/poppins-latin-ext-800-normal.woff2)}
+/* estilo "serie" (psico.tsu): gancho com pesos misturados + frase gigante minuscula apertada, centralizado */
+.sr{position:absolute;left:56px;right:56px;z-index:5;color:#fff;text-align:center;
+ text-shadow:0 2px 3px rgba(0,0,0,.35),0 0 26px rgba(0,0,0,.35)}
+.sr-top{top:215px}.sr-mid{top:50%;transform:translateY(-50%)}.sr-bottom{bottom:120px}
+.sr .lg{font:300 32px Pp;letter-spacing:-.02em;margin-bottom:26px;opacity:.95}
+.sr .lg b{font-weight:600}
+.sr .k{font:300 50px/1.05 Pp;letter-spacing:-.045em}
+.sr .k b{font-weight:600}
+.sr .hl{font:800 118px/.86 Pp;letter-spacing:-.065em;margin-top:6px;text-transform:lowercase}
+.sr .bd{font:300 34px/1.02 Pp;letter-spacing:-.05em;margin-top:26px;padding:0 30px}
+.sr .bd b{font-weight:600}
+.sr .bd p+p{margin-top:24px}
+.fg{z-index:6;filter:saturate(.92) contrast(.96) brightness(1.02)}
+/* decoracao: moldura, cantos, contador, etiqueta, divisor */
+.dec{position:absolute;inset:0;z-index:7;pointer-events:none;color:#fff}
+.dec .fr{position:absolute;inset:24px;border:2px solid rgba(255,255,255,.8);border-radius:4px;box-shadow:0 0 18px rgba(0,0,0,.25),inset 0 0 18px rgba(0,0,0,.18)}
+.dec .fr2{position:absolute;inset:36px;border:1px solid rgba(255,255,255,.4)}
+.dec .cn{position:absolute;width:54px;height:54px;border:0 solid #ffd23f}
+.dec .tl{top:16px;left:16px;border-top-width:6px;border-left-width:6px}.dec .tr{top:16px;right:16px;border-top-width:6px;border-right-width:6px}
+.dec .bl{bottom:16px;left:16px;border-bottom-width:6px;border-left-width:6px}.dec .br{bottom:16px;right:16px;border-bottom-width:6px;border-right-width:6px}
+.dec .tp{position:absolute;top:52px;left:70px;right:70px;display:flex;justify-content:space-between;font:600 24px Pp;letter-spacing:.12em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.dec .tp .n b{color:#ffd23f;font-weight:800}
+.dec .nx{position:absolute;bottom:52px;right:72px;font:600 26px Pp;letter-spacing:.12em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.dec .dots{position:absolute;bottom:56px;left:72px;display:flex;gap:10px}.dec .dots i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.45)}.dec .dots i.on{background:#ffd23f}
+.scrim{position:absolute;left:0;right:0;top:0;height:900px;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.66),rgba(0,0,0,.34) 58%,rgba(0,0,0,0))}
+.scrim.sb{top:auto;bottom:0;background:linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,.4) 58%,rgba(0,0,0,0))}
+.sr .tag{display:inline-block;background:#fff;color:#111;font:800 23px Pp;letter-spacing:.16em;text-transform:uppercase;padding:9px 22px 8px;border-radius:999px;margin-bottom:22px;text-shadow:none;box-shadow:0 3px 12px rgba(0,0,0,.35)}
+.sr .dv{width:96px;height:6px;border-radius:3px;background:#ffd23f;margin:26px auto 0}
+.sr.rich .hl{font-size:98px}
+.sr.rich .bd{font:600 39px/1.2 Pp;letter-spacing:-.025em;margin-top:26px;padding:0 24px;text-shadow:0 2px 3px rgba(0,0,0,.6),0 0 16px rgba(0,0,0,.5)}
+.sr.rich .bd b{font-weight:800;color:#ffd23f}
+/* colagem: layouts variados (fantasma, painel, quadro, frase) */
+.gw{position:absolute;left:50%;transform:translateX(-50%);z-index:3;font:400 420px/.82 A;text-transform:uppercase;white-space:nowrap;color:#fff;letter-spacing:.01em;text-shadow:0 6px 40px rgba(0,0,0,.25)}
+.gw.ol{color:transparent;-webkit-text-stroke:5px #fff;text-shadow:none}
+.cshade{position:absolute;inset:0;z-index:2;background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.66) 26%,rgba(0,0,0,.25) 46%,rgba(0,0,0,0) 62%)}
+.cshade.t{background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.66) 26%,rgba(0,0,0,.25) 46%,rgba(0,0,0,0) 62%)}
+.ccap{position:absolute;left:72px;right:72px;bottom:92px;z-index:9;color:#fff}
+.ccap.t{bottom:auto;top:92px}
+.ctag{display:inline-block;background:#ffd23f;color:#111;font:800 22px Pp;letter-spacing:.16em;text-transform:uppercase;padding:8px 20px 7px;margin-bottom:20px}
+.ccap .hd{font:italic 500 72px/1.03 PF;letter-spacing:-.012em;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.ccap .bd{font:500 35px/1.26 Pp;letter-spacing:-.015em;margin-top:20px;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.ccap b{color:#ffd23f;font-weight:700}
+.cpan{background:#f1ece2;color:#151515}
+.cpan .pt{position:absolute;top:60px;left:84px;right:84px;display:flex;justify-content:space-between;font:italic 500 25px PF;letter-spacing:.04em;color:#555}
+.cpan .col{position:absolute;left:84px;right:84px;top:112px;bottom:70px;display:flex;flex-direction:column;gap:34px}
+.cpan .tt{font:400 124px/.92 A;text-transform:uppercase;letter-spacing:.005em}
+.cpan .tt b{color:#b3261e;font-weight:400}
+.fbox{position:relative;flex:none}
+.cfr{position:absolute;background:#fff;padding:14px;box-shadow:0 14px 34px rgba(0,0,0,.3);z-index:4}
+.cfr img{display:block;width:100%;height:100%;object-fit:cover}
+.cpan .tx{font:500 40px/1.27 PF;text-align:justify;hyphens:none;color:#1b1b1b}
+.cpan .tx b{font-weight:600;background:linear-gradient(transparent 56%,#ffd23f 56%)}
+.gm{mix-blend-mode:multiply!important;opacity:.35!important}
+.qm{position:absolute;top:40px;left:50px;font:400 640px/1 PF;color:rgba(255,255,255,.22);z-index:3}
+.qt{position:absolute;left:92px;right:92px;top:38%;transform:translateY(-50%);font:italic 500 76px/1.14 PF;text-align:center;color:#fff;z-index:5;text-shadow:0 3px 18px rgba(0,0,0,.6)}
+.qt b{color:#ffd23f;font-weight:500}
+.qa{position:absolute;left:0;right:0;bottom:150px;text-align:center;font:600 27px Pp;letter-spacing:.3em;text-transform:uppercase;color:#ffd23f;z-index:5}
+/* variante christversions: bloco justificado, sem cor */
+.v-cv .ln{font-size:56px;line-height:1.06;text-align:justify;text-align-last:left;letter-spacing:-.025em}
+.v-cv .ln b{color:#fff}
+.v-cv .tt{font-size:92px;text-align:center;text-align-last:center}.v-cv .st{text-align:center;text-align-last:center}
+/* variante poetica (ocnathalie): serifada, palavra-chave em italico */
+.v-po .ln{font:500 54px/1.2 PF;letter-spacing:-.01em}
+.v-po .ln b{font-style:italic;color:#fff;font-weight:500}
+.v-po .tt{font-size:96px;line-height:1.05}.v-po .st{font:italic 500 42px PF}
+/* variante poster (frieren): condensada gigante caixa alta, creme + destaque */
+.v-ps{color:#f6ecd9}
+.v-ps .ln{font:400 64px/1.08 A;text-transform:uppercase;letter-spacing:.005em}
+.v-ps .ln b{color:#ff5fa2;font-weight:400}
+.v-ps .tt{font-size:150px;line-height:.96}.v-ps .st{font:600 40px/1.2 T;text-transform:none}
+</style></head><body><section class="slide" id="s1" style="background:#cdf8a7"><img class="bg photo" src="work/img1.jpg" style="top:250px;filter:brightness(0.75) saturate(1.1);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 150px)"><div class="cshade"></div><div class="gw" data-off="250" data-wk="0.78">disciplina</div><img class="bg fg" src="work/fg1.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,650,630,618,608,321,316,313,310,308,305,303,301,299,297,296,295,294,293,292,291,291,290,290,290,290,290,290,290,290,291,292,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,31,43,60,59,58,220,219,218,217,217,217,218,220,223,225,230,344,348,352,356,358,271,257,248,241,235,229,223,219,215,211,207,203,200,196,193,189,186,183,180,177,174,172,169,166,164,162,160,157,155,153,151,150,148,146,145,143,141,139,138,136,134,132,131,129,127,125,122,120,117,115,112,109,105,101,97,91,85,79,71,64,62,64,68,71,74,76,78,79,79,79,79,78,78,80,479,484,490,497,508,1350,1350,1350,1350,1350,1350" style="top:250px"><div class="ccap"><div class="ctag">5 personagens</div><div class="hd">que provaram que <b>talento não é tudo</b></div></div><div class="grain"></div></section><section class="slide cpan" id="s2"><div class="pt"><span>@darkgoodvibes</span><span>Naruto · Rock Lee</span></div><div class="col"><div class="tt">1. rock lee <b>não tinha talento</b></div><div class="fbox" style="height:560px"><div class="cfr" style="left:20px;top:6px;width:800px;height:470px;transform:rotate(-1.3deg)"><img src="work/p2a.jpg"></div><div class="cfr" style="right:6px;top:220px;width:280px;height:340px;transform:rotate(3.5deg)"><img src="work/p2b.jpg"></div></div><div class="tx">Lee não conseguia usar ninjutsu nem genjutsu. Em vez de desistir, treinou com pesos nas pernas até o corpo aprender o que a natureza não deu. <b>Esforço também é um tipo de dom.</b></div></div><div class="grain gm"></div></section><section class="slide" id="s3"><img class="bg photo" src="work/img3.jpg"><div class="cshade"></div><div class="cfr" style="top:120px;left:64px;width:360px;height:450px;transform:rotate(-4deg);z-index:6"><img src="work/q3.jpg"></div><div class="ccap"><div class="ctag">One Punch Man · Saitama</div><div class="hd">2. saitama e a <b>rotina chata</b></div><div class="bd">100 flexões, 100 abdominais, 100 agachamentos e 10 km de corrida. <b>Todo dia,</b> sem exceção. Ele não ficou forte num dia, ficou forte repetindo.</div></div><div class="grain"></div></section><section class="slide" id="s4" style="background:#d6c7eb"><img class="bg photo" src="work/img4.jpg" style="top:230px;filter:brightness(0.85) saturate(1.1);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 150px)"><div class="cshade"></div><div class="gw ol" data-off="230" data-wk="0.78">asta</div><img class="bg fg" src="work/fg4.png" data-tops="572,572,572,572,572,572,573,574,574,575,576,577,578,579,580,581,583,584,585,587,588,589,591,593,594,596,598,600,602,605,607,606,605,603,601,599,597,596,594,592,591,590,589,588,587,211,213,217,220,223,225,227,229,230,232,233,234,235,236,237,238,239,240,241,241,54,42,39,41,45,51,57,64,69,72,75,78,82,85,89,92,95,96,95,91,70,35,22,12,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,29,46,65,71,68,65,61,58,55,52,50,47,44,42,40,38,36,34,31,29,27,25,24,22,21,20,19,18,16,15,14,13,13,14,114,114,113,113,112,112,111,111,111,111,111,110,110,110,111,111,111,111,110,228,228,228,228,229,230,230,231,232,234,235,574,574,573,573,572,571,570,570,570,571,572,573,576,578,580,583,587,593,598,601,603,605,607,609,611,614,617,621,624,628,631,635,638,642,647,652,657,663,670,676,683,692,700,703,706,708,711,714,717,720,723,727,730,734,737,741,746,749,754,759,764,769,774,780,785,791,797,804,810,817,826,836,849,852,855,858,861,865" style="top:230px"><div class="ccap"><div class="ctag">Black Clover · Asta</div><div class="hd">3. nasceu <b>sem magia nenhuma</b></div><div class="bd">Num mundo onde todos tinham magia, Asta treinou o corpo até ficar do tamanho do sonho dele. <b>Não escolheu o ponto de partida, escolheu o esforço.</b></div></div><div class="grain"></div></section><section class="slide" id="s5"><img class="bg photo" src="work/img5.jpg"><div class="scrim"></div><div class="sr sr-top rich" data-pos="top"><div class="k">4. Tanjiro Kamado</div><div class="hl">treinou até a <b>pedra ceder</b></div><div class="dv"></div><div class="bd"><p>Para cortar uma pedra gigante, Tanjiro repetiu o mesmo golpe por meses, errou muitas vezes e <b>continuou até o corpo entender.</b></p></div></div><img class="bg fg" src="work/fg5.png" data-tops="1350,1350,1350,1350,1350,1350,1350,1350,444,418,414,409,407,408,411,416,431,441,447,453,482,489,541,541,541,541,541,541,541,540,540,539,538,537,534,532,534,532,530,528,526,524,521,519,516,514,511,509,507,505,465,467,473,500,501,502,501,501,502,503,503,504,505,506,508,509,511,513,515,512,504,496,484,514,512,508,505,500,498,495,493,490,447,447,449,450,451,448,441,427,476,476,475,473,472,469,464,459,454,450,446,442,439,437,435,434,432,431,431,430,430,428,428,428,428,427,427,429,431,431,431,433,432,429,429,428,428,433,433,434,434,435,436,440,439,437,437,438,439,439,442,443,444,446,449,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350,1350"><div class="grain"></div></section><section class="slide cpan" id="s6"><div class="pt"><span>@darkgoodvibes</span><span>Solo Leveling · Sung Jin-Woo</span></div><div class="col"><div class="tt">5. o <b>mais fraco</b> que ficou mais forte</div><div class="fbox" style="height:560px"><div class="cfr" style="left:20px;top:6px;width:800px;height:470px;transform:rotate(-1.3deg)"><img src="work/p6a.jpg"></div><div class="cfr" style="right:6px;top:220px;width:280px;height:340px;transform:rotate(3.5deg)"><img src="work/p6b.jpg"></div></div><div class="tx">Sung Jin-Woo começou como o caçador mais fraco de todos e evoluiu um treino de cada vez. Ninguém acreditava, mas <b>ele aparecia todo dia.</b></div></div><div class="grain gm"></div></section><section class="slide" id="s7"><img class="bg photo" src="work/img7.jpg" style="filter:brightness(.52) saturate(.9)"><div class="qm">&ldquo;</div><div class="qt">Talento abre a porta. <b>Disciplina é quem entra</b> e fica.</div><div class="qa">Siga @darkgoodvibes</div><div class="grain"></div></section><script>
+document.fonts.ready.then(()=>{document.querySelectorAll('.gw').forEach(g=>{
+ const sec=g.closest('section'), fg=sec.querySelector('.fg'); let fs=420; g.style.fontSize=fs+'px';
+ fs=Math.max(170,Math.min(600,fs*980/g.offsetWidth)); g.style.fontSize=fs+'px';
+ const h=g.offsetHeight; let top=200;
+ if(fg){const tp=fg.dataset.tops.split(',').map(Number).slice(38,232); const ct=Math.min(...tp)+parseFloat(g.dataset.off||0); top=Math.max(70,Math.min(700,ct-h*parseFloat(g.dataset.wk||0.72)));}
+ g.style.top=top+'px';});
+ document.querySelectorAll('section').forEach(sec=>{
+ const fg=sec.querySelector('.fg'), tx=sec.querySelector('.sr'); if(!fg||!tx) return;
+ if(tx.dataset.pos!=='top'){fg.remove();return;}
+ const tops=fg.dataset.tops.split(',').map(Number);
+ const cover=(el,dy)=>{const r=el.getBoundingClientRect(), s=sec.getBoundingClientRect();
+   const x0=r.left-s.left, x1=r.right-s.left, y0=r.top-s.top+dy, y1=r.bottom-s.top+dy; let c=0,n=0,mx=0;
+   for(let x=Math.max(0,x0);x<Math.min(1080,x1);x+=4){const t=tops[Math.floor(x/4)]; n++;
+     const f=Math.max(0,Math.min(y1,1350)-Math.max(y0,t))/(y1-y0); c+=f; mx=Math.max(mx,f);}
+   return {avg:n?c/n:0,max:mx};};
+ const hl=tx.querySelector('.hl'), k=tx.querySelector('.k'), bd=tx.querySelector('.bd'), base=tx.offsetTop;
+ const lh=parseFloat(getComputedStyle(hl).fontSize)*0.86, hr=hl.getBoundingClientRect();
+ const last={getBoundingClientRect:()=>({left:hr.left,right:hr.right,top:hr.bottom-lh,bottom:hr.bottom})};
+ const upper={getBoundingClientRect:()=>({left:hr.left,right:hr.right,top:hr.top,bottom:hr.bottom-lh})};
+ const clear=(el,dy)=>!el||cover(el,dy).max<0.02;
+ let best=null;
+ for(let top=110; top<=300; top+=10){const dy=top-base;
+   const cl=cover(last,dy);
+   if(clear(k,dy) && clear(bd,dy) && (hr.height<lh*1.3 || clear(upper,dy)) && cl.avg>=0.02 && cl.avg<=0.12 && cl.max<=0.35){best=top;break;}}
+ if(best!==null){tx.style.top=best+'px';}
+ else{tx.style.top='150px'; fg.remove();}   // sem sobreposicao boa: texto no alto, na frente
+});document.body.dataset.ready=1;});
+</script></body></html>
