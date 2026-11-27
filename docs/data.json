@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-24T21:42:34+00:00",
+ "gerado_em": "2026-11-27T21:43:36+00:00",
  "config": {
   "handle": "@darkgoodvibes",
   "post_time": "19:00",
@@ -9,8 +9,8 @@
  "conta": {
   "id": "17841467782877912",
   "followers_count": 26,
-  "media_count": 27,
-  "profile_picture_url": "https://scontent-ord5-1.xx.fbcdn.net/v/t51.82787-15/625763579_17916410853259430_5585289471691086198_n.jpg?_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=7d201b&_nc_ohc=BN8qUpZ6FikQ7kNvwFDfriS&_nc_oc=AdqL1Meks6Fvk0c-shzVnWK7wDEApWsmx1DdRY8dJuKBeQpk8qjn1VljRxw5_Abx8NA&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AJ-jyNUEAAAA&_nc_gid=-BeYW9M7mm6u5nP85G_i0Q&oh=00_AQRZb1q7zN23CBF2JC6fHR4cp4TDAMpY1ytp5t-weG7R5Q&oe=6B0BF31E",
+  "media_count": 28,
+  "profile_picture_url": "https://scontent-ord5-1.xx.fbcdn.net/v/t51.82787-15/625763579_17916410853259430_5585289471691086198_n.jpg?_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=7d201b&_nc_ohc=qH1-tKGph4UQ7kNvwEC8OTr&_nc_oc=AdqrqMFCpLdMa5ACvnFo_Mh_DFJbk3fNDIrYfMlggzoS2UxA4_F_jXmqBPDhUm6BeIQ&_nc_zt=23&_nc_ht=scontent-ord5-1.xx&edm=AJ-jyNUEAAAA&_nc_gid=QrQLS32e26ZEQivVrR1ClA&oh=00_AQXKdf3yH2Yqnk9Nqi24wJ9-8H31CJ-JmB2DgUGikJuAFg&oe=6B0FE79E",
   "username": "darkgoodvibes"
  },
  "metricas": {
@@ -39,6 +39,10 @@
    "comentarios": 0
   },
   "17905233867655979": {
+   "curtidas": 2,
+   "comentarios": 0
+  },
+  "18156326311544088": {
    "curtidas": 0,
    "comentarios": 0
   }
@@ -46,10 +50,23 @@
  "erro_api": null,
  "execucoes": [
   {
+   "data": "2026-11-27",
+   "quando": "27/11/2026 18:43",
+   "status": "ok",
+   "mensagem": "Disciplina vence talento (rascunho aprovado de 25/11, publicado hoje)",
+   "link": "https://www.instagram.com/p/DgQrCDWD29q/"
+  },
+  {
+   "data": "2026-11-26",
+   "quando": "26/11/2026 18:40",
+   "status": "pulado",
+   "mensagem": "Execução não rodou (mesmo motivo de 25/11). Nenhum post foi feito."
+  },
+  {
    "data": "2026-11-25",
-   "quando": "24/11/2026 (rascunho)",
-   "status": "rascunho",
-   "mensagem": "Rascunho de 25/11 pronto e já mostrado ao dono: Disciplina vence talento"
+   "quando": "25/11/2026 18:40",
+   "status": "pulado",
+   "mensagem": "Execução não rodou: a sessão que dispara a tarefa ficou parada e o aviso só chegou em 27/11. Nenhum post foi feito."
   },
   {
    "data": "2026-11-24",
@@ -115,16 +132,6 @@
  ],
  "fila": [
   {
-   "tema": "Disciplina vence talento",
-   "personagens": [
-    "Rock Lee",
-    "Sung Jin-Woo",
-    "Saitama",
-    "Tanjiro",
-    "Asta"
-   ]
-  },
-  {
    "tema": "Você merece descanso",
    "personagens": [
     "Shikamaru",
@@ -133,6 +140,17 @@
     "Kaguya",
     "Mitsuha"
    ]
+  },
+  {
+   "tema": "Fé quando tudo parece silêncio",
+   "personagens": [
+    "Frieren",
+    "Tanjiro",
+    "Violet Evergarden",
+    "Naruto",
+    "Luffy"
+   ],
+   "nota": "Post cristão de domingo (29/11): anime como ponte para falar de fé e esperança em Deus nos dias de silêncio. 1–2 versículos com referência exata e texto fiel (ex.: Salmos 46:10, Isaías 40:31). Tom acolhedor, sem polêmica. Hashtags #jesus #fé #deus #cristão + anime."
   },
   {
    "tema": "Medo de falhar",
@@ -153,17 +171,6 @@
     "Gojo",
     "Hikigaya"
    ]
-  },
-  {
-   "tema": "Fé quando tudo parece silêncio",
-   "personagens": [
-    "Frieren",
-    "Tanjiro",
-    "Violet Evergarden",
-    "Naruto",
-    "Luffy"
-   ],
-   "nota": "Post cristão de domingo (29/11): anime como ponte para falar de fé e esperança em Deus nos dias de silêncio. 1–2 versículos com referência exata e texto fiel (ex.: Salmos 46:10, Isaías 40:31). Tom acolhedor, sem polêmica. Hashtags #jesus #fé #deus #cristão + anime."
   },
   {
    "tema": "Gratidão pelas pequenas coisas",
@@ -188,19 +195,35 @@
  ],
  "posts": [
   {
-   "pasta": "2026-11-25",
+   "pasta": "2026-11-27",
    "slides": [
-    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_01.jpg",
-    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_02.jpg",
-    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_03.jpg",
-    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_04.jpg",
-    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_05.jpg",
-    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_06.jpg",
-    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-25/slide_07.jpg"
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-27/slide_01.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-27/slide_02.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-27/slide_03.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-27/slide_04.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-27/slide_05.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-27/slide_06.jpg",
+    "https://raw.githubusercontent.com/jacksonarcanjo/insta-carrosseis/main/posts/2026-11-27/slide_07.jpg"
    ],
    "legenda": "Tem dias em que a vontade simplesmente não aparece, e a gente descobre que esperar por ela pode custar anos 🌙\n\nVocê promete que começa na segunda, depois no mês que vem, depois quando as coisas se acalmarem. E o curioso é que quem consegue o que quer raramente é quem sentiu mais vontade, é quem fez mesmo sem sentir.\n\nA motivação funciona como o clima: vem e vai, e você não escolhe. Já a disciplina é mais parecida com um hábito de escovar os dentes. Na psicologia, a gente sabe que comportamentos repetidos no mesmo contexto vão ficando automáticos, e o cérebro gasta cada vez menos energia para fazê-los 💭\n\nPor isso a pergunta mais útil não é \"como me sentir motivado?\", e sim \"qual é a menor versão disso que eu consigo fazer hoje?\". Dez minutos de estudo. Cinco de caminhada. Uma página escrita. Parece pouco, e é justamente o pouco que sobrevive aos dias ruins.\n\nTambém ajuda tirar a decisão do caminho: escolher o horário na véspera, deixar o tênis ou o caderno à vista, avisar alguém. Quanto menos você negocia consigo mesmo, menos o cansaço ganha.\n\nIsso não significa que você precisa render o tempo todo, nem que descansar seja fracasso. Descanso planejado faz parte do processo. Significa reconhecer que a constância vale mais do que a empolgação ✨\n\nTalvez o seu objetivo não precise de mais inspiração. Talvez só precise de mais um dia em que você apareceu.\n\nO talento chama atenção. A constância constrói o resultado.\n\nQual hábito você quer começar a construir essa semana? Conta aqui, pode ajudar alguém a decidir também.\nSalva para reler num dia sem vontade e manda para quem precisa ouvir isso hoje.\n\nSiga @darkgoodvibes para continuar encontrando nos animes reflexões sobre a sua própria história.\n\n#anime #animes #animebrasil #otaku #disciplina #constancia #habitos #rocklee #onepunchman #blackclover #demonslayer #sololeveling",
    "tema": "Disciplina vence talento",
-   "publicado": null
+   "publicado": {
+    "id": "18156326311544088",
+    "permalink": "https://www.instagram.com/p/DgQrCDWD29q/",
+    "timestamp": "2026-11-27T21:43:20+0000",
+    "username": "darkgoodvibes"
+   },
+   "personagens": [
+    "Rock Lee",
+    "Saitama",
+    "Asta",
+    "Tanjiro",
+    "Sung Jin-Woo"
+   ],
+   "metricas": {
+    "curtidas": 0,
+    "comentarios": 0
+   }
   },
   {
    "pasta": "2026-11-24",
@@ -231,7 +254,7 @@
     "Hughes"
    ],
    "metricas": {
-    "curtidas": 0,
+    "curtidas": 2,
     "comentarios": 0
    }
   },
