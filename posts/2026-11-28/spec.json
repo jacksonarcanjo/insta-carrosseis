@@ -1,0 +1,60 @@
+{
+ "theme": "Você merece descanso",
+ "formato": "carta",
+ "estilo": "serie",
+ "slides": [
+  {
+   "layout": "fantasma",
+   "src": "https://i.pinimg.com/originals/45/b1/ec/45b1ec5ea2e0915978ddb1aefcf68de5.jpg",
+   "word": "pausa",
+   "wk": 0.85,
+   "dim": 0.82,
+   "pos": "bottom",
+   "tag": "carta pra quem está cansado",
+   "head": "você **merece** descanso"
+  },
+  {
+   "layout": "painel",
+   "src": "https://i.pinimg.com/originals/5e/05/03/5e0503695ff47f772ae8393b83d26f9c.jpg",
+   "src2": "https://i.pinimg.com/originals/c7/c5/1e/c7c51e43e9250a74063d3e28d6afbe13.jpg",
+   "tag": "Meu Vizinho Totoro",
+   "head": "você não está **atrasado**, está cansado",
+   "body": "Descansar não é perder tempo. Até o Totoro passa o dia dormindo no fundo da floresta, e ninguém o chama de preguiçoso. **Pausa também faz parte do caminho.**"
+  },
+  {
+   "layout": "quadro",
+   "src": "https://i.pinimg.com/originals/97/d0/be/97d0be7c6c3c2be25a062f898d84c623.jpg",
+   "side": "right",
+   "zx": 0.5,
+   "zy": 0.8,
+   "tag": "Frieren",
+   "head": "até quem vive **mil anos** faz pausa",
+   "body": "Frieren para pra olhar flor, tira soneca debaixo da árvore e não se cobra por isso. **Se ela pode, você também pode.**",
+   "src2": "https://i.pinimg.com/originals/31/b8/1b/31b81b2154da392e9dd5c7ce8dac5464.jpg"
+  },
+  {
+   "src": "https://i.pinimg.com/originals/5b/2d/1c/5b2d1c8619691222b7e81e6ea6e95486.jpg",
+   "pos": "bottom",
+   "tag": "Mushishi · Ginko",
+   "head": "o viajante também **descansa**",
+   "body": "Ginko caminha de vilarejo em vilarejo, mas sempre acha um canto pra respirar. **Quem anda muito precisa parar** pra conseguir continuar.",
+   "fx": 0.6
+  },
+  {
+   "layout": "painel",
+   "src": "https://i.pinimg.com/originals/a7/cc/61/a7cc61ca0b979cc42f8d0a76274caf31.jpg",
+   "src2": "https://i.pinimg.com/originals/97/e7/1c/97e71c0f76aff2c24f1a8c05e6aaff2f.jpg",
+   "tag": "pequenas pausas",
+   "head": "o mundo não acaba se você **parar**",
+   "body": "Desligar o celular, fazer um chá, olhar a chuva cair. **Pequenas pausas** também são cuidado, e hoje você pode começar por uma delas."
+  },
+  {
+   "layout": "frase",
+   "src": "https://i.pinimg.com/originals/2f/f8/1b/2ff81bdbee98ce7ff3c395d4bca9d0ed.jpg",
+   "text": "Descansar também é **seguir em frente.**",
+   "autor": "Siga @darkgoodvibes"
+  }
+ ],
+ "caption": "Ninguém te avisa que o cansaço mais difícil de carregar é aquele que você se proíbe de sentir 🌙\n\nVocê chega em casa e, em vez de descansar, fica ouvindo uma voz que lista tudo o que ainda deveria ter feito. A lavanderia, a resposta que ficou pendente, o estudo que ficou pela metade. Deitar vira motivo de culpa.\n\nExiste uma ideia silenciosa por trás disso: a de que descanso é prêmio, algo que só se ganha depois de render muito. Na psicologia, o caminho costuma ser o contrário. Sono e pausas são condição para atenção, humor e memória funcionarem direito, e quem nunca para tende a render menos, não mais 💭\n\nDescansar também não precisa ser grande. Dez minutos sem tela, uma caminhada curta, um banho mais demorado, dormir em horário decente. Pequenas pausas repetidas costumam ajudar mais do que um fim de semana de recuperação depois de semanas no limite.\n\nE tem um detalhe: dizer não também é uma forma de descansar. Cada compromisso aceito por culpa é uma pausa que você tira de si mesmo.\n\nIsso não significa que todo cansaço se resolve com uma soneca. Se ele não passa, se vem junto com tristeza ou irritação constantes, conversar com um profissional de saúde também é cuidar de si ✨\n\nTalvez hoje você não precise resolver nada. Talvez precise só de um intervalo.\n\nSeu valor não depende da sua produtividade.\n\nQual é a pausa mais simples que você consegue fazer hoje? Conta aqui, pode servir de ideia pra alguém.\nSalva para reler num dia pesado e manda para quem precisa ouvir isso hoje.\n\nSiga @darkgoodvibes para continuar encontrando nos animes reflexões sobre a sua própria história.\n\n#anime #animes #animebrasil #otaku #descanso #saudemental #autocuidado #burnout #totoro #frieren #mushishi",
+ "pronto": true
+}

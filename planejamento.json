@@ -2,16 +2,6 @@
  "_como_usar": "Fila dos proximos posts. O robo usa o primeiro item a cada dia, remove-o da fila e completa a fila ate 7 itens. Voce pode editar pelo GitHub (trocar a ordem, temas ou personagens).",
  "fila": [
   {
-   "tema": "Você merece descanso",
-   "personagens": [
-    "Shikamaru",
-    "Totoro",
-    "Yotsuba",
-    "Kaguya",
-    "Mitsuha"
-   ]
-  },
-  {
    "tema": "Fé quando tudo parece silêncio",
    "personagens": [
     "Frieren",
