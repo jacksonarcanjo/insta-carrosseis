@@ -125,11 +125,17 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 .tj .hd{font:italic 500 28px C;margin-bottom:12px;text-shadow:0 1px 3px rgba(0,0,0,.9),0 0 14px rgba(0,0,0,.6)}
 .tj .ln{margin:0;font:700 52px/1.18 T;letter-spacing:-.02em;
  text-shadow:0 2px 2px rgba(0,0,0,.55),0 0 6px rgba(0,0,0,.55),0 0 22px rgba(0,0,0,.45);-webkit-text-stroke:.6px rgba(0,0,0,.25)}
-.tj .ln b{color:#ffd23f}
+.tj .ln b{color:var(--acc)}
 .tj .tt{font-size:100px;line-height:1.02;letter-spacing:-.04em}
-.tj .tt b{color:#ffd23f}
+.tj .tt b{color:var(--acc)}
 .tj .st{margin-top:14px;font-size:44px;font-weight:600}
 @font-face{font-family:A;src:url(FONTS/anton-latin-400-normal.woff2)}
+@font-face{font-family:BB;src:url(FONTS/bebas-neue-latin-400-normal.woff2)}
+@font-face{font-family:AB;src:url(FONTS/archivo-black-latin-400-normal.woff2)}
+@font-face{font-family:CG;font-style:italic;font-weight:500;src:url(FONTS/cormorant-garamond-latin-500-italic.woff2)}
+:root{--acc:var(--acc);--paper:#f1ece2;--hot:var(--hot);--ink:#151515;--disp:A;--ser:PF;--wash:transparent;--gs:0}
+.slide{filter:grayscale(var(--gs))}
+.slide::after{content:"";position:absolute;inset:0;background:var(--wash);mix-blend-mode:soft-light;z-index:25;pointer-events:none}
 @font-face{font-family:PF;font-weight:500;src:url(FONTS/playfair-display-latin-500-normal.woff2)}
 @font-face{font-family:PF;font-weight:500;font-style:italic;src:url(FONTS/playfair-display-latin-500-italic.woff2)}
 @font-face{font-family:Pp;font-weight:300;src:url(FONTS/poppins-latin-300-normal.woff2),url(FONTS/poppins-latin-ext-300-normal.woff2)}
@@ -153,46 +159,46 @@ body{background:#777;display:flex;flex-direction:column;gap:40px;padding:40px;al
 .dec{position:absolute;inset:0;z-index:7;pointer-events:none;color:#fff}
 .dec .fr{position:absolute;inset:24px;border:2px solid rgba(255,255,255,.8);border-radius:4px;box-shadow:0 0 18px rgba(0,0,0,.25),inset 0 0 18px rgba(0,0,0,.18)}
 .dec .fr2{position:absolute;inset:36px;border:1px solid rgba(255,255,255,.4)}
-.dec .cn{position:absolute;width:54px;height:54px;border:0 solid #ffd23f}
+.dec .cn{position:absolute;width:54px;height:54px;border:0 solid var(--acc)}
 .dec .tl{top:16px;left:16px;border-top-width:6px;border-left-width:6px}.dec .tr{top:16px;right:16px;border-top-width:6px;border-right-width:6px}
 .dec .bl{bottom:16px;left:16px;border-bottom-width:6px;border-left-width:6px}.dec .br{bottom:16px;right:16px;border-bottom-width:6px;border-right-width:6px}
 .dec .tp{position:absolute;top:52px;left:70px;right:70px;display:flex;justify-content:space-between;font:600 24px Pp;letter-spacing:.12em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.dec .tp .n b{color:#ffd23f;font-weight:800}
+.dec .tp .n b{color:var(--acc);font-weight:800}
 .dec .nx{position:absolute;bottom:52px;right:72px;font:600 26px Pp;letter-spacing:.12em;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.dec .dots{position:absolute;bottom:56px;left:72px;display:flex;gap:10px}.dec .dots i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.45)}.dec .dots i.on{background:#ffd23f}
+.dec .dots{position:absolute;bottom:56px;left:72px;display:flex;gap:10px}.dec .dots i{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.45)}.dec .dots i.on{background:var(--acc)}
 .scrim{position:absolute;left:0;right:0;top:0;height:900px;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.66),rgba(0,0,0,.34) 58%,rgba(0,0,0,0))}
 .scrim.sb{top:auto;bottom:0;background:linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,.4) 58%,rgba(0,0,0,0))}
 .sr .tag{display:inline-block;background:#fff;color:#111;font:800 23px Pp;letter-spacing:.16em;text-transform:uppercase;padding:9px 22px 8px;border-radius:999px;margin-bottom:22px;text-shadow:none;box-shadow:0 3px 12px rgba(0,0,0,.35)}
-.sr .dv{width:96px;height:6px;border-radius:3px;background:#ffd23f;margin:26px auto 0}
+.sr .dv{width:96px;height:6px;border-radius:3px;background:var(--acc);margin:26px auto 0}
 .sr.rich .hl{font-size:98px}
 .sr.rich .bd{font:600 39px/1.2 Pp;letter-spacing:-.025em;margin-top:26px;padding:0 24px;text-shadow:0 2px 3px rgba(0,0,0,.6),0 0 16px rgba(0,0,0,.5)}
-.sr.rich .bd b{font-weight:800;color:#ffd23f}
+.sr.rich .bd b{font-weight:800;color:var(--acc)}
 /* colagem: layouts variados (fantasma, painel, quadro, frase) */
-.gw{position:absolute;left:50%;transform:translateX(-50%);z-index:3;font:400 420px/.82 A;text-transform:uppercase;white-space:nowrap;color:#fff;letter-spacing:.01em;text-shadow:0 6px 40px rgba(0,0,0,.25)}
+.gw{position:absolute;left:50%;transform:translateX(-50%);z-index:3;font:400 420px/.82 var(--disp);text-transform:uppercase;white-space:nowrap;color:#fff;letter-spacing:.01em;text-shadow:0 6px 40px rgba(0,0,0,.25)}
 .gw.ol{color:transparent;-webkit-text-stroke:5px #fff;text-shadow:none}
 .cshade{position:absolute;inset:0;z-index:2;background:linear-gradient(0deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.66) 26%,rgba(0,0,0,.25) 46%,rgba(0,0,0,0) 62%)}
 .cshade.t{background:linear-gradient(180deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.66) 26%,rgba(0,0,0,.25) 46%,rgba(0,0,0,0) 62%)}
 .ccap{position:absolute;left:72px;right:72px;bottom:92px;z-index:9;color:#fff}
 .ccap.t{bottom:auto;top:92px}
-.ctag{display:inline-block;background:#ffd23f;color:#111;font:800 22px Pp;letter-spacing:.16em;text-transform:uppercase;padding:8px 20px 7px;margin-bottom:20px}
-.ccap .hd{font:italic 500 72px/1.03 PF;letter-spacing:-.012em;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.ctag{display:inline-block;background:var(--acc);color:#111;font:800 22px Pp;letter-spacing:.16em;text-transform:uppercase;padding:8px 20px 7px;margin-bottom:20px}
+.ccap .hd{font:italic 500 72px/1.03 var(--ser);letter-spacing:-.012em;text-shadow:0 2px 14px rgba(0,0,0,.6)}
 .ccap .bd{font:500 35px/1.26 Pp;letter-spacing:-.015em;margin-top:20px;text-shadow:0 2px 10px rgba(0,0,0,.7)}
-.ccap b{color:#ffd23f;font-weight:700}
-.cpan{background:#f1ece2;color:#151515}
-.cpan .pt{position:absolute;top:60px;left:84px;right:84px;display:flex;justify-content:space-between;font:italic 500 25px PF;letter-spacing:.04em;color:#555}
+.ccap b{color:var(--acc);font-weight:700}
+.cpan{background:var(--paper);color:var(--ink)}
+.cpan .pt{position:absolute;top:60px;left:84px;right:84px;display:flex;justify-content:space-between;font:italic 500 25px var(--ser);letter-spacing:.04em;color:#555}
 .cpan .col{position:absolute;left:84px;right:84px;top:112px;bottom:70px;display:flex;flex-direction:column;gap:34px}
-.cpan .tt{font:400 124px/.92 A;text-transform:uppercase;letter-spacing:.005em}
-.cpan .tt b{color:#b3261e;font-weight:400}
+.cpan .tt{font-family:var(--disp);font-weight:400;font-size:calc(124px*var(--dk));line-height:.92;text-transform:uppercase;letter-spacing:.005em}
+.cpan .tt b{color:var(--hot);font-weight:400}
 .fbox{position:relative;flex:none}
 .cfr{position:absolute;background:#fff;padding:14px;box-shadow:0 14px 34px rgba(0,0,0,.3);z-index:4}
 .cfr img{display:block;width:100%;height:100%;object-fit:cover}
-.cpan .tx{font:500 40px/1.27 PF;text-align:justify;hyphens:none;color:#1b1b1b}
-.cpan .tx b{font-weight:600;background:linear-gradient(transparent 56%,#ffd23f 56%)}
+.cpan .tx{font:500 40px/1.27 var(--ser);text-align:justify;hyphens:none;color:#1b1b1b}
+.cpan .tx b{font-weight:600;background:linear-gradient(transparent 56%,var(--acc) 56%)}
 .gm{mix-blend-mode:multiply!important;opacity:.35!important}
-.qm{position:absolute;top:40px;left:50px;font:400 640px/1 PF;color:rgba(255,255,255,.22);z-index:3}
-.qt{position:absolute;left:92px;right:92px;top:38%;transform:translateY(-50%);font:italic 500 76px/1.14 PF;text-align:center;color:#fff;z-index:5;text-shadow:0 3px 18px rgba(0,0,0,.6)}
-.qt b{color:#ffd23f;font-weight:500}
-.qa{position:absolute;left:0;right:0;bottom:150px;text-align:center;font:600 27px Pp;letter-spacing:.3em;text-transform:uppercase;color:#ffd23f;z-index:5}
+.qm{position:absolute;top:40px;left:50px;font:400 640px/1 var(--ser);color:rgba(255,255,255,.22);z-index:3}
+.qt{position:absolute;left:92px;right:92px;top:38%;transform:translateY(-50%);font:italic 500 76px/1.14 var(--ser);text-align:center;color:#fff;z-index:5;text-shadow:0 3px 18px rgba(0,0,0,.6)}
+.qt b{color:var(--acc);font-weight:500}
+.qa{position:absolute;left:0;right:0;bottom:150px;text-align:center;font:600 27px Pp;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);z-index:5}
 /* variante christversions: bloco justificado, sem cor */
 .v-cv .ln{font-size:56px;line-height:1.06;text-align:justify;text-align-last:left;letter-spacing:-.025em}
 .v-cv .ln b{color:#fff}
@@ -277,6 +283,21 @@ def render_collage(lay, s, i, d, handle, rich, n):
     mode, img, fill = prepare(dict(s, mode='full'), i, d)
     return (f'<section class="slide" id="s{i}"><img class="bg photo" src="{img}" style="filter:brightness(.52) saturate(.9)">'
             f'<div class="qm">&ldquo;</div><div class="qt">{rich(s["text"])}</div><div class="qa">{html.escape(s.get("autor", ""))}</div><div class="grain"></div></section>')
+
+
+THEMES = {
+    # nome: variaveis CSS do tema (paleta, fontes, tonalidade da imagem)
+    'noir':   {'--acc': '#ffd23f', '--paper': '#f1ece2', '--hot': '#b3261e', '--ink': '#151515', '--disp': 'A',  '--ser': 'PF', '--wash': 'transparent', '--gs': '0'},
+    'sakura': {'--dk': '1.16', '--acc': '#ff9ec4', '--paper': '#fbeef1', '--hot': '#c2185b', '--ink': '#2a1520', '--disp': 'BB', '--ser': 'CG', '--wash': 'rgba(255,150,190,.22)', '--gs': '0'},
+    'oceano': {'--dk': '.74', '--acc': '#8fe3ff', '--paper': '#e8f0f4', '--hot': '#0b5d8a', '--ink': '#0f1f2b', '--disp': 'AB', '--ser': 'PF', '--wash': 'rgba(40,120,210,.24)', '--gs': '0'},
+    'ocaso':  {'--dk': '1.16', '--acc': '#ffb347', '--paper': '#f7e8d4', '--hot': '#c0392b', '--ink': '#2a1a10', '--disp': 'BB', '--ser': 'PF', '--wash': 'rgba(255,110,50,.24)', '--gs': '0'},
+    'floresta': {'--dk': '.74', '--acc': '#c4f2a6', '--paper': '#e8efe0', '--hot': '#2f6b3d', '--ink': '#14241a', '--disp': 'AB', '--ser': 'CG', '--wash': 'rgba(50,140,80,.22)', '--gs': '0'},
+    'mono':   {'--acc': '#ffffff', '--paper': '#ececec', '--hot': '#111111', '--ink': '#0d0d0d', '--disp': 'A',  '--ser': 'CG', '--wash': 'transparent', '--gs': '1'},
+}
+
+def theme_css(name):
+    v = THEMES.get(name or 'noir', THEMES['noir'])
+    return ':root{' + ';'.join(f'{k}:{x}' for k, x in v.items()) + '}'
 
 
 def main(d):
@@ -377,7 +398,7 @@ document.fonts.ready.then(()=>{document.querySelectorAll('.gw').forEach(g=>{
  else{tx.style.top='150px'; fg.remove();}   // sem sobreposicao boa: texto no alto, na frente
 });document.body.dataset.ready=1;});
 </script>"""
-    page = (f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS.replace("FONTS", fonts)}</style>'
+    page = (f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>{CSS.replace("FONTS", fonts)}{theme_css(spec.get("tema", cfg.get("tema", "noir")))}</style>'
             f'</head><body>{"".join(parts)}{script}</body></html>')
     open(f'{d}/carrossel.html', 'w').write(page)
     n = len(spec['slides'])

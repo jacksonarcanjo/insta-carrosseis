@@ -98,6 +98,16 @@
    "Tanjiro",
    "Sung Jin-Woo"
   ],
-  "permalink": "https://www.instagram.com/p/DgQrCDWD29q/"
+  "permalink": "https://www.instagram.com/p/DgQrCDWD29q/",
+  "tema": "noir",
+  "layouts": [
+   "fantasma",
+   "painel",
+   "quadro",
+   "fantasma",
+   "serie",
+   "painel",
+   "frase"
+  ]
  }
 ]

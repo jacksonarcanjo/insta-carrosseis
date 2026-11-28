@@ -53,6 +53,18 @@ dois posts seguidos com a mesma palavra no gancho. Formatos (todos usam o mesmo 
 Em cada formato o último slide fecha com virada + "Siga @darkgoodvibes". Registre o formato usado em `history.json` (`"formato"`).
 Mude também o comprimento: posts de 5, 6, 7 ou 8 slides.
 
+## 2-quater. VARIE O VISUAL ENTRE POSTS (regra do dono: "não é porque um ficou bom que é pra manter todos assim")
+Cada post tem um visual PRÓPRIO. Nunca repita o mesmo visual em posts seguidos.
+- **Tema visual** (`"tema"` no `spec.json`): `noir` (preto/amarelo, Anton), `sakura` (rosa, Bebas + Cormorant), `oceano` (azul, Archivo Black),
+  `ocaso` (laranja, Bebas), `floresta` (verde, Archivo Black + Cormorant), `mono` (preto e branco, Anton + Cormorant).
+  Ele troca paleta, fontes e a tonalidade das imagens. **Escolha um tema diferente dos 3 últimos posts** (veja `"tema"` em `history.json`)
+  e combine com o assunto (ex.: descanso → oceano/floresta; saudade → ocaso/mono; amor/amizade → sakura; disciplina → noir/mono).
+  Domingo cristão: `mono` ou `ocaso`.
+- **Combinação de layouts diferente** da dos últimos 2 posts: a capa não pode ter o mesmo layout das 3 últimas capas, e o fechamento
+  não precisa ser sempre `frase`. Alterne também a ordem (às vezes comece por `painel`, `quadro` ou `serie`).
+- **Quantidade de slides** diferente (5 a 8) e **posição do texto** variando entre `top` e `bottom`.
+- Registre `"tema"` e a lista de layouts usados em `history.json` ao publicar.
+
 ## 2-ter. LAYOUTS VARIADOS (pedido do dono: nada de moldura/enfeite igual em todos os slides)
 Cada slide escolhe um `"layout"` no spec. **Misture pelo menos 3 layouts diferentes por post** e nunca use o mesmo
 layout em mais de 2 slides seguidos. A moldura de cantos (`"moldura": true`) só pode aparecer em NO MÁXIMO 1 slide por post.
